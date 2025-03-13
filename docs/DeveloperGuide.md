@@ -361,6 +361,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **HRelpher**: A Human Resource management tool for managing employee profiles efficiently.
+* **Hiring Manager/HR**: The main user of HRelpher, responsible for managing employee records.
+* **Employee Profile**: A record containing an employee's details such as name, department, and contact information.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
