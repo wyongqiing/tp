@@ -19,13 +19,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Chen Xiangyun
 
-<img src="images/chen-xiangyun.png" width="200px">
+<img src="images/chenxy12345.png" width="200px">
 
 [[github](http://github.com/chenxy12345)]
-[[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
 
 ### Woo Yong Qing
 
