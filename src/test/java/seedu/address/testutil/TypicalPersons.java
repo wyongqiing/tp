@@ -2,6 +2,10 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DOB_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DOB_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GENDER_AMY;
@@ -32,6 +36,8 @@ public class TypicalPersons {
             .withPhone("94351253")
             .withEmail("alice@example.com")
             .withGender("Female")
+            .withDob("01-Oct-1991")
+            .withDateOfJoining("15-Apr-2024")
             .withNationality("Singaporean")
             .withAddress("123, Jurong West Ave 6, #08-111")
             .withTags("friends")
@@ -42,6 +48,8 @@ public class TypicalPersons {
             .withPhone("98765432")
             .withEmail("johnd@example.com")
             .withGender("Male")
+            .withDob("10-Mar-2001")
+            .withDateOfJoining("15-Apr-2024")
             .withNationality("Singaporean")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withTags("owesMoney", "friends")
@@ -52,6 +60,8 @@ public class TypicalPersons {
             .withPhone("95352563")
             .withEmail("heinz@example.com")
             .withGender("Male")
+            .withDob("20-Aug-2002")
+            .withDateOfJoining("15-Apr-2024")
             .withNationality("American")
             .withAddress("wall street")
             .build();
@@ -61,6 +71,8 @@ public class TypicalPersons {
             .withPhone("87652533")
             .withEmail("cornelia@example.com")
             .withGender("Male")
+            .withDob("19-Aug-2001")
+            .withDateOfJoining("15-Apr-2024")
             .withNationality("American")
             .withAddress("10th street")
             .withTags("friends")
@@ -71,6 +83,8 @@ public class TypicalPersons {
             .withPhone("9482224")
             .withEmail("werner@example.com")
             .withGender("Female")
+            .withDob("28-Dec-2002")
+            .withDateOfJoining("15-Apr-2024")
             .withNationality("Indonesian")
             .withAddress("michegan ave")
             .build();
@@ -80,6 +94,8 @@ public class TypicalPersons {
             .withPhone("9482427")
             .withEmail("lydia@example.com")
             .withGender("Female")
+            .withDob("30-Feb-2004")
+            .withDateOfJoining("01-Jan-2024")
             .withNationality("Singaporean")
             .withAddress("little tokyo")
             .build();
@@ -89,6 +105,8 @@ public class TypicalPersons {
             .withPhone("9482442")
             .withEmail("anna@example.com")
             .withGender("Male")
+            .withDob("27-Sep-2004")
+            .withDateOfJoining("01-Jan-2024")
             .withNationality("American")
             .withAddress("4th street")
             .build();
@@ -99,6 +117,8 @@ public class TypicalPersons {
             .withPhone("8482424")
             .withEmail("stefan@example.com")
             .withGender("Male")
+            .withDob("10-Dec-2001")
+            .withDateOfJoining("15-Dec-2024")
             .withNationality("Singaporean")
             .withAddress("little india")
             .build();
@@ -108,6 +128,8 @@ public class TypicalPersons {
             .withPhone("8482131")
             .withEmail("hans@example.com")
             .withGender("Female")
+            .withDob("01-Jan-2008")
+            .withDateOfJoining("15-Dec-2024")
             .withNationality("Singaporean")
             .withAddress("chicago ave")
             .build();
@@ -115,10 +137,12 @@ public class TypicalPersons {
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withGender(VALID_GENDER_AMY).withAddress(VALID_NATIONALITY_AMY)
+            .withEmail(VALID_EMAIL_AMY).withGender(VALID_GENDER_AMY).withDob(VALID_DOB_AMY)
+            .withDateOfJoining(VALID_DATE_AMY).withNationality(VALID_NATIONALITY_AMY)
             .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withGender(VALID_GENDER_BOB).withNationality(VALID_NATIONALITY_BOB)
+            .withEmail(VALID_EMAIL_BOB).withGender(VALID_GENDER_BOB).withDob(VALID_DOB_BOB)
+            .withDateOfJoining(VALID_DATE_BOB).withNationality(VALID_NATIONALITY_BOB)
             .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
