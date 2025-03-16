@@ -27,7 +27,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Johnny DUC
 
 <img src="images/johndoe.png" width="200px">
 
@@ -36,7 +36,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Jean DUC
 
 <img src="images/johndoe.png" width="200px">
 
@@ -52,6 +52,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: UI
+
+### BOO wen jun
+
+<img src="images/BOO.png" width="200px">
+[[github](https://github.com/wj200)]
 
 * Role: Developer
 * Responsibilities: UI
