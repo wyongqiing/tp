@@ -268,38 +268,73 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Enables HR to quickly access and manage employee and job seeker information, streamlining 
+                       recruitment and communication within the company.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​  | I want to …​                       | So that I can…​                                                   |
+| ------- |----------|------------------------------------| ----------------------------------------------------------------- |
+| `* * *` | user     | I can add a profile                | so that I can store employee details in the address book.         |
+| `* * *` | user     | I can delete the employees profile              | so that I can removed outdated or incorrect records.              |
+| `* * *` | user     | I  can view a profiles             | so that I can get employee information |
+| `* * `  | user     | I can edit the profile             | so that i can update their information when needed.                |
+| `* *`   | user     | I can filter contacts by department | so that I can quickly see all employees in a specific team.       |
+| `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `HRelper` and the **Actor** is the `HR manager (HR)`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add an Employee Profile**
+
+**MSS **
+
+1. HR requests to add an employee profile.
+
+2. HRelpher prompts for details of the employee.
+
+3. HR fills in the details.
+
+4. HRelpher requests HR to confirm the details.
+
+5. HR confirms the details.
+
+6. HRelpher adds the employee to the system.
+
+    Use case ends.
+
+**Extensions**
+
+* 4a. HR decides to change details.
+
+    * 4a1. HR cancels confirmation. Use case resumes at step 3.
+
+* 4b. HRelpher finds an existing employee profile.
+
+  Use case resumes at step 3.
+
+* 5a. HR loses connection.
+
+    * 5a1. HRelpher saves details.
+
+    * 5a2. HRelpher prompts HR to continue where they left off. Use case resumes at step 3.
+
+**Use case: Delete an Employee Profile**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
+1. HR requests to list employees.
+2. HRelpher shows a list of employees.
+3. HR requests to delete a specific employee in the list.
+4. HRelpher deletes the employee.
+ 
+   Use case ends.
 
 **Extensions**
 
@@ -309,7 +344,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. HRelpher shows an error message.
 
       Use case resumes at step 2.
 
@@ -326,6 +361,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **HRelpher**: A Human Resource management tool for managing employee profiles efficiently.
+* **Hiring Manager/HR**: The main user of HRelpher, responsible for managing employee records.
+* **Employee Profile**: A record containing an employee's details such as name, department, and contact information.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
