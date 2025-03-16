@@ -20,9 +20,9 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
-    private final Gender gender;
 
     // Data fields
+    private final Gender gender;
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
@@ -54,6 +54,7 @@ public class Person {
     public Gender getGender() {
         return gender;
     }
+
 
     public Address getAddress() {
         return address;
