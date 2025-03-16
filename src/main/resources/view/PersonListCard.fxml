@@ -28,11 +28,34 @@
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
       <FlowPane fx:id="tags" />
-      <Label fx:id="gender" styleClass="cell_small_label" text="\$gender" />
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="nationality" styleClass="cell_small_label" text="\$nationality" />
+      <HBox spacing="5">
+        <Label text="Gender:" styleClass="cell_header_label" />
+        <Label fx:id="gender" styleClass="cell_small_label" text="\$gender" />
+      </HBox>
+      <HBox spacing="5">
+        <Label text="Phone:" styleClass="cell_header_label" />
+        <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
+      </HBox>
+      <HBox spacing="5">
+        <Label text="Date of Birth:" styleClass="cell_header_label" />
+        <Label fx:id="dob" styleClass="cell_small_label" text="\$dob" />
+      </HBox>
+      <HBox spacing="5">
+        <Label text="Address:" styleClass="cell_header_label" />
+        <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
+      </HBox>
+      <HBox spacing="5">
+        <Label text="Email:" styleClass="cell_header_label" />
+        <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      </HBox>
+      <HBox spacing="5">
+        <Label text="Nationality:" styleClass="cell_header_label" />
+        <Label fx:id="nationality" styleClass="cell_small_label" text="\$nationality" />
+      </HBox>
+      <HBox spacing="5">
+        <Label text="Date of Joining:" styleClass="cell_header_label" />
+        <Label fx:id="dateOfJoining" styleClass="cell_small_label" text="\$dateOfJoining" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>

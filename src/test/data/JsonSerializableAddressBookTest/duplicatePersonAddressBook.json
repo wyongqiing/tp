@@ -4,6 +4,8 @@
     "phone": "94351253",
     "email": "alice@example.com",
     "gender" : "Female",
+    "dob" : "01-Oct-1991",
+    "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
     "address": "123, Jurong West Ave 6, #08-111",
     "tags": [ "friends" ]
@@ -12,6 +14,8 @@
     "phone": "94351253",
     "email": "pauline@example.com",
     "gender" : "Female",
+    "dob" : "01-Oct-1991",
+    "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
     "address": "4th street"
   } ]

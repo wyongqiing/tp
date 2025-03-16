@@ -10,6 +10,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfJoining;
+import seedu.address.model.person.Dob;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
@@ -110,6 +112,36 @@ public class ParserUtil {
             throw new ParseException(Gender.MESSAGE_CONSTRAINTS);
         }
         return new Gender(trimmedGender);
+    }
+
+    /**
+     * Parses a {@code String dob} into an {@code Dob}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dob} is invalid.
+     */
+    public static Dob parseDob(String dob) throws ParseException {
+        requireNonNull(dob);
+        String trimmedDob = dob.trim();
+        if (!Dob.isValidDob(trimmedDob)) {
+            throw new ParseException(Dob.MESSAGE_CONSTRAINTS);
+        }
+        return new Dob(trimmedDob);
+    }
+
+    /**
+     * Parses a {@code String dateOfJoining} into an {@code DateOfJoining}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dateOfJoining} is invalid.
+     */
+    public static DateOfJoining parseDate(String dateOfJoining) throws ParseException {
+        requireNonNull(dateOfJoining);
+        String trimmedDateOfJoining = dateOfJoining.trim();
+        if (!DateOfJoining.isValidDate(trimmedDateOfJoining)) {
+            throw new ParseException(DateOfJoining.MESSAGE_CONSTRAINTS);
+        }
+        return new DateOfJoining(trimmedDateOfJoining);
     }
 
     /**

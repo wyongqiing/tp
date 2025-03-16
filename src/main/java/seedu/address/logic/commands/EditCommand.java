@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -24,6 +26,8 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfJoining;
+import seedu.address.model.person.Dob;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
@@ -47,6 +51,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_GENDER + "GENDER] "
+            + "[" + PREFIX_DOB + "DOB] "
+            + "[" + PREFIX_DATE + "DATE OF JOINING]"
             + "[" + PREFIX_NATIONALITY + "NATIONALITY] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
@@ -105,11 +111,13 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Gender updatedGender = editPersonDescriptor.getGender().orElse(personToEdit.getGender());
+        Dob updatedDob = editPersonDescriptor.getDob().orElse(personToEdit.getDob());
+        DateOfJoining updatedDate = editPersonDescriptor.getDateOfJoining().orElse(personToEdit.getDateOfJoining());
         Nationality updatedNationality = editPersonDescriptor.getNationality().orElse(personToEdit.getNationality());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedGender,
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedGender, updatedDob, updatedDate,
                 updatedNationality, updatedAddress, updatedTags);
     }
 
@@ -146,6 +154,8 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Gender gender;
+        private Dob dob;
+        private DateOfJoining dateOfJoining;
         private Nationality nationality;
         private Address address;
         private Set<Tag> tags;
@@ -161,6 +171,8 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setGender(toCopy.gender);
+            setDob(toCopy.dob);
+            setDateOfJoining(toCopy.dateOfJoining);
             setNationality(toCopy.nationality);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
@@ -170,7 +182,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, gender, nationality, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, gender, dob, dateOfJoining,
+                    nationality, address, tags);
         }
 
         public void setName(Name name) {
@@ -203,6 +216,22 @@ public class EditCommand extends Command {
 
         public Optional<Gender> getGender() {
             return Optional.ofNullable(gender);
+        }
+
+        public void setDob(Dob dob) {
+            this.dob = dob;
+        }
+
+        public Optional<Dob> getDob() {
+            return Optional.ofNullable(dob);
+        }
+
+        public void setDateOfJoining(DateOfJoining dateOfJoining) {
+            this.dateOfJoining = dateOfJoining;
+        }
+
+        public Optional<DateOfJoining> getDateOfJoining() {
+            return Optional.ofNullable(dateOfJoining);
         }
 
         public void setNationality(Nationality nationality) {
@@ -254,6 +283,8 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(gender, otherEditPersonDescriptor.gender)
+                    && Objects.equals(dob, otherEditPersonDescriptor.dob)
+                    && Objects.equals(dateOfJoining, otherEditPersonDescriptor.dateOfJoining)
                     && Objects.equals(nationality, otherEditPersonDescriptor.nationality)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags);
@@ -266,6 +297,8 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("gender", gender)
+                    .add("dob", dob)
+                    .add("dateOfJoining", dateOfJoining)
                     .add("nationality", nationality)
                     .add("address", address)
                     .add("tags", tags)
