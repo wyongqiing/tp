@@ -13,6 +13,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Nationality;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -109,6 +110,21 @@ public class ParserUtil {
             throw new ParseException(Gender.MESSAGE_CONSTRAINTS);
         }
         return new Gender(trimmedGender);
+    }
+
+    /**
+     * Parses a {@code String nationality} into an {@code Nationality}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code nationality} is invalid.
+     */
+    public static Nationality parseNationality(String nationality) throws ParseException {
+        requireNonNull(nationality);
+        String trimmedNationality = nationality.trim();
+        if (!Nationality.isValidNationality(trimmedNationality)) {
+            throw new ParseException(Nationality.MESSAGE_CONSTRAINTS);
+        }
+        return new Nationality(trimmedNationality);
     }
 
     /**

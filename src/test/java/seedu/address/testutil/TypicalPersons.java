@@ -8,6 +8,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_GENDER_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GENDER_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NATIONALITY_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NATIONALITY_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
@@ -30,6 +32,7 @@ public class TypicalPersons {
             .withPhone("94351253")
             .withEmail("alice@example.com")
             .withGender("Female")
+            .withNationality("Singaporean")
             .withAddress("123, Jurong West Ave 6, #08-111")
             .withTags("friends")
             .build();
@@ -39,6 +42,7 @@ public class TypicalPersons {
             .withPhone("98765432")
             .withEmail("johnd@example.com")
             .withGender("Male")
+            .withNationality("Singaporean")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withTags("owesMoney", "friends")
             .build();
@@ -48,6 +52,7 @@ public class TypicalPersons {
             .withPhone("95352563")
             .withEmail("heinz@example.com")
             .withGender("Male")
+            .withNationality("American")
             .withAddress("wall street")
             .build();
 
@@ -56,6 +61,7 @@ public class TypicalPersons {
             .withPhone("87652533")
             .withEmail("cornelia@example.com")
             .withGender("Male")
+            .withNationality("American")
             .withAddress("10th street")
             .withTags("friends")
             .build();
@@ -65,6 +71,7 @@ public class TypicalPersons {
             .withPhone("9482224")
             .withEmail("werner@example.com")
             .withGender("Female")
+            .withNationality("Indonesian")
             .withAddress("michegan ave")
             .build();
 
@@ -73,6 +80,7 @@ public class TypicalPersons {
             .withPhone("9482427")
             .withEmail("lydia@example.com")
             .withGender("Female")
+            .withNationality("Singaporean")
             .withAddress("little tokyo")
             .build();
 
@@ -80,7 +88,8 @@ public class TypicalPersons {
             .withName("George Best")
             .withPhone("9482442")
             .withEmail("anna@example.com")
-            .withGender("Female")
+            .withGender("Male")
+            .withNationality("American")
             .withAddress("4th street")
             .build();
 
@@ -90,6 +99,7 @@ public class TypicalPersons {
             .withPhone("8482424")
             .withEmail("stefan@example.com")
             .withGender("Male")
+            .withNationality("Singaporean")
             .withAddress("little india")
             .build();
 
@@ -98,16 +108,17 @@ public class TypicalPersons {
             .withPhone("8482131")
             .withEmail("hans@example.com")
             .withGender("Female")
+            .withNationality("Singaporean")
             .withAddress("chicago ave")
             .build();
 
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withGender(VALID_GENDER_AMY)
+            .withEmail(VALID_EMAIL_AMY).withGender(VALID_GENDER_AMY).withAddress(VALID_NATIONALITY_AMY)
             .withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withGender(VALID_GENDER_BOB)
+            .withEmail(VALID_EMAIL_BOB).withGender(VALID_GENDER_BOB).withNationality(VALID_NATIONALITY_BOB)
             .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
