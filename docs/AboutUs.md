@@ -44,7 +44,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Boo Wen Jun
 
-<img src="images/wj200.png" width="200px">    
+<img src="images/wj200.png" width="200px">  
 
 [[github](https://github.com/wj200)]
 
