@@ -268,7 +268,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Enables HR to quickly access and manage employee and job seeker information, streamlining 
+**Value proposition**: Enables HR to quickly access and manage employee and job seeker information, streamlining
                        recruitment and communication within the company.
 
 
@@ -333,7 +333,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. HRelpher shows a list of employees.
 3. HR requests to delete a specific employee in the list.
 4. HRelpher deletes the employee.
- 
+
    Use case ends.
 
 **Extensions**
