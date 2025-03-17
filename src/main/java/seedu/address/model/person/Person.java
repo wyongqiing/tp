@@ -20,6 +20,7 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private final Nric nric;
 
     // Data fields
     private final Gender gender;
@@ -32,12 +33,13 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Gender gender, Dob dob, DateOfJoining dateOfJoining,
+    public Person(Name name, Phone phone, Email email, Nric nric, Gender gender, Dob dob, DateOfJoining dateOfJoining,
                   Nationality nationality, Address address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, gender, dob, dateOfJoining, nationality, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.nric = nric;
         this.gender = gender;
         this.dob = dob;
         this.dateOfJoining = dateOfJoining;
@@ -56,6 +58,10 @@ public class Person {
 
     public Email getEmail() {
         return email;
+    }
+
+    public Nric getNric() {
+        return nric;
     }
 
     public Gender getGender() {
@@ -96,7 +102,8 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getName().equals(getName());
+                && otherPerson.getName().equals(getName())
+                && otherPerson.getNric().equals(getNric());
     }
 
     /**
@@ -118,6 +125,7 @@ public class Person {
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
+                && nric.equals(otherPerson.nric)
                 && gender.equals(otherPerson.gender)
                 && dob.equals(otherPerson.dob)
                 && dateOfJoining.equals(otherPerson.dateOfJoining)
@@ -129,7 +137,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, gender, dob, dateOfJoining, nationality, address, tags);
+        return Objects.hash(name, phone, email, nric, gender, dob, dateOfJoining, nationality, address, tags);
     }
 
     @Override
@@ -138,6 +146,7 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
+                .add("nric", nric)
                 .add("gender", gender)
                 .add("dob", dob)
                 .add("dateOfJoining", dateOfJoining)

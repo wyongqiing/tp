@@ -10,6 +10,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -23,6 +24,7 @@ public class PersonBuilder {
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final String DEFAULT_NRIC = "T0412345A";
     public static final String DEFAULT_GENDER = "Female";
     public static final String DEFAULT_DOB = "01-Jan-2020";
     public static final String DEFAULT_DATE = "17-Mar-2025";
@@ -32,6 +34,7 @@ public class PersonBuilder {
     private Name name;
     private Phone phone;
     private Email email;
+    private Nric nric;
     private Gender gender;
     private Dob dob;
     private DateOfJoining dateOfJoining;
@@ -46,6 +49,7 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
+        nric = new Nric(DEFAULT_NRIC);
         gender = new Gender(DEFAULT_GENDER);
         dob = new Dob(DEFAULT_DOB);
         dateOfJoining = new DateOfJoining(DEFAULT_DATE);
@@ -61,6 +65,7 @@ public class PersonBuilder {
         name = personToCopy.getName();
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
+        nric = personToCopy.getNric();
         gender = personToCopy.getGender();
         dob = personToCopy.getDob();
         dateOfJoining = personToCopy.getDateOfJoining();
@@ -110,6 +115,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Nric} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withNric(String nric) {
+        this.nric = new Nric(nric);
+        return this;
+    }
+
+    /**
      * Sets the {@code Gender} of the {@code Person} that we are building.
      */
     public PersonBuilder withGender(String gender) {
@@ -142,6 +155,6 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, gender, dob, dateOfJoining, nationality, address, tags);
+        return new Person(name, phone, email, nric, gender, dob, dateOfJoining, nationality, address, tags);
     }
 }
