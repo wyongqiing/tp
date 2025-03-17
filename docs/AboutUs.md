@@ -17,14 +17,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 -   Role: Project Advisor
 
-### BOO wen jun
 
-<img src="images/BOO.png" width="200px">
-[[github](https://github.com/wj200)]
-
-* Role: Developer
-* Responsibilities: Devops + threading
-=======
 ### Chen Xiangyun
 
 <img src="images/chenxy12345.png" width="200px">
@@ -48,4 +41,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/davidfoo07)]
 
 -   Role: Developer
--   Responsibilities: Backend + Testing
+
+### Boo wen jun
+
+<img src="images/wj200.png" width="200px">    
+
+[[github](https://github.com/wj200)]
+
+* Role: Developer
