@@ -42,10 +42,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 -   Role: Developer
 
-### Boo wen jun
+### Boo Wen Jun
 
 <img src="images/wj200.png" width="200px">    
 
 [[github](https://github.com/wj200)]
 
-* Role: Developer
+- Role: Developer
