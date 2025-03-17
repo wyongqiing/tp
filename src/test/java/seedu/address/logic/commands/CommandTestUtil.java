@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NATIONALITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -36,6 +37,8 @@ public class CommandTestUtil {
     public static final String VALID_PHONE_BOB = "22222222";
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
+    public static final String VALID_NRIC_AMY = "T0435398Z";
+    public static final String VALID_NRIC_BOB = "T0293828G";
     public static final String VALID_GENDER_AMY = "Female";
     public static final String VALID_GENDER_BOB = "Male";
     public static final String VALID_DOB_AMY = "01-Jan-2004";
@@ -55,6 +58,8 @@ public class CommandTestUtil {
     public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
     public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
+    public static final String NRIC_DESC_AMY = " " + PREFIX_NRIC + VALID_NRIC_AMY;
+    public static final String NRIC_DESC_BOB = " " + PREFIX_NRIC + VALID_NRIC_BOB;
     public static final String GENDER_DESC_AMY = " " + PREFIX_GENDER + VALID_GENDER_AMY;
     public static final String GENDER_DESC_BOB = " " + PREFIX_GENDER + VALID_GENDER_BOB;
     public static final String DOB_DESC_AMY = " " + PREFIX_DOB + VALID_DOB_AMY;
@@ -71,6 +76,7 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
+    public static final String INVALID_NRIC_DESC = " " + PREFIX_NRIC + "T02911a";
     public static final String INVALID_GENDER_DESC = " " + PREFIX_GENDER + "test";
     public static final String INVALID_DOB_DESC = " " + PREFIX_DOB + "10 Dec 2020";
     public static final String INVALID_DATE_DESC = " " + PREFIX_DATE + "01-01-2020";
@@ -86,13 +92,13 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withGender(VALID_GENDER_AMY)
-                .withDob(VALID_DOB_AMY).withDateOfJoining(VALID_DATE_AMY)
+                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withNric(VALID_NRIC_AMY)
+                .withGender(VALID_GENDER_AMY).withDob(VALID_DOB_AMY).withDateOfJoining(VALID_DATE_AMY)
                 .withNationality(VALID_NATIONALITY_AMY).withAddress(VALID_ADDRESS_AMY)
                 .withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withGender(VALID_GENDER_BOB)
-                .withDob(VALID_DOB_BOB).withDateOfJoining(VALID_DATE_BOB)
+                .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withNric(VALID_NRIC_BOB)
+                .withGender(VALID_GENDER_BOB).withDob(VALID_DOB_BOB).withDateOfJoining(VALID_DATE_BOB)
                 .withNationality(VALID_NATIONALITY_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }

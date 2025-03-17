@@ -17,6 +17,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -31,6 +32,7 @@ class JsonAdaptedPerson {
     private final String name;
     private final String phone;
     private final String email;
+    private final String nric;
     private final String gender;
     private final String dob;
     private final String dateOfJoining;
@@ -43,13 +45,15 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("gender") String gender,
+            @JsonProperty("email") String email, @JsonProperty("nric") String nric,
+            @JsonProperty("gender") String gender,
             @JsonProperty("dob") String dob, @JsonProperty("dateOfJoining") String dateOfJoining,
             @JsonProperty("nationality") String nationality,
             @JsonProperty("address") String address, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.nric = nric;
         this.gender = gender;
         this.dob = dob;
         this.dateOfJoining = dateOfJoining;
@@ -67,6 +71,7 @@ class JsonAdaptedPerson {
         name = source.getName().fullName;
         phone = source.getPhone().value;
         email = source.getEmail().value;
+        nric = source.getNric().value;
         gender = source.getGender().value;
         dob = source.getDob().value;
         dateOfJoining = source.getDateOfJoining().value;
@@ -112,6 +117,14 @@ class JsonAdaptedPerson {
         }
         final Email modelEmail = new Email(email);
 
+        if (nric == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Nric.class.getSimpleName()));
+        }
+        if (!Nric.isValidNric(nric)) {
+            throw new IllegalValueException(Nric.MESSAGE_CONSTRAINTS);
+        }
+        final Nric modelNric = new Nric(nric);
+
         if (gender == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Gender.class.getSimpleName()));
         }
@@ -156,7 +169,7 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelGender, modelDob, modelDateOfJoining,
+        return new Person(modelName, modelPhone, modelEmail, modelNric, modelGender, modelDob, modelDateOfJoining,
                 modelNationality, modelAddress, modelTags);
     }
 
