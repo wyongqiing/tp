@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.tag.Department;
+import seedu.address.model.tag.EmploymentType;
+import seedu.address.model.tag.JobTitle;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -11,26 +14,26 @@ import seedu.address.model.tag.Tag;
  */
 class JsonAdaptedTag {
 
-    private final String tagName;
+    private final String[] tag;
 
     /**
      * Constructs a {@code JsonAdaptedTag} with the given {@code tagName}.
      */
     @JsonCreator
-    public JsonAdaptedTag(String tagName) {
-        this.tagName = tagName;
+    public JsonAdaptedTag(String[] tag) {
+        this.tag = tag;
     }
 
     /**
      * Converts a given {@code Tag} into this class for Jackson use.
      */
     public JsonAdaptedTag(Tag source) {
-        tagName = source.tagName;
+        this.tag = source.getValue();
     }
 
     @JsonValue
-    public String getTagName() {
-        return tagName;
+    public String[] getTagName() {
+        return this.tag;
     }
 
     /**
@@ -39,10 +42,13 @@ class JsonAdaptedTag {
      * @throws IllegalValueException if there were any data constraints violated in the adapted tag.
      */
     public Tag toModelType() throws IllegalValueException {
-        if (!Tag.isValidTagName(tagName)) {
+        if (!Tag.isValidTagName(this.tag)) {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
-        return new Tag(tagName);
+        Department department = new Department(tag[0]);
+        EmploymentType employmentType = new EmploymentType(tag[1]);
+        JobTitle jobTitle = new JobTitle(tag[2]);
+        return new Tag(department, employmentType, jobTitle);
     }
 
 }
