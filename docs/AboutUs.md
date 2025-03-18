@@ -15,7 +15,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/chen-xiangrui)]
 
--   Role: Project Advisor
+* Role: Project Advisor
 
 
 ### Chen Xiangyun
@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/chenxy12345)]
 
--   Role: Team Lead
+* Role: Team Lead
 
 ### Woo Yong Qing
 
@@ -32,15 +32,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/wyongqiing)]
 
+* Role: Developer
+
+
+### Jean Doe
+
+<img src="images/johndoe.png" width="200px">
+
+<<<<<<< HEAD
 -   Role: Developer
+=======
+[[github](http://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
 
-### Foo Tzie Huang
-
-<img src="images/davidfoo07.png" width="200px">
-
-[[github](http://github.com/davidfoo07)]
-
--   Role: Developer
+* Role: Developer
+* Responsibilities: Dev Ops + Threading
+>>>>>>> parent of 6bfc08b4 (updated about us from david)
 
 ### Boo Wen Jun
 
@@ -48,4 +55,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/wj200)]
 
+<<<<<<< HEAD
 - Role: Developer
+=======
+* Role: Developer
+* Responsibilities: UI
+>>>>>>> parent of 6bfc08b4 (updated about us from david)
