@@ -2,8 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NATIONALITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -25,12 +30,22 @@ public class AddCommand extends Command {
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
+            + PREFIX_NRIC + "NRIC "
+            + PREFIX_GENDER + "GENDER "
+            + PREFIX_DOB + "DOB "
+            + PREFIX_DATE + "DATE OF JOINING "
+            + PREFIX_NATIONALITY + "NATIONALITY "
             + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_NRIC + "T0312345A "
+            + PREFIX_GENDER + "Male "
+            + PREFIX_DOB + "02-Jan-2001 "
+            + PREFIX_DATE + "15-Apr-2025 "
+            + PREFIX_NATIONALITY + "Singaporean"
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";

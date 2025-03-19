@@ -4,42 +4,77 @@
     "name" : "Alice Pauline",
     "phone" : "94351253",
     "email" : "alice@example.com",
+    "nric" : "S9134567A",
+    "gender" : "Female",
+    "dob" : "01-Oct-1991",
+    "dateOfJoining" : "15-Apr-2024",
+    "nationality" : "Singaporean",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
     "email" : "johnd@example.com",
+    "nric" : "T0134567B",
+    "gender" : "Male",
+    "dob" : "10-Mar-2001",
+    "dateOfJoining" : "15-Apr-2024",
+    "nationality" : "Singaporean",
     "address" : "311, Clementi Ave 2, #02-25",
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
     "email" : "heinz@example.com",
+    "nric" : "T0234568C",
+    "gender" : "Male",
+    "dob" : "20-Aug-2002",
+    "dateOfJoining" : "15-Apr-2024",
+    "nationality" : "American",
     "address" : "wall street",
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
+    "nric" : "T0134569D",
+    "gender" : "Male",
+    "dob" : "19-Aug-2001",
+    "dateOfJoining" : "15-Apr-2024",
+    "nationality" : "American",
     "address" : "10th street",
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
     "email" : "werner@example.com",
+    "nric" : "T0234560E",
+    "gender" : "Female",
+    "dob" : "28-Dec-2002",
+    "dateOfJoining" : "15-Apr-2024",
+    "nationality" : "Indonesian",
     "address" : "michegan ave",
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
     "email" : "lydia@example.com",
+    "nric" : "T0435560F",
+    "gender" : "Female",
+    "dob" : "30-Feb-2004",
+    "dateOfJoining" : "01-Jan-2024",
+    "nationality" : "Singaporean",
     "address" : "little tokyo",
     "tags" : [ ]
   }, {
     "name" : "George Best",
     "phone" : "9482442",
     "email" : "anna@example.com",
+    "nric" : "T0435569G",
+    "gender" : "Male",
+    "dob" : "27-Sep-2004",
+    "dateOfJoining" : "01-Jan-2024",
+    "nationality" : "American",
     "address" : "4th street",
     "tags" : [ ]
   } ]

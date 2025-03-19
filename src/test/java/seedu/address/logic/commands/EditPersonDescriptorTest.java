@@ -6,8 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DOB_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GENDER_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NATIONALITY_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
@@ -48,6 +53,26 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
+        // different nric -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withNric(VALID_NRIC_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different gender -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withGender(VALID_GENDER_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different dob -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withDob(VALID_DOB_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different dateOfJoining -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withDateOfJoining(VALID_DATE_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different nationality -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withNationality(VALID_NATIONALITY_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
         // different address -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
@@ -63,7 +88,12 @@ public class EditPersonDescriptorTest {
         String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
-                + editPersonDescriptor.getEmail().orElse(null) + ", address="
+                + editPersonDescriptor.getEmail().orElse(null) + ", nric="
+                + editPersonDescriptor.getNric().orElse(null) + ", gender="
+                + editPersonDescriptor.getGender().orElse(null) + ", dob="
+                + editPersonDescriptor.getDob().orElse(null) + ", dateOfJoining="
+                + editPersonDescriptor.getDateOfJoining().orElse(null) + ", nationality="
+                + editPersonDescriptor.getNationality().orElse(null) + ", address="
                 + editPersonDescriptor.getAddress().orElse(null) + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());

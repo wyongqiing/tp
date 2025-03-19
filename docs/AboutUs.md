@@ -15,17 +15,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/chen-xiangrui)]
 
-* Role: Project Advisor
+-   Role: Project Advisor
+
 
 ### Chen Xiangyun
 
-<img src="images/chen-xiangyun.png" width="200px">
+<img src="images/chenxy12345.png" width="200px">
 
 [[github](http://github.com/chenxy12345)]
-[[portfolio](team/johndoe.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+-   Role: Team Lead
 
 ### Woo Yong Qing
 
@@ -33,25 +32,20 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/wyongqiing)]
 
-* Role: Developer
+-   Role: Developer
 
+### Foo Tzie Huang
 
-### Jean Doe
+<img src="images/davidfoo07.png" width="200px">
 
-<img src="images/johndoe.png" width="200px">
+[[github](http://github.com/davidfoo07)]
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+-   Role: Developer
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+### Boo Wen Jun
 
-### James Doe
+<img src="images/wj200.png" width="200px">  
 
-<img src="images/johndoe.png" width="200px">
+[[github](https://github.com/wj200)]
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: UI
+- Role: Developer

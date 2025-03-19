@@ -10,8 +10,13 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.DateOfJoining;
+import seedu.address.model.person.Dob;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Nric;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -93,6 +98,81 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String nric} into an {@code Nric}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code nric} is invalid.
+     */
+    public static Nric parseNric(String nric) throws ParseException {
+        requireNonNull(nric);
+        String trimmedNric = nric.trim();
+        if (!Nric.isValidNric(trimmedNric)) {
+            throw new ParseException(Nric.MESSAGE_CONSTRAINTS);
+        }
+        return new Nric(trimmedNric);
+    }
+
+    /**
+     * Parses a {@code String gender} into an {@code Gender}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code gender} is invalid.
+     */
+    public static Gender parseGender(String gender) throws ParseException {
+        requireNonNull(gender);
+        String trimmedGender = gender.trim();
+        if (!Gender.isValidGender(trimmedGender)) {
+            throw new ParseException(Gender.MESSAGE_CONSTRAINTS);
+        }
+        return new Gender(trimmedGender);
+    }
+
+    /**
+     * Parses a {@code String dob} into an {@code Dob}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dob} is invalid.
+     */
+    public static Dob parseDob(String dob) throws ParseException {
+        requireNonNull(dob);
+        String trimmedDob = dob.trim();
+        if (!Dob.isValidDob(trimmedDob)) {
+            throw new ParseException(Dob.MESSAGE_CONSTRAINTS);
+        }
+        return new Dob(trimmedDob);
+    }
+
+    /**
+     * Parses a {@code String dateOfJoining} into an {@code DateOfJoining}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dateOfJoining} is invalid.
+     */
+    public static DateOfJoining parseDate(String dateOfJoining) throws ParseException {
+        requireNonNull(dateOfJoining);
+        String trimmedDateOfJoining = dateOfJoining.trim();
+        if (!DateOfJoining.isValidDate(trimmedDateOfJoining)) {
+            throw new ParseException(DateOfJoining.MESSAGE_CONSTRAINTS);
+        }
+        return new DateOfJoining(trimmedDateOfJoining);
+    }
+
+    /**
+     * Parses a {@code String nationality} into an {@code Nationality}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code nationality} is invalid.
+     */
+    public static Nationality parseNationality(String nationality) throws ParseException {
+        requireNonNull(nationality);
+        String trimmedNationality = nationality.trim();
+        if (!Nationality.isValidNationality(trimmedNationality)) {
+            throw new ParseException(Nationality.MESSAGE_CONSTRAINTS);
+        }
+        return new Nationality(trimmedNationality);
     }
 
     /**
