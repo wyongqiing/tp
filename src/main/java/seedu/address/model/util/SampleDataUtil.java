@@ -27,7 +27,7 @@ public class SampleDataUtil {
                 new Nric("S9019283Z"),
                 new Gender("Male"), new Dob("01-Oct-1990"), new DateOfJoining("12-Feb-2025"),
                 new Nationality("Singaporean"), new Address("Blk 30 Geylang Street 29, #06-40"),
-                getTag("Human Resource", "Full-Time", "HR Coordinator")),
+                getTag("Human Resources", "Full-Time", "HR Coordinator")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Nric("T0119283Z"),
                 new Gender("Female"), new Dob("12-May-2001"), new DateOfJoining("12-Feb-2025"),
