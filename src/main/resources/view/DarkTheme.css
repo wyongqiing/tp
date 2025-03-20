@@ -337,14 +337,46 @@
     -fx-background-radius: 0;
 }
 
-#tags {
+#tagBox {
+    -fx-alignment: center-left;
+}
+
+#department {
     -fx-hgap: 7;
     -fx-vgap: 3;
 }
 
-#tags .label {
+#department .label {
     -fx-text-fill: white;
     -fx-background-color: #3e7b91;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+#employmentType {
+    -fx-hgap: 7;
+    -fx-vgap: 3;
+}
+
+#employmentType .label {
+    -fx-text-fill: white;
+    -fx-background-color: #4db02a;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}
+
+#jobTitle {
+    -fx-hgap: 7;
+    -fx-vgap: 3;
+}
+
+#jobTitle .label {
+    -fx-text-fill: white;
+    -fx-background-color: #b27bce;
     -fx-padding: 1 3 1 3;
     -fx-border-radius: 2;
     -fx-background-radius: 2;
