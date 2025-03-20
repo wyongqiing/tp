@@ -1,8 +1,11 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 
 public class ViewCommandTest {
@@ -29,6 +33,32 @@ public class ViewCommandTest {
         assertEquals(expected, findCommand.toString());
     }
 
+    @Test
+    public void equals() {
+        NameContainsKeywordsPredicate firstPredicate =
+                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
+        NameContainsKeywordsPredicate secondPredicate =
+                new NameContainsKeywordsPredicate(Collections.singletonList("second"));
+
+        FindCommand findFirstCommand = new FindCommand(firstPredicate);
+        FindCommand findSecondCommand = new FindCommand(secondPredicate);
+
+        // same object -> returns true
+        assertTrue(findFirstCommand.equals(findFirstCommand));
+
+        // same values -> returns true
+        FindCommand findFirstCommandCopy = new FindCommand(firstPredicate);
+        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
+
+        // different types -> returns false
+        assertFalse(findFirstCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(findFirstCommand.equals(null));
+
+        // different person -> returns false
+        assertFalse(findFirstCommand.equals(findSecondCommand));
+    }
 
     @Test
     public void execute_personFound_success() {
