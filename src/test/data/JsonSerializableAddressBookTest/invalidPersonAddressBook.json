@@ -3,10 +3,12 @@
     "name": "Hans Muster",
     "phone": "9482424",
     "email": "invalid@email!3e",
+    "nric": "T0192847A",
     "gender" : "Male",
     "dob": "2020-01-01",
     "dateOfJoining" : "01-Jan-2024",
     "nationality" : "American",
-    "address": "4th street"
+    "address": "4th street",
+    "tag" : ["Human Resources", "Full-Time", "HR Coordinator"]
   } ]
 }

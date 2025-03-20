@@ -8,16 +8,14 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NATIONALITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -32,6 +30,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -50,12 +49,13 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_NRIC + "NRIC] "
             + "[" + PREFIX_GENDER + "GENDER] "
             + "[" + PREFIX_DOB + "DOB] "
             + "[" + PREFIX_DATE + "DATE OF JOINING]"
             + "[" + PREFIX_NATIONALITY + "NATIONALITY] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "DEPARTMENT/EMPLOYMENT TYPE/JOB TITLE]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -110,15 +110,16 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Nric updatedNric = editPersonDescriptor.getNric().orElse(personToEdit.getNric());
         Gender updatedGender = editPersonDescriptor.getGender().orElse(personToEdit.getGender());
         Dob updatedDob = editPersonDescriptor.getDob().orElse(personToEdit.getDob());
         DateOfJoining updatedDate = editPersonDescriptor.getDateOfJoining().orElse(personToEdit.getDateOfJoining());
         Nationality updatedNationality = editPersonDescriptor.getNationality().orElse(personToEdit.getNationality());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Tag updatedTag = editPersonDescriptor.getTag().orElse(personToEdit.getTag());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedGender, updatedDob, updatedDate,
-                updatedNationality, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedNric, updatedGender, updatedDob, updatedDate,
+                updatedNationality, updatedAddress, updatedTag);
     }
 
     @Override
@@ -153,12 +154,13 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
+        private Nric nric;
         private Gender gender;
         private Dob dob;
         private DateOfJoining dateOfJoining;
         private Nationality nationality;
         private Address address;
-        private Set<Tag> tags;
+        private Tag tag;
 
         public EditPersonDescriptor() {}
 
@@ -170,20 +172,21 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
+            setNric(toCopy.nric);
             setGender(toCopy.gender);
             setDob(toCopy.dob);
             setDateOfJoining(toCopy.dateOfJoining);
             setNationality(toCopy.nationality);
             setAddress(toCopy.address);
-            setTags(toCopy.tags);
+            setTag(toCopy.tag);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, gender, dob, dateOfJoining,
-                    nationality, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, nric, gender, dob, dateOfJoining,
+                    nationality, address, tag);
         }
 
         public void setName(Name name) {
@@ -208,6 +211,14 @@ public class EditCommand extends Command {
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
+        }
+
+        public void setNric(Nric nric) {
+            this.nric = nric;
+        }
+
+        public Optional<Nric> getNric() {
+            return Optional.ofNullable(nric);
         }
 
         public void setGender(Gender gender) {
@@ -250,25 +261,17 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setTag(Tag tag) {
+            this.tag = tag;
         }
 
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public Optional<Tag> getTag() {
+            return Optional.ofNullable(tag);
         }
 
         @Override
         public boolean equals(Object other) {
+
             if (other == this) {
                 return true;
             }
@@ -282,12 +285,13 @@ public class EditCommand extends Command {
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
+                    && Objects.equals(nric, otherEditPersonDescriptor.nric)
                     && Objects.equals(gender, otherEditPersonDescriptor.gender)
                     && Objects.equals(dob, otherEditPersonDescriptor.dob)
                     && Objects.equals(dateOfJoining, otherEditPersonDescriptor.dateOfJoining)
                     && Objects.equals(nationality, otherEditPersonDescriptor.nationality)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(tag, otherEditPersonDescriptor.tag);
         }
 
         @Override
@@ -296,12 +300,13 @@ public class EditCommand extends Command {
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
+                    .add("nric", nric)
                     .add("gender", gender)
                     .add("dob", dob)
                     .add("dateOfJoining", dateOfJoining)
                     .add("nationality", nationality)
                     .add("address", address)
-                    .add("tags", tags)
+                    .add("tag", tag)
                     .toString();
         }
     }

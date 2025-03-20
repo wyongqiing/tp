@@ -1,11 +1,5 @@
 package seedu.address.storage;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -17,8 +11,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Department;
+import seedu.address.model.tag.EmploymentType;
+import seedu.address.model.tag.JobTitle;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -31,33 +29,34 @@ class JsonAdaptedPerson {
     private final String name;
     private final String phone;
     private final String email;
+    private final String nric;
     private final String gender;
     private final String dob;
     private final String dateOfJoining;
     private final String nationality;
     private final String address;
-    private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String[] tag;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("gender") String gender,
+            @JsonProperty("email") String email, @JsonProperty("nric") String nric,
+            @JsonProperty("gender") String gender,
             @JsonProperty("dob") String dob, @JsonProperty("dateOfJoining") String dateOfJoining,
             @JsonProperty("nationality") String nationality,
-            @JsonProperty("address") String address, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("address") String address, @JsonProperty("tag") String[] tag) {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.nric = nric;
         this.gender = gender;
         this.dob = dob;
         this.dateOfJoining = dateOfJoining;
         this.nationality = nationality;
         this.address = address;
-        if (tags != null) {
-            this.tags.addAll(tags);
-        }
+        this.tag = tag;
     }
 
     /**
@@ -67,14 +66,13 @@ class JsonAdaptedPerson {
         name = source.getName().fullName;
         phone = source.getPhone().value;
         email = source.getEmail().value;
+        nric = source.getNric().value;
         gender = source.getGender().value;
         dob = source.getDob().value;
         dateOfJoining = source.getDateOfJoining().value;
         nationality = source.getNationality().value;
         address = source.getAddress().value;
-        tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
+        tag = source.getTag().getValue();
     }
 
     /**
@@ -83,11 +81,6 @@ class JsonAdaptedPerson {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
     public Person toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tags) {
-            personTags.add(tag.toModelType());
-        }
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -111,6 +104,14 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
         final Email modelEmail = new Email(email);
+
+        if (nric == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Nric.class.getSimpleName()));
+        }
+        if (!Nric.isValidNric(nric)) {
+            throw new IllegalValueException(Nric.MESSAGE_CONSTRAINTS);
+        }
+        final Nric modelNric = new Nric(nric);
 
         if (gender == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Gender.class.getSimpleName()));
@@ -155,9 +156,20 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelGender, modelDob, modelDateOfJoining,
-                modelNationality, modelAddress, modelTags);
+        if (tag == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Tag.class.getSimpleName()));
+        }
+        if (!Tag.isValidTagName(tag)) {
+            throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
+        }
+        final Department department = new Department(tag[0]);
+        final EmploymentType employmentType = new EmploymentType(tag[1]);
+        final JobTitle jobTitle = new JobTitle(tag[2]);
+        final Tag modelTag = new Tag(department, employmentType, jobTitle);
+
+        return new Person(modelName, modelPhone, modelEmail, modelNric, modelGender, modelDob, modelDateOfJoining,
+                modelNationality, modelAddress, modelTag);
     }
 
 }

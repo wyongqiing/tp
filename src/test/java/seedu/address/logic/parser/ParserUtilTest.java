@@ -1,15 +1,9 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +12,9 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Department;
+import seedu.address.model.tag.EmploymentType;
+import seedu.address.model.tag.JobTitle;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
@@ -25,15 +22,15 @@ public class ParserUtilTest {
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_TAG = "#Human Resource/Full-Time/HR Coordinator";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
-    private static final String VALID_TAG_1 = "friend";
-    private static final String VALID_TAG_2 = "neighbour";
-
+    private static final String VALID_DEPARTMENT_1 = "Human Resources";
+    private static final String VALID_EMPLOYMENT_TYPE_1 = "Full-Time";
+    private static final String VALID_JOB_TITLE_1 = "HR Coordinator";
     private static final String WHITESPACE = " \t\r\n";
 
     @Test
@@ -160,37 +157,51 @@ public class ParserUtilTest {
 
     @Test
     public void parseTag_validValueWithoutWhitespace_returnsTag() throws Exception {
-        Tag expectedTag = new Tag(VALID_TAG_1);
-        assertEquals(expectedTag, ParserUtil.parseTag(VALID_TAG_1));
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
+        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+        assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
     }
 
     @Test
     public void parseTag_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
-        String tagWithWhitespace = WHITESPACE + VALID_TAG_1 + WHITESPACE;
-        Tag expectedTag = new Tag(VALID_TAG_1);
-        assertEquals(expectedTag, ParserUtil.parseTag(tagWithWhitespace));
+        String departmentWithWhitespace = WHITESPACE + VALID_DEPARTMENT_1 + WHITESPACE;
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
+        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+        assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
     }
 
     @Test
     public void parseTags_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseTags(null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTag(null));
     }
 
     @Test
     public void parseTags_collectionWithInvalidTags_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, INVALID_TAG)));
+        assertThrows(ParseException.class, () -> ParserUtil.parseTag(INVALID_TAG));
     }
 
     @Test
     public void parseTags_emptyCollection_returnsEmptySet() throws Exception {
-        assertTrue(ParserUtil.parseTags(Collections.emptyList()).isEmpty());
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
+        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+        assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
     }
 
     @Test
     public void parseTags_collectionWithValidTags_returnsTagSet() throws Exception {
-        Set<Tag> actualTagSet = ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, VALID_TAG_2));
-        Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
+        Tag actualTag = ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator");
 
-        assertEquals(expectedTagSet, actualTagSet);
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
+        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+
+        assertEquals(expectedTag, actualTag);
     }
 }
