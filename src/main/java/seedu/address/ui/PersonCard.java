@@ -87,4 +87,16 @@ public class PersonCard extends UiPart<Region> {
             tagBox.getChildren().addAll(department, employmentType, jobTitle);
         }
     }
+
+    public FlowPane getDepartment() {
+        return department;
+    }
+
+    public FlowPane getEmploymentType() {
+        return employmentType;
+    }
+
+    public FlowPane getJobTitle() {
+        return jobTitle;
+    }
 }
