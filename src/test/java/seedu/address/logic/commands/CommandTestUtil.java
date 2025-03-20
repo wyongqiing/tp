@@ -49,8 +49,8 @@ public class CommandTestUtil {
     public static final String VALID_NATIONALITY_BOB = "American";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
-    public static final String VALID_TAG_HUSBAND = "husband";
-    public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_TAG_HUMAN_RESOURCE = "Human Resources/Full-Time/HR Coordinator";
+    public static final String VALID_TAG_MARKETING = "Marketing/Part-Time/Marketing Specialist";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -70,8 +70,8 @@ public class CommandTestUtil {
     public static final String NATIONALITY_DESC_BOB = " " + PREFIX_NATIONALITY + VALID_NATIONALITY_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
-    public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
-    public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
+    public static final String TAG_DESC_HUMAN_RESOURCE = " " + PREFIX_TAG + VALID_TAG_HUMAN_RESOURCE;
+    public static final String TAG_DESC_MARKETING = " " + PREFIX_TAG + VALID_TAG_MARKETING;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -82,7 +82,7 @@ public class CommandTestUtil {
     public static final String INVALID_DATE_DESC = " " + PREFIX_DATE + "01-01-2020";
     public static final String INVALID_NATIONALITY_DESC = " " + PREFIX_NATIONALITY + "singapore";
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
-    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+    public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Teaching/Part-Time/Teacher"; // invalid department
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -95,12 +95,12 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withNric(VALID_NRIC_AMY)
                 .withGender(VALID_GENDER_AMY).withDob(VALID_DOB_AMY).withDateOfJoining(VALID_DATE_AMY)
                 .withNationality(VALID_NATIONALITY_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_HUMAN_RESOURCE).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withNric(VALID_NRIC_BOB)
                 .withGender(VALID_GENDER_BOB).withDob(VALID_DOB_BOB).withDateOfJoining(VALID_DATE_BOB)
                 .withNationality(VALID_NATIONALITY_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_MARKETING).build();
     }
 
     /**

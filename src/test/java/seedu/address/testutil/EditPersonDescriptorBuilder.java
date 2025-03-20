@@ -1,9 +1,5 @@
 package seedu.address.testutil;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfJoining;
@@ -15,6 +11,9 @@ import seedu.address.model.person.Nationality;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Department;
+import seedu.address.model.tag.EmploymentType;
+import seedu.address.model.tag.JobTitle;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -46,7 +45,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setDateOfJoining(person.getDateOfJoining());
         descriptor.setNationality(person.getNationality());
         descriptor.setAddress(person.getAddress());
-        descriptor.setTags(person.getTags());
+        descriptor.setTag(person.getTag());
     }
 
     /**
@@ -125,9 +124,12 @@ public class EditPersonDescriptorBuilder {
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
-    public EditPersonDescriptorBuilder withTags(String... tags) {
-        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
-        descriptor.setTags(tagSet);
+    public EditPersonDescriptorBuilder withTags(String tags) {
+        String[] tagList = tags.split("/");
+        Department department = new Department(tagList[0]);
+        EmploymentType employmentType = new EmploymentType(tagList[1]);
+        JobTitle jobTitle = new JobTitle(tagList[2]);
+        descriptor.setTag(new Tag(department, employmentType, jobTitle));
         return this;
     }
 

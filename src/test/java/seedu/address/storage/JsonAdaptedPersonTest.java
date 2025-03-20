@@ -5,10 +5,6 @@ import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORM
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -32,7 +28,7 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_DOB = "2020-01-01";
     private static final String INVALID_DATE = "2020-01-01";
     private static final String INVALID_NATIONALITY = "singapore";
-    private static final String INVALID_TAG = "#friend";
+    private static final String[] INVALID_TAG = new String[] {"Teaching", "Full-Time", "HR Coordinator"};
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
@@ -43,9 +39,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_DATE = BENSON.getDateOfJoining().toString();
     private static final String VALID_NATIONALITY = BENSON.getNationality().toString();
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
-    private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
-            .map(JsonAdaptedTag::new)
-            .collect(Collectors.toList());
+    private static final String[] VALID_TAGS = BENSON.getTag().getValue();
 
     @Test
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
@@ -217,11 +211,9 @@ public class JsonAdaptedPersonTest {
 
     @Test
     public void toModelType_invalidTags_throwsIllegalValueException() {
-        List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
-        invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_NRIC, VALID_GENDER, VALID_DOB,
-                        VALID_DATE, VALID_NATIONALITY, VALID_ADDRESS, invalidTags);
+                        VALID_DATE, VALID_NATIONALITY, VALID_ADDRESS, INVALID_TAG);
         assertThrows(IllegalValueException.class, person::toModelType);
     }
 

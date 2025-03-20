@@ -51,8 +51,8 @@ public class Messages {
                 .append(person.getNationality())
                 .append("; Address: ")
                 .append(person.getAddress())
-                .append("; Tags: ");
-        person.getTags().forEach(builder::append);
+                .append("; Tags: ")
+                .append(person.getTag());
         return builder.toString();
     }
 

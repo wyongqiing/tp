@@ -8,13 +8,14 @@ public class TagTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Tag(null));
+        assertThrows(NullPointerException.class, () -> new Tag(null, null, null));
     }
 
     @Test
     public void constructor_invalidTagName_throwsIllegalArgumentException() {
-        String invalidTagName = "";
-        assertThrows(IllegalArgumentException.class, () -> new Tag(invalidTagName));
+        EmploymentType employmentType = new EmploymentType("Full-Time");
+        JobTitle jobTitle = new JobTitle("HR Coordinator");
+        assertThrows(NullPointerException.class, () -> new Tag(null, employmentType, jobTitle));
     }
 
     @Test

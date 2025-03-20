@@ -12,7 +12,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
@@ -61,10 +60,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         DateOfJoining dateOfJoining = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Nationality nationality = ParserUtil.parseNationality(argMultimap.getValue(PREFIX_NATIONALITY).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
 
         Person person = new Person(name, phone, email, nric, gender, dob, dateOfJoining,
-                nationality, address, tagList);
+                nationality, address, tag);
 
         return new AddCommand(person);
     }

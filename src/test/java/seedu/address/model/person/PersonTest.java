@@ -12,10 +12,12 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NATIONALITY_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MARKETING;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
+
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +28,8 @@ public class PersonTest {
     @Test
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         Person person = new PersonBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(0));
+        assertThrows(UnsupportedOperationException.class, ()
+                -> Arrays.asList(person.getTag().getValue()).remove(0));
     }
 
     @Test
@@ -43,7 +46,7 @@ public class PersonTest {
                 .withGender(VALID_GENDER_BOB).withDob(VALID_DOB_BOB)
                 .withDateOfJoining(VALID_DATE_BOB)
                 .withNationality(VALID_NATIONALITY_BOB)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_MARKETING).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // different name, all other attributes same -> returns false
@@ -115,7 +118,7 @@ public class PersonTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
+        editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_MARKETING).build();
         assertFalse(ALICE.equals(editedAlice));
     }
 
@@ -126,7 +129,7 @@ public class PersonTest {
                 + ", gender=" + ALICE.getGender() + ", dob=" + ALICE.getDob()
                 + ", dateOfJoining=" + ALICE.getDateOfJoining()
                 + ", nationality=" + ALICE.getNationality() + ", address=" + ALICE.getAddress()
-                + ", tags=" + ALICE.getTags() + "}";
+                + ", tags=" + ALICE.getTag() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }

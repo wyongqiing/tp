@@ -14,7 +14,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NATIONALITY_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NRIC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MARKETING;
 
 import org.junit.jupiter.api.Test;
 
@@ -78,7 +78,7 @@ public class EditPersonDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_MARKETING).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 
@@ -94,8 +94,8 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getDob().orElse(null) + ", dateOfJoining="
                 + editPersonDescriptor.getDateOfJoining().orElse(null) + ", nationality="
                 + editPersonDescriptor.getNationality().orElse(null) + ", address="
-                + editPersonDescriptor.getAddress().orElse(null) + ", tags="
-                + editPersonDescriptor.getTags().orElse(null) + "}";
+                + editPersonDescriptor.getAddress().orElse(null) + ", tag="
+                + editPersonDescriptor.getTag().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }
