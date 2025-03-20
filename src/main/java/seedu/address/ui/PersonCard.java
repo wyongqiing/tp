@@ -48,7 +48,13 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label nationality;
     @FXML
-    private FlowPane tags;
+    private HBox tagBox;
+    @FXML
+    private FlowPane department;
+    @FXML
+    private FlowPane employmentType;
+    @FXML
+    private FlowPane jobTitle;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -70,7 +76,15 @@ public class PersonCard extends UiPart<Region> {
         Tag tag = person.getTag();
 
         if (tag != null) {
-            tags.getChildren().add(new Label(tag.toString()));
+            String[] tags = tag.getValue();
+            tagBox.getChildren().clear();
+            department.getChildren().clear();
+            department.getChildren().add(new Label("Department: " + tags[0]));
+            employmentType.getChildren().clear();
+            employmentType.getChildren().add(new Label("Employment Type: " + tags[1]));
+            jobTitle.getChildren().clear();
+            jobTitle.getChildren().add(new Label("Job Title: " + tags[2]));
+            tagBox.getChildren().addAll(department, employmentType, jobTitle);
         }
     }
 }
