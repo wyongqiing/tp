@@ -35,7 +35,7 @@ public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder()
             .withName("Alice Pauline")
-            .withPhone("94351253")
+            .withPhone("94351253").withNote("She likes aardvarks.")
             .withEmail("alice@example.com")
             .withNric("S9134567A")
             .withGender("Female")
@@ -55,7 +55,7 @@ public class TypicalPersons {
             .withDob("10-Mar-2001")
             .withDateOfJoining("15-Apr-2024")
             .withNationality("Singaporean")
-            .withAddress("311, Clementi Ave 2, #02-25")
+            .withAddress("311, Clementi Ave 2, #02-25").withNote("He can't take beer!")
             .withTags("Marketing/Part-Time/Marketing Specialist")
             .build();
 

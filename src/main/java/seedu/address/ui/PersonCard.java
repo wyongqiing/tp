@@ -24,7 +24,8 @@ public class PersonCard extends UiPart<Region> {
      */
 
     public final Person person;
-
+    @FXML
+    private Label note;
     @FXML
     private HBox cardPane;
     @FXML
@@ -66,6 +67,7 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
+        note.setText(person.getNote().value);
         nric.setText(person.getNric().value);
         gender.setText(person.getGender().value);
         dob.setText(person.getDob().value);

@@ -25,14 +25,15 @@ public class Person {
     private final DateOfJoining dateOfJoining;
     private final Nationality nationality;
     private final Address address;
+    private final Note note;
     private final Tag tag;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Nric nric, Gender gender, Dob dob, DateOfJoining dateOfJoining,
-                  Nationality nationality, Address address, Tag tag) {
-        requireAllNonNull(name, phone, email, gender, dob, dateOfJoining, nationality, address, tag);
+                  Nationality nationality, Address address, Note note,Tag tag) {
+        requireAllNonNull(name, phone, email, gender, dob, dateOfJoining, nationality, address, note,tag);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -42,6 +43,7 @@ public class Person {
         this.dateOfJoining = dateOfJoining;
         this.nationality = nationality;
         this.address = address;
+        this.note = note;
         this.tag = tag;
     }
 
@@ -81,6 +83,10 @@ public class Person {
         return address;
     }
 
+    public Note getNote(){
+        return note;
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -88,6 +94,7 @@ public class Person {
     public Tag getTag() {
         return tag;
     }
+
 
     /**
      * Returns true if both persons have the same name.

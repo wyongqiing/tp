@@ -33,6 +33,7 @@ import seedu.address.model.person.Nationality;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Note;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -117,9 +118,10 @@ public class EditCommand extends Command {
         Nationality updatedNationality = editPersonDescriptor.getNationality().orElse(personToEdit.getNationality());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Tag updatedTag = editPersonDescriptor.getTag().orElse(personToEdit.getTag());
+        Note updatedNote =  editPersonDescriptor.getNote().orElse(personToEdit.getNote()); // edit command does not allow editing note
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedNric, updatedGender, updatedDob, updatedDate,
-                updatedNationality, updatedAddress, updatedTag);
+                updatedNationality, updatedAddress, updatedNote,updatedTag);
     }
 
     @Override
@@ -160,6 +162,7 @@ public class EditCommand extends Command {
         private DateOfJoining dateOfJoining;
         private Nationality nationality;
         private Address address;
+        private Note note;
         private Tag tag;
 
         public EditPersonDescriptor() {}
@@ -178,6 +181,7 @@ public class EditCommand extends Command {
             setDateOfJoining(toCopy.dateOfJoining);
             setNationality(toCopy.nationality);
             setAddress(toCopy.address);
+            setNote(toCopy.note);
             setTag(toCopy.tag);
         }
 
@@ -261,6 +265,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
+        public void setNote(Note note) {
+            this.note = note;
+        }
+
+        public Optional<Note> getNote() {
+            return Optional.ofNullable(note);
+        }
+
         public void setTag(Tag tag) {
             this.tag = tag;
         }
@@ -268,6 +280,7 @@ public class EditCommand extends Command {
         public Optional<Tag> getTag() {
             return Optional.ofNullable(tag);
         }
+
 
         @Override
         public boolean equals(Object other) {
@@ -291,6 +304,7 @@ public class EditCommand extends Command {
                     && Objects.equals(dateOfJoining, otherEditPersonDescriptor.dateOfJoining)
                     && Objects.equals(nationality, otherEditPersonDescriptor.nationality)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
+                    && Objects.equals(note, otherEditPersonDescriptor.note)
                     && Objects.equals(tag, otherEditPersonDescriptor.tag);
         }
 
@@ -306,6 +320,7 @@ public class EditCommand extends Command {
                     .add("dateOfJoining", dateOfJoining)
                     .add("nationality", nationality)
                     .add("address", address)
+                    .add("note", note)
                     .add("tag", tag)
                     .toString();
         }
