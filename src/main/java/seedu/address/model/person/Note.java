@@ -9,6 +9,10 @@ import static java.util.Objects.requireNonNull;
 public class Note {
     public final String value;
 
+    /**
+     *
+     * @param note
+     */
     public Note(String note) {
         requireNonNull(note);
         value = note;

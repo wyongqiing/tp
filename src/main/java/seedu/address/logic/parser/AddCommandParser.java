@@ -13,19 +13,18 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Note;
 import seedu.address.model.person.DateOfJoining;
 import seedu.address.model.person.Dob;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -67,7 +66,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
 
         Person person = new Person(name, phone, email, nric, gender, dob, dateOfJoining,
-                nationality, address, note ,tag);
+                nationality, address, note, tag);
 
         return new AddCommand(person);
     }

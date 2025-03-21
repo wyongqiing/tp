@@ -32,8 +32,8 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Nric nric, Gender gender, Dob dob, DateOfJoining dateOfJoining,
-                  Nationality nationality, Address address, Note note,Tag tag) {
-        requireAllNonNull(name, phone, email, gender, dob, dateOfJoining, nationality, address, note,tag);
+                  Nationality nationality, Address address, Note note, Tag tag) {
+        requireAllNonNull(name, phone, email, gender, dob, dateOfJoining, nationality, address, note, tag);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -83,7 +83,7 @@ public class Person {
         return address;
     }
 
-    public Note getNote(){
+    public Note getNote() {
         return note;
     }
 

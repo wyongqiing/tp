@@ -10,8 +10,8 @@ import seedu.address.model.person.Dob;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Note;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -179,7 +179,7 @@ class JsonAdaptedPerson {
         final Tag modelTag = new Tag(department, employmentType, jobTitle);
 
         return new Person(modelName, modelPhone, modelEmail, modelNric, modelGender, modelDob, modelDateOfJoining,
-                modelNationality, modelAddress, modelNote,modelTag);
+                modelNationality, modelAddress, modelNote, modelTag);
     }
 
 }
