@@ -12,7 +12,8 @@ import seedu.address.model.person.DepartmentContainsKeywordPredicate;
 public class FindByDepartmentCommand extends Command {
 
     public static final String COMMAND_WORD = "findByDepartment";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose department contains the specified keyword.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Finds all persons whose department contains the specified keyword.\n"
             + "Parameters: DEPARTMENT_KEYWORD\n"
             + "Example: " + COMMAND_WORD + " HR";
 

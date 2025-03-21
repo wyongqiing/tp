@@ -11,8 +11,9 @@ import seedu.address.model.person.JobTitleContainsKeywordPredicate;
  */
 public class FindByJobTitleCommand extends Command {
 
-    public static final String COMMAND_WORD = "findByEmploymentType";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose department contains the specified keyword.\n"
+    public static final String COMMAND_WORD = "findByJobTitleType";
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Finds all persons whose department contains the specified keyword.\n"
             + "Parameters:  EMPLOYMENTTYPE_KEYWORD\n"
             + "Example: " + COMMAND_WORD + " Full-time";
 
