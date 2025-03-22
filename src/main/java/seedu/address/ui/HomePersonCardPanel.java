@@ -10,6 +10,9 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 
+/**
+ * Panel containing list of persons in home page.
+ */
 public class HomePersonCardPanel extends UiPart<Region> {
     private static final String FXML = "HomePersonCardPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(HomePersonCardPanel.class);
@@ -17,6 +20,9 @@ public class HomePersonCardPanel extends UiPart<Region> {
     @FXML
     private ListView<Person> homePersonListView;
 
+    /**
+     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code HomePersonCard}.
+     */
     public HomePersonCardPanel(ObservableList<Person> homePersonList) {
         super(FXML);
         homePersonListView.setItems(homePersonList);

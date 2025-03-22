@@ -8,6 +8,9 @@ import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
+/**
+ * An UI component that displays information of a {@code Person} in the Home Screen.
+ */
 public class HomePersonCard extends UiPart<Region> {
 
     private static final String FXML = "HomePersonCard.fxml";
@@ -31,6 +34,9 @@ public class HomePersonCard extends UiPart<Region> {
     @FXML
     private FlowPane jobTitle;
 
+    /**
+     * Creates a {@code HomePersonCard} with the given {@code Person} and index to display.
+     */
     public HomePersonCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
