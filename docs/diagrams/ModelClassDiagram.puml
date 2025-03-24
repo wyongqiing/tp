@@ -19,8 +19,12 @@ Class Email
 Class Name
 Class Phone
 Class Tag
+Class Department
+Class EmploymentType
+Class JobTitle
 
 Class I #FFFFFF
+Class I2 #FFFFFF
 }
 
 Class HiddenOutside #FFFFFF
@@ -41,7 +45,12 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
-Person *--> "*" Tag
+Person *--> Tag
+
+'Force Tag Department
+Tag *-down-> Department
+Tag *-down-> EmploymentType
+Tag *-down-> JobTitle
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
