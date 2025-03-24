@@ -45,7 +45,7 @@ public class AddCommand extends Command {
             + PREFIX_GENDER + "Male "
             + PREFIX_DOB + "02-Jan-2001 "
             + PREFIX_DATE + "15-Apr-2025 "
-            + PREFIX_NATIONALITY + "Singaporean"
+            + PREFIX_NATIONALITY + "Singaporean "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
             + PREFIX_TAG + "Finance/Full-Time/Financial Analyst";
 

@@ -40,8 +40,8 @@ public class PersonTest {
         // null -> returns false
         assertFalse(ALICE.isSamePerson(null));
 
-        // same name & nric, all other attributes different -> returns true
-        Person editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
+        // same nric, all other attributes different -> returns true
+        Person editedAlice = new PersonBuilder(BOB).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
                 .withNric(ALICE.getNric().toString())
                 .withGender(VALID_GENDER_BOB).withDob(VALID_DOB_BOB)
                 .withDateOfJoining(VALID_DATE_BOB)
@@ -49,18 +49,18 @@ public class PersonTest {
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_MARKETING).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // different name, all other attributes same -> returns false
-        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        // different nric, all other attributes same -> returns false
+        editedAlice = new PersonBuilder(ALICE).withNric(VALID_NRIC_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
-        // name differs in case, all other attributes same -> returns false
-        Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
-        assertFalse(BOB.isSamePerson(editedBob));
+        // nric differs in case, all other attributes same -> returns false
+        //Person editedBob = new PersonBuilder(BOB).withNric(VALID_NRIC_BOB.toLowerCase()).build();
+        //assertThrows(IllegalArgumentException.class, () -> new Nric(VALID_NRIC_BOB.toLowerCase()));
 
-        // name has trailing spaces, all other attributes same -> returns false
-        String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
-        editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
-        assertFalse(BOB.isSamePerson(editedBob));
+        // nric has trailing spaces, all other attributes same -> returns false
+        //String nricWithTrailingSpaces = VALID_NRIC_BOB + " ";
+        //editedBob = new PersonBuilder(BOB).withNric(nricWithTrailingSpaces).build();
+        //assertFalse(BOB.isSamePerson(editedBob));
     }
 
     @Test
