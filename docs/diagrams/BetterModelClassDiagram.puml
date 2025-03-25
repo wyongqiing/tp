@@ -12,10 +12,18 @@ UniqueTagList -[hidden]down- UniquePersonList
 UniqueTagList -right-> "*" Tag
 UniquePersonList -right-> Person
 
-Person -up-> "*" Tag
+Person -up-> "1" Tag
+Tag *-up-> Department
+Tag *-up-> EmploymentType
+Tag *-up-> JobTitle
 
 Person *--> Name
 Person *--> Phone
 Person *--> Email
+Person *--> Nric
+Person *--> Dob
+Person *--> DateOfJoining
+Person *--> Gender
+Person *--> Nationality
 Person *--> Address
 @enduml

@@ -54,13 +54,10 @@ public class PersonTest {
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // nric differs in case, all other attributes same -> returns false
-        //Person editedBob = new PersonBuilder(BOB).withNric(VALID_NRIC_BOB.toLowerCase()).build();
-        //assertThrows(IllegalArgumentException.class, () -> new Nric(VALID_NRIC_BOB.toLowerCase()));
+        assertThrows(IllegalArgumentException.class, () -> new Nric(VALID_NRIC_BOB.toLowerCase()));
 
         // nric has trailing spaces, all other attributes same -> returns false
-        //String nricWithTrailingSpaces = VALID_NRIC_BOB + " ";
-        //editedBob = new PersonBuilder(BOB).withNric(nricWithTrailingSpaces).build();
-        //assertFalse(BOB.isSamePerson(editedBob));
+        assertThrows(IllegalArgumentException.class, () -> new Nric(VALID_NRIC_BOB + " "));
     }
 
     @Test
