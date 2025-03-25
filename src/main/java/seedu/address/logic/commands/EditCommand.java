@@ -30,9 +30,9 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Note;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -118,8 +118,7 @@ public class EditCommand extends Command {
         Nationality updatedNationality = editPersonDescriptor.getNationality().orElse(personToEdit.getNationality());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Tag updatedTag = editPersonDescriptor.getTag().orElse(personToEdit.getTag());
-        // edit command does not allow editing note
-        Note updatedNote =  editPersonDescriptor.getNote().orElse(personToEdit.getNote());
+        Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
         return new Person(updatedName, updatedPhone, updatedEmail, updatedNric, updatedGender, updatedDob, updatedDate,
                 updatedNationality, updatedAddress, updatedNote, updatedTag);
     }

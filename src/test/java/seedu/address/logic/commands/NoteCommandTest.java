@@ -19,8 +19,8 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Note;
+import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -31,24 +31,24 @@ public class NoteCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_addRemarkUnfilteredList_success() {
+    public void execute_addNoteUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstPerson).withNote(NOTE_STUB).build();
 
-        NoteCommand remarkCommand = new NoteCommand(INDEX_FIRST_PERSON, new Note(editedPerson.getNote().value));
+        NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_PERSON, new Note(editedPerson.getNote().value));
 
         String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, editedPerson);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 
-        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(noteCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_deleteRemarkUnfilteredList_success() {
+    public void execute_deleteNoteUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withRemark("").build();
+        Person editedPerson = new PersonBuilder(firstPerson).withNote("").build();
 
         NoteCommand remarkCommand = new NoteCommand(INDEX_FIRST_PERSON,
                 new Note(editedPerson.getNote().toString()));
@@ -130,7 +130,4 @@ public class NoteCommandTest {
         assertFalse(standardCommand.equals(new NoteCommand(INDEX_FIRST_PERSON,
                 new Note(VALID_NOTE_BOB))));
     }
-
-
-
 }

@@ -10,7 +10,6 @@ public class Note {
     public final String value;
 
     /**
-     *
      * @param note
      */
     public Note(String note) {

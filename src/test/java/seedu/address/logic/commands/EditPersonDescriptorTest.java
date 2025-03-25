@@ -94,6 +94,7 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getDob().orElse(null) + ", dateOfJoining="
                 + editPersonDescriptor.getDateOfJoining().orElse(null) + ", nationality="
                 + editPersonDescriptor.getNationality().orElse(null) + ", address="
+                + editPersonDescriptor.getNote().orElse(null) + ", note="
                 + editPersonDescriptor.getAddress().orElse(null) + ", tag="
                 + editPersonDescriptor.getTag().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());

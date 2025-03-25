@@ -7,10 +7,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Note;
 import seedu.address.model.tag.Department;
 import seedu.address.model.tag.EmploymentType;
 import seedu.address.model.tag.JobTitle;
@@ -178,6 +178,6 @@ public class PersonBuilder {
 
 
     public Person build() {
-        return new Person(name, phone, email, nric, gender, dob, dateOfJoining, nationality, address, note ,tag);
+        return new Person(name, phone, email, nric, gender, dob, dateOfJoining, nationality, address, note, tag);
     }
 }

@@ -12,7 +12,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;

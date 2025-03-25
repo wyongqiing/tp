@@ -161,9 +161,10 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        if (note == null) {
+        final Note modelNote = new Note(note);
+        /* if (note == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
-        }
+        } */
 
         if (tag == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -175,7 +176,6 @@ class JsonAdaptedPerson {
         final Department department = new Department(tag[0]);
         final EmploymentType employmentType = new EmploymentType(tag[1]);
         final JobTitle jobTitle = new JobTitle(tag[2]);
-        final Note modelNote = new Note(note);
         final Tag modelTag = new Tag(department, employmentType, jobTitle);
 
         return new Person(modelName, modelPhone, modelEmail, modelNric, modelGender, modelDob, modelDateOfJoining,
