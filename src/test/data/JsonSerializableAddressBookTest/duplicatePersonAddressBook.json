@@ -9,7 +9,7 @@
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
     "address": "123, Jurong West Ave 6, #08-111",
-    "remark": "",
+    "note": "",
     "tag" : ["Human Resources", "Full-Time", "HR Coordinator"]
   }, {
     "name": "Alice Pauline",
@@ -21,7 +21,7 @@
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
     "address": "4th street",
-    "remark": "",
+    "note": "",
     "tag" : ["Human Resources", "Full-Time", "HR Coordinator"]
   } ]
 }
