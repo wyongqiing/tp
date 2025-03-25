@@ -10,9 +10,36 @@ import java.util.Set;
  * Guarantees: immutable; is valid as declared in {@link #isValidNationality(String)}
  */
 public class Nationality {
+    public static final String nationalities = " Armenian, Australian, Austrian, Azerbaijani, Bahamian, Bahraini,\n "
+            + "Bangladeshi, Barbadian, Belarusian, Belgian, Belizean, Beninese, Bhutanese,\n "
+            + "Bolivian, Bosnian, Botswanan, Brazilian, British, Bruneian, Bulgarian, Burkinabé,\n "
+            + "Burmese, Burundian, Cambodian, Cameroonian, Canadian, Cape Verdean, Central African,\n "
+            + "Chadian, Chilean, Chinese, Colombian, Comorian, Congolese, Costa Rican, Croatian,\n "
+            + "Cuban, Cypriot, Czech, Danish, Djiboutian, Dominican, Dutch, Ecuadorian, Egyptian,\n "
+            + "Emirati, Equatorial Guinean, Eritrean, Estonian, Ethiopian, Fijian, Filipino,\n "
+            + "Finnish, French, Gabonese, Gambian, Georgian, German, Ghanaian, Greek, Grenadian,\n "
+            + "Guatemalan, Guinean, Guyanese, Haitian, Honduran, Hungarian, Icelandic, Indian,\n "
+            + "Indonesian, Iranian, Iraqi, Irish, Israeli, Italian, Ivorian, Jamaican, Japanese,\n "
+            + "Jordanian, Kazakh, Kenyan, Kiribati, Kuwaiti, Kyrgyz, Laotian, Latvian, Lebanese,\n "
+            + "Liberian, Libyan, Liechtenstein, Lithuanian, Luxembourgish, Malagasy, Malawian,\n "
+            + "Malaysian, Maldivian, Malian, Maltese, Marshallese, Mauritanian, Mauritian, Mexican,\n "
+            + "Micronesian, Moldovan, Monacan, Mongolian, Montenegrin, Moroccan, Mozambican,\n "
+            + "Namibian, Nauruan, Nepalese, New Zealander, Nicaraguan, Nigerien, Nigerian,\n "
+            + "North Korean, North Macedonian, Norwegian, Omani, Pakistani, Palauan, Palestinian,\n "
+            + "Panamanian, Papua New Guinean, Paraguayan, Peruvian, Polish, Portuguese, Qatari,\n "
+            + "Romanian, Russian, Rwandan, Saint Lucian, Salvadoran, Samoan, Saudi Arabian,\n "
+            + "Scottish, Senegalese, Serbian, Seychellois, Sierra Leonean, Singaporean, Slovak,\n "
+            + "Slovenian, Solomon Islander, Somali, South African, South Korean, South Sudanese,\n "
+            + "Spanish, Sri Lankan, Sudanese, Surinamese, Swazi, Swedish, Swiss, Syrian, Tajik,\n "
+            + "Tanzanian, Thai, Timorese, Togolese, Tongan, Trinidadian, Tunisian, Turkish, Turkmen,\n "
+            + "Tuvaluan, Ugandan, Ukrainian, Uruguayan, Uzbek, Vanuatuan, Venezuelan, Vietnamese,\n "
+            + "Welsh, Yemeni, Zambian, Zimbabwean;";
+
     public static final String MESSAGE_CONSTRAINTS =
             "Nationality must contain only alphabetic characters and may include spaces for multi-word nationalities,"
-                    + " but cannot be left blank";
+                    + " but cannot be left blank.\n"
+                    + "Here is the list of Nationalities:\n"
+                    + nationalities;
 
     private static final Set<String> VALID_NATIONALITIES = Set.of(
             "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Argentine",

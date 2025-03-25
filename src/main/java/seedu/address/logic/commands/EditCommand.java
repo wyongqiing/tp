@@ -53,7 +53,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NRIC + "NRIC] "
             + "[" + PREFIX_GENDER + "GENDER] "
             + "[" + PREFIX_DOB + "DOB] "
-            + "[" + PREFIX_DATE + "DATE OF JOINING]"
+            + "[" + PREFIX_DATE + "DATE OF JOINING] "
             + "[" + PREFIX_NATIONALITY + "NATIONALITY] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "DEPARTMENT/EMPLOYMENT TYPE/JOB TITLE]...\n"
