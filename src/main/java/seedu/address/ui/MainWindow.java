@@ -225,6 +225,10 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isHome()) {
+                handleHome();
+            }
+
             if (commandText.toLowerCase().startsWith("view ")) {
                 switchToPersonListView();
             }
