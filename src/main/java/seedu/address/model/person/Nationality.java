@@ -10,7 +10,7 @@ import java.util.Set;
  * Guarantees: immutable; is valid as declared in {@link #isValidNationality(String)}
  */
 public class Nationality {
-    public static final String nationalities = " Armenian, Australian, Austrian, Azerbaijani, Bahamian, Bahraini,\n "
+    private static final String nationalities = " Armenian, Australian, Austrian, Azerbaijani, Bahamian, Bahraini,\n "
             + "Bangladeshi, Barbadian, Belarusian, Belgian, Belizean, Beninese, Bhutanese,\n "
             + "Bolivian, Bosnian, Botswanan, Brazilian, British, Bruneian, Bulgarian, Burkinabé,\n "
             + "Burmese, Burundian, Cambodian, Cameroonian, Canadian, Cape Verdean, Central African,\n "

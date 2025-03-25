@@ -11,7 +11,8 @@ import java.util.Set;
  */
 public class EmploymentType {
 
-    public static final String MESSAGE_CONSTRAINTS = "Employment type can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Employment type must contain alphabetic characters, "
+            + "and it should not be blank";
 
     private static final Set<String> VALID_EMPLOYMENT_TYPES = Set.of("Full-Time", "Part-Time", "Contract",
             "Temporary", "Internship", "Freelance", "Apprenticeship", "Remote", "Hybrid");
