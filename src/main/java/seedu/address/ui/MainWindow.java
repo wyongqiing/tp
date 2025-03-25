@@ -170,7 +170,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleHome() {
         logger.fine("Home button clicked - Navigating back to Home view.");
-        
+
         homePersonCardPanelPlaceholder.getChildren().clear();
 
         homePersonCardPanel = new HomePersonCardPanel(logic.getAddressBook().getPersonList());
