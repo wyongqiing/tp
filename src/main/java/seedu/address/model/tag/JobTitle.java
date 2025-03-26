@@ -11,7 +11,8 @@ import java.util.Set;
  */
 public class JobTitle {
 
-    public static final String MESSAGE_CONSTRAINTS = "Job title can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Job title must contain alphabetic characters, "
+            + "and it should not be blank";
 
     private static final Set<String> VALID_JOB_TITLES = Set.of("Software Engineer", "Data Analyst", "Product Manager",
             "HR Coordinator", "Marketing Specialist", "Sales Associate",

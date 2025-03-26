@@ -3,6 +3,7 @@ package seedu.address.model.tag;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -10,8 +11,21 @@ import java.util.Set;
  * Guarantees: immutable; is valid as declared in {@link #isValidDepartment(String)}
  */
 public class Department {
+    private static final String departments = "Human Resources, Finance, Accounting, Marketing, Sales, "
+            + "Customer Service, Information Technology, \n"
+            + "Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, n"
+            + "Engineering, Quality Assurance, Product Management, Manufacturing, Public Relations, \n"
+            + "Corporate Communications, Compliance & Risk Management, Business Development, Data Science, \n"
+            + "Cybersecurity, Software Development, UX/UI Design, Artificial Intelligence & Machine Learning, \n"
+            + "Training & Development, Facilities Management, Administration, Health & Safety, \n"
+            + "Diversity, Equity & Inclusion.";
 
-    public static final String MESSAGE_CONSTRAINTS = "Department can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Department must only contain alphabetic characters \n"
+            + "and the '&' symbol. \n"
+            + "Flexibility in department inputs is allowed where the validation is not case sensitive \n"
+            + "and short forms are allowed. \n"
+            + "Here is the list of Departments: \n"
+            + departments;
 
     private static final Set<String> VALID_DEPARTMENTS = Set.of("Human Resources", "Finance", "Accounting",
             "Marketing", "Sales", "Customer Service", "Information Technology",
@@ -25,6 +39,29 @@ public class Department {
             "Facilities Management", "Administration", "Health & Safety",
             "Diversity, Equity & Inclusion");
 
+    private static final Map<String, String> DEPARTMENTS_SHORT_FORM = Map.ofEntries(
+            Map.entry("Human Resources", "HR"),
+            Map.entry("Customer Service", "CS"),
+            Map.entry("Information Technology", "IT"),
+            Map.entry("Research and Development", "R&D"),
+            Map.entry("Supply Chain & Logistics", "SCM"),
+            Map.entry("Procurement & Purchasing", "Procurement"),
+            Map.entry("Quality Assurance", "QA"),
+            Map.entry("Public Relations", "PR"),
+            Map.entry("Corporate Communications", "CorpComm"),
+            Map.entry("Compliance & Risk Management", "Risk & Compliance"),
+            Map.entry("Business Development", "BizDev"),
+            Map.entry("Data Science", "DS"),
+            Map.entry("Cybersecurity", "CyberSec"),
+            Map.entry("Software Development", "SD"),
+            Map.entry("UX/UI Design", "UX/UI"),
+            Map.entry("Artificial Intelligence & Machine Learning", "AI/ML"),
+            Map.entry("Training & Development", "T&D"),
+            Map.entry("Facilities Management", "FM"),
+            Map.entry("Health & Safety", "H&S"),
+            Map.entry("Diversity, Equity & Inclusion", "DEI")
+    );
+
     public final String value;
 
     /**
@@ -35,14 +72,47 @@ public class Department {
     public Department(String department) {
         requireNonNull(department);
         checkArgument(isValidDepartment(department), MESSAGE_CONSTRAINTS);
-        value = department;
+        value = mapInput(department);
     }
 
     /**
      * Returns true if a given string is a valid department.
      */
     public static boolean isValidDepartment(String department) {
-        return VALID_DEPARTMENTS.contains(department);
+        String departmentLowerCase = department.toLowerCase();
+
+        boolean isDepartment = VALID_DEPARTMENTS.stream()
+                .map(validDepartment -> validDepartment.toLowerCase())
+                .toList()
+                .contains(departmentLowerCase);
+
+        boolean isShortForm = DEPARTMENTS_SHORT_FORM.values().stream()
+                .map(shortForm -> shortForm.toLowerCase())
+                .toList()
+                .contains(departmentLowerCase);
+
+        return isDepartment || isShortForm;
+    }
+
+    /**
+     * Maps given string to a string in VALID_DEPARTMENTS
+     */
+    public static String mapInput(String department) {
+        String departmentLowerCase = department.toLowerCase();
+
+        for (String validDepartment : VALID_DEPARTMENTS) {
+            if (validDepartment.toLowerCase().equals(departmentLowerCase)) {
+                return validDepartment;
+            }
+        }
+
+        for (Map.Entry<String, String> departmentShortForm : DEPARTMENTS_SHORT_FORM.entrySet()) {
+            if (departmentShortForm.getValue().toLowerCase().equals(departmentLowerCase)) {
+                return departmentShortForm.getKey();
+            }
+        }
+
+        throw new IllegalArgumentException("Invalid department: " + department);
     }
 
     @Override
