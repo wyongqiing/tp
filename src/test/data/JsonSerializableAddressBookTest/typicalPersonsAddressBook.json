@@ -10,6 +10,7 @@
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
     "address" : "123, Jurong West Ave 6, #08-111",
+    "note" : "",
     "tag" : ["Human Resources", "Full-Time", "HR Coordinator"]
   }, {
     "name" : "Benson Meier",
@@ -21,6 +22,7 @@
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
     "address" : "311, Clementi Ave 2, #02-25",
+    "note" : "",
     "tag" : ["Marketing", "Part-Time", "Marketing Specialist"]
   }, {
     "name" : "Carl Kurz",
@@ -32,6 +34,7 @@
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "American",
     "address" : "wall street",
+    "note" : "",
     "tag" : ["Information Technology", "Full-Time", "Software Engineer"]
   }, {
     "name" : "Daniel Meier",
@@ -43,6 +46,7 @@
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "American",
     "address" : "10th street",
+    "note" : "",
     "tag" : ["Finance", "Internship", "Financial Analyst"]
   }, {
     "name" : "Elle Meyer",
@@ -53,6 +57,7 @@
     "dob" : "28-Dec-2002",
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Indonesian",
+    "note" : "",
     "address" : "michegan ave",
     "tag" : ["Information Technology", "Full-Time", "Data Analyst"]
   }, {
@@ -65,6 +70,7 @@
     "dateOfJoining" : "01-Jan-2024",
     "nationality" : "Singaporean",
     "address" : "little tokyo",
+    "note" : "",
     "tag" : ["Information Technology", "Part-Time", "Data Analyst"]
   }, {
     "name" : "George Best",
@@ -76,6 +82,7 @@
     "dateOfJoining" : "01-Jan-2024",
     "nationality" : "American",
     "address" : "4th street",
+    "note" : "",
     "tag" : ["Engineering", "Part-Time", "Electrical Engineer"]
   } ]
 }

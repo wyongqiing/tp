@@ -64,6 +64,10 @@
         <Label text="Date of Joining:" styleClass="cell_header_label" />
         <Label fx:id="dateOfJoining" styleClass="cell_small_label" text="\$dateOfJoining" />
       </HBox>
+      <HBox spacing="5">
+        <Label text="Note:" styleClass="cell_header_label" />
+        <Label fx:id="note" styleClass="cell_small_label" text="\$note" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>
