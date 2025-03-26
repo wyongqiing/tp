@@ -18,7 +18,7 @@ public class ViewCommand extends Command {
             + ": Views the profile "
             + "by the name. "
             + "Existing profile will be shown.\n"
-            + "Parameters: NAME\n "
+            + "Parameters: NAME\n"
             + "Example: " + COMMAND_WORD + " Alex";
 
     private final ProfileContainsKeywordsPredicate predicate;
