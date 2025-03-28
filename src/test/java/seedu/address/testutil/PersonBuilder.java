@@ -7,6 +7,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -32,6 +33,7 @@ public class PersonBuilder {
     public static final String DEFAULT_DEPARTMENT = "Finance";
     public static final String DEFAULT_EMPLOYMENT_TYPE = "Full-Time";
     public static final String DEFAULT_JOB_TITLE = "Financial Analyst";
+    public static final String DEFAULT_NOTE = "She likes aardvarks.";
 
     private Name name;
     private Phone phone;
@@ -42,6 +44,7 @@ public class PersonBuilder {
     private DateOfJoining dateOfJoining;
     private Nationality nationality;
     private Address address;
+    private Note note;
     private Tag tag;
 
     /**
@@ -61,6 +64,7 @@ public class PersonBuilder {
         EmploymentType employmentType = new EmploymentType(DEFAULT_EMPLOYMENT_TYPE);
         JobTitle jobTitle = new JobTitle(DEFAULT_JOB_TITLE);
         tag = new Tag(department, employmentType, jobTitle);
+        note = new Note(DEFAULT_NOTE);
     }
 
     /**
@@ -76,6 +80,7 @@ public class PersonBuilder {
         dateOfJoining = personToCopy.getDateOfJoining();
         nationality = personToCopy.getNationality();
         address = personToCopy.getAddress();
+        note = personToCopy.getNote();
         tag = personToCopy.getTag();
     }
 
@@ -163,7 +168,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Note} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withNote(String note) {
+        this.note = new Note(note);
+        return this;
+    }
+
+
     public Person build() {
-        return new Person(name, phone, email, nric, gender, dob, dateOfJoining, nationality, address, tag);
+        return new Person(name, phone, email, nric, gender, dob, dateOfJoining, nationality, address, note, tag);
     }
 }

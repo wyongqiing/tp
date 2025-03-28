@@ -15,12 +15,11 @@ public class ViewCommand extends Command {
     public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": views the profile "
-            + "by the name "
+            + ": Views the profile "
+            + "by the name. "
             + "Existing profile will be shown.\n"
-            + "Parameters: name  "
-            + "r/ [VIEW]\n"
-            + "Example: " + COMMAND_WORD + "Alex";
+            + "Parameters: NAME\n"
+            + "Example: " + COMMAND_WORD + " Alex";
 
     private final ProfileContainsKeywordsPredicate predicate;
 

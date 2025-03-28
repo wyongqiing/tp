@@ -11,6 +11,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -35,6 +36,7 @@ class JsonAdaptedPerson {
     private final String dateOfJoining;
     private final String nationality;
     private final String address;
+    private final String note;
     private final String[] tag;
 
     /**
@@ -46,7 +48,8 @@ class JsonAdaptedPerson {
             @JsonProperty("gender") String gender,
             @JsonProperty("dob") String dob, @JsonProperty("dateOfJoining") String dateOfJoining,
             @JsonProperty("nationality") String nationality,
-            @JsonProperty("address") String address, @JsonProperty("tag") String[] tag) {
+            @JsonProperty("address") String address, @JsonProperty("note") String note,
+                             @JsonProperty("tag") String[] tag) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -56,6 +59,7 @@ class JsonAdaptedPerson {
         this.dateOfJoining = dateOfJoining;
         this.nationality = nationality;
         this.address = address;
+        this.note = note;
         this.tag = tag;
     }
 
@@ -72,6 +76,7 @@ class JsonAdaptedPerson {
         dateOfJoining = source.getDateOfJoining().value;
         nationality = source.getNationality().value;
         address = source.getAddress().value;
+        note = source.getNote().value;
         tag = source.getTag().getValue();
     }
 
@@ -156,6 +161,11 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        final Note modelNote = new Note(note);
+        /* if (note == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Note.class.getSimpleName()));
+        } */
+
         if (tag == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Tag.class.getSimpleName()));
@@ -169,7 +179,7 @@ class JsonAdaptedPerson {
         final Tag modelTag = new Tag(department, employmentType, jobTitle);
 
         return new Person(modelName, modelPhone, modelEmail, modelNric, modelGender, modelDob, modelDateOfJoining,
-                modelNationality, modelAddress, modelTag);
+                modelNationality, modelAddress, modelNote, modelTag);
     }
 
 }
