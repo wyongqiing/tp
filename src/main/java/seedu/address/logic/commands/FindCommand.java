@@ -14,7 +14,8 @@ public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows error message that this command is invalid. "
-            + "Use 'findByDepartment', 'findByEmploymentType', or 'findByJobTitle' to search with the specified criteria.\n"
+            + "Use 'findByDepartment', 'findByEmploymentType',"
+            + "or 'findByJobTitle' to search with the specified criteria.\n"
             + "Example: " + COMMAND_WORD;
 
     @Override

@@ -73,7 +73,10 @@ public class AddressBookParser {
             return new ViewCommandParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+            if (!arguments.trim().isEmpty()) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            }
+            return new FindCommand();
 
         case FindByDepartmentCommand.COMMAND_WORD:
             return new FindByDepartmentCommandParser().parse(arguments);

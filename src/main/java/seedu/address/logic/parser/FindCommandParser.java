@@ -19,7 +19,8 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         // No arguments should be processed for the "find" command, it just throws an error
         if (!trimmedArgs.isEmpty()) {
-            throw new ParseException("Invalid command format! Please use 'findByDepartment', 'findByEmploymentType', or 'findByJobTitle' instead.");
+            throw new ParseException("Invalid command format! Please use 'findByDepartment',"
+            + "'findByEmploymentType', or 'findByJobTitle' instead.");
         }
 
         return new FindCommand(); // Simply return the FindCommand to show the error message

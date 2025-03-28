@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 
 public class ViewCommandTest {
@@ -35,29 +34,29 @@ public class ViewCommandTest {
 
     @Test
     public void equals() {
-        NameContainsKeywordsPredicate firstPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
-        NameContainsKeywordsPredicate secondPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("second"));
+        ProfileContainsKeywordsPredicate firstPredicate =
+                new ProfileContainsKeywordsPredicate(Collections.singletonList("first"));
+        ProfileContainsKeywordsPredicate secondPredicate =
+                new ProfileContainsKeywordsPredicate(Collections.singletonList("second"));
 
-        FindCommand findFirstCommand = new FindCommand(firstPredicate);
-        FindCommand findSecondCommand = new FindCommand(secondPredicate);
+        ViewCommand viewFirstCommand = new ViewCommand(firstPredicate);
+        ViewCommand viewSecondCommand = new ViewCommand(secondPredicate);
 
         // same object -> returns true
-        assertTrue(findFirstCommand.equals(findFirstCommand));
+        assertTrue(viewFirstCommand.equals(viewFirstCommand));
 
         // same values -> returns true
-        FindCommand findFirstCommandCopy = new FindCommand(firstPredicate);
-        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
+        ViewCommand viewFirstCommandCopy = new ViewCommand(firstPredicate);
+        assertTrue(viewFirstCommand.equals(viewFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(findFirstCommand.equals(1));
+        assertFalse(viewFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(findFirstCommand.equals(null));
+        assertFalse(viewFirstCommand.equals(null));
 
-        // different person -> returns false
-        assertFalse(findFirstCommand.equals(findSecondCommand));
+        // different predicate -> returns false
+        assertFalse(viewFirstCommand.equals(viewSecondCommand));
     }
 
     @Test
