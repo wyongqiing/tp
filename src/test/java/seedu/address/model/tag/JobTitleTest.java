@@ -31,6 +31,10 @@ public class JobTitleTest {
         // valid job titles
         assertTrue(JobTitle.isValidJobTitle("HR Coordinator"));
         assertTrue(JobTitle.isValidJobTitle("Marketing Specialist"));
+        assertTrue(JobTitle.isValidJobTitle("HR  Coordinator")); // extra space between words
+        assertTrue(JobTitle.isValidJobTitle("HR Coordinator   ")); // extra space behind
+        assertTrue(JobTitle.isValidJobTitle("   HR Coordinator")); // extra space in front
+        assertTrue(JobTitle.isValidJobTitle("hr Coordinator")); // non capital
     }
 
     @Test

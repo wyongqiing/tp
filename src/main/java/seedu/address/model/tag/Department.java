@@ -75,21 +75,25 @@ public class Department {
         value = mapInput(department);
     }
 
+    private static String normalizeWhitespace(String input) {
+        return input.trim().replaceAll("\\s+", " ");
+    }
+
     /**
      * Returns true if a given string is a valid department.
      */
     public static boolean isValidDepartment(String department) {
-        String departmentLowerCase = department.toLowerCase();
+        String normalizedInput = normalizeWhitespace(department.toLowerCase());
 
         boolean isDepartment = VALID_DEPARTMENTS.stream()
-                .map(validDepartment -> validDepartment.toLowerCase())
+                .map(validDepartment -> normalizeWhitespace(validDepartment.toLowerCase()))
                 .toList()
-                .contains(departmentLowerCase);
+                .contains(normalizedInput);
 
         boolean isShortForm = DEPARTMENTS_SHORT_FORM.values().stream()
-                .map(shortForm -> shortForm.toLowerCase())
+                .map(shortForm -> normalizeWhitespace(shortForm.toLowerCase()))
                 .toList()
-                .contains(departmentLowerCase);
+                .contains(normalizedInput);
 
         return isDepartment || isShortForm;
     }
@@ -98,16 +102,16 @@ public class Department {
      * Maps given string to a string in VALID_DEPARTMENTS
      */
     public static String mapInput(String department) {
-        String departmentLowerCase = department.toLowerCase();
+        String normalizedInput = normalizeWhitespace(department.toLowerCase());
 
         for (String validDepartment : VALID_DEPARTMENTS) {
-            if (validDepartment.toLowerCase().equals(departmentLowerCase)) {
+            if (normalizeWhitespace(validDepartment.toLowerCase()).equals(normalizedInput)) {
                 return validDepartment;
             }
         }
 
         for (Map.Entry<String, String> departmentShortForm : DEPARTMENTS_SHORT_FORM.entrySet()) {
-            if (departmentShortForm.getValue().toLowerCase().equals(departmentLowerCase)) {
+            if (normalizeWhitespace(departmentShortForm.getValue().toLowerCase()).equals(normalizedInput)) {
                 return departmentShortForm.getKey();
             }
         }

@@ -165,14 +165,35 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTag_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
+    public void parseDepartment_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
         String departmentWithWhitespace = WHITESPACE + VALID_DEPARTMENT_1 + WHITESPACE;
-        Department department = new Department(VALID_DEPARTMENT_1);
+        Department department = new Department(departmentWithWhitespace);
         EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
         JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
         Tag expectedTag = new Tag(department, employmentType, jobTitle);
         assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
     }
+
+    @Test
+    public void parseEmploymentType_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
+        String employmentWithWhiteSpace = WHITESPACE + VALID_EMPLOYMENT_TYPE_1 + WHITESPACE;
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(employmentWithWhiteSpace);
+        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+        assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
+    }
+
+    @Test
+    public void parseJobTitle_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
+        String jobWithWhiteSpace = WHITESPACE + VALID_JOB_TITLE_1 + WHITESPACE;
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
+        JobTitle jobTitle = new JobTitle(jobWithWhiteSpace);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+        assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
+    }
+
 
     @Test
     public void parseTags_null_throwsNullPointerException() {
