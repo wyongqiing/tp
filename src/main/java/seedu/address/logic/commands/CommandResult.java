@@ -51,7 +51,9 @@ public class CommandResult {
         return exit;
     }
 
-    public boolean isHome() { return isHome; }
+    public boolean isHome() {
+        return isHome;
+    }
 
     @Override
     public boolean equals(Object other) {
