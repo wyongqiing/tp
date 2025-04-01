@@ -26,13 +26,16 @@ public class DobTest {
         // invalid dates
         assertFalse(Dob.isValidDob("")); // empty string
         assertFalse(Dob.isValidDob(" ")); // spaces only
-        assertFalse(Dob.isValidDob("2015-01-01")); // wrong format
         assertFalse(Dob.isValidDob("2025-may-01")); // wrong format
-        assertFalse(Dob.isValidDob("01-01-2025")); // wrong format
         assertFalse(Dob.isValidDob("01 may 2025")); // wrong format
+        assertFalse(Dob.isValidDob("2025-may-90"));
 
         // valid dates
         assertTrue(Dob.isValidDob("20-May-2025")); // correct format
+        assertTrue(Dob.isValidDob("2015-01-01")); // correct format
+        assertTrue(Dob.isValidDob("01-01-2025")); // correct format
+        assertTrue(Dob.isValidDob("01/01/2025"));
+        assertTrue(Dob.isValidDob("01.01.2025"));
     }
 
     @Test

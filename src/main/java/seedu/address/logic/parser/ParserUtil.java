@@ -2,6 +2,11 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -138,10 +143,40 @@ public class ParserUtil {
     public static Dob parseDob(String dob) throws ParseException {
         requireNonNull(dob);
         String trimmedDob = dob.trim();
+
         if (!Dob.isValidDob(trimmedDob)) {
             throw new ParseException(Dob.MESSAGE_CONSTRAINTS);
         }
-        return new Dob(trimmedDob);
+
+        List<String> formats = List.of(
+                "dd-MMM-yyyy",
+                "dd/MM/yyyy",
+                "dd.MM.yyyy",
+                "yyyy-MM-dd",
+                "dd-MM-YYYY"
+        );
+
+        Date parsedDate = null;
+        java.text.ParseException lastException = null;
+
+        for (String format : formats) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.ENGLISH);
+                sdf.setLenient(false); // Strict parsing
+                parsedDate = sdf.parse(trimmedDob);
+                break; // Stop once a valid format is found
+            } catch (java.text.ParseException e) {
+                lastException = e;
+            }
+        }
+
+        if (parsedDate == null) {
+            throw new ParseException(Dob.MESSAGE_CONSTRAINTS);
+        }
+
+        // Always return the date in "dd-MMM-yyyy" format
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        return new Dob(outputFormat.format(parsedDate));
     }
 
     /**

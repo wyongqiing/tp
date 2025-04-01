@@ -44,7 +44,7 @@ public class CommandTestUtil {
     public static final String VALID_GENDER_AMY = "Female";
     public static final String VALID_GENDER_BOB = "Male";
     public static final String VALID_DOB_AMY = "01-Jan-2004";
-    public static final String VALID_DOB_BOB = "31-Nov-2002";
+    public static final String VALID_DOB_BOB = "30-Nov-2002";
     public static final String VALID_DATE_AMY = "10-Feb-2025";
     public static final String VALID_DATE_BOB = "10-Jan-2025";
     public static final String VALID_NATIONALITY_AMY = "Singaporean";
