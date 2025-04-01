@@ -31,6 +31,10 @@ public class EmploymentTypeTest {
         // valid employment types
         assertTrue(EmploymentType.isValidEmploymentType("Full-Time"));
         assertTrue(EmploymentType.isValidEmploymentType("Part-Time"));
+        assertTrue(EmploymentType.isValidEmploymentType("Part-Time"));
+        assertTrue(EmploymentType.isValidEmploymentType("   Part-Time")); // extra space before
+        assertTrue(EmploymentType.isValidEmploymentType("Part-Time     ")); // extra space after
+        assertTrue(EmploymentType.isValidEmploymentType("part-time")); // non capital
     }
 
     @Test
