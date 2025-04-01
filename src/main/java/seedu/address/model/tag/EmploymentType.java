@@ -27,14 +27,20 @@ public class EmploymentType {
     public EmploymentType(String employmentType) {
         requireNonNull(employmentType);
         checkArgument(isValidEmploymentType(employmentType), MESSAGE_CONSTRAINTS);
-        value = employmentType;
+        this.value = VALID_EMPLOYMENT_TYPES.stream()
+                .filter(type -> type.equalsIgnoreCase(employmentType.trim()))
+                .findFirst()
+                .orElseThrow();
     }
 
     /**
      * Returns true if a given string is a valid employment type.
      */
     public static boolean isValidEmploymentType(String employmentType) {
-        return VALID_EMPLOYMENT_TYPES.contains(employmentType);
+        String normalizedInput = employmentType.trim().toLowerCase();
+        return VALID_EMPLOYMENT_TYPES.stream()
+                .map(String::toLowerCase)
+                .anyMatch(normalizedInput::equals);
     }
 
     @Override

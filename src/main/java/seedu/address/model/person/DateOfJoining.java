@@ -10,9 +10,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class DateOfJoining {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Format of dateOfJoining: dd-MMM-yyyy, Date of Joining should not be blank.";
+            "Format of DateOfJoining should be one of the following: dd-MMM-yyyy, dd/MM/yyyy, dd.MM.yyyy, yyyy-MM-dd, "
+                    + "dd-MM-yyyy. DateOfJoining should not be blank.";
+
     public static final String VALIDATION_REGEX =
-            "^(\\d{2}-[A-Za-z]{3}-\\d{4})$";
+            "^(\\d{2}-[A-Za-z]{3}-\\d{4}"
+                    + "|\\d{2}/\\d{2}/\\d{4}"
+                    + "|\\d{2}\\.\\d{2}\\.\\d{4}"
+                    + "|\\d{4}-\\d{2}-\\d{2}"
+                    + "|\\d{2}-\\d{2}-\\d{4})$";
 
     public final String value;
 
