@@ -20,6 +20,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
     - [Adding a person](#adding-a-person-add)
     - [Listing all persons](#listing-all-persons--list)
     - [Viewing a profile](#viewing-a-profile-view)
+      - [Returning to home view](#returning-to-home-view)
     - [Editing a person](#editing-a-person--edit)
     - [Filtering by](#filtering-by-findby)
     - [Deleting a person](#deleting-a-person--delete)
@@ -131,6 +132,17 @@ Examples:
 
 ![view_profile](images/ViewImage.png)
 
+### Returning to Home View:
+
+After viewing an employee’s profile, you can return to the main Home view, simply:
+
+- **Click** on **Home → Back to Home** in the top menu bar
+
+HRelper will return to the overview page and display all employees again, with a message:
+**Returned to Home**
+
+<table> <tr> <td align="center"><strong>Before returning to Home</strong><br><br> <img src="images/BeforeHome.png" alt="Before returning to home" width="400"/> </td> <td align="center"><strong>After returning to Home</strong><br><br> <img src="images/AfterHome.png" alt="images/AfterHome" width="400"/> </td> </tr> </table>
+
 ### Editing a person : `edit`
 
 Edits an existing person in the address book.
@@ -210,7 +222,7 @@ _Details coming soon ..._
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q1**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
 --------------------------------------------------------------------------------------------------------------------
