@@ -32,15 +32,15 @@ public class Tag {
      */
     public Tag(Department department, EmploymentType employmentType, JobTitle jobTitle) {
         requireNonNull(department);
-        checkArgument(isValidDepartment(department.value), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDepartment(department.value), Department.MESSAGE_CONSTRAINTS);
         this.department = department;
 
         requireNonNull(employmentType);
-        checkArgument(isValidEmploymentType(employmentType.value), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidEmploymentType(employmentType.value), EmploymentType.MESSAGE_CONSTRAINTS);
         this.employmentType = employmentType;
 
         requireNonNull(jobTitle);
-        checkArgument(isValidJobTitle(jobTitle.value), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidJobTitle(jobTitle.value), JobTitle.MESSAGE_CONSTRAINTS);
         this.jobTitle = jobTitle;
     }
 

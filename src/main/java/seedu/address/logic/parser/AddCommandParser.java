@@ -23,6 +23,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -60,10 +61,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         DateOfJoining dateOfJoining = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Nationality nationality = ParserUtil.parseNationality(argMultimap.getValue(PREFIX_NATIONALITY).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Note note = new Note("");
         Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
 
         Person person = new Person(name, phone, email, nric, gender, dob, dateOfJoining,
-                nationality, address, tag);
+                nationality, address, note, tag);
 
         return new AddCommand(person);
     }
