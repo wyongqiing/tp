@@ -31,11 +31,18 @@ public class ViewCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
-        return new CommandResult(
-                String.format(Messages.MESSAGE_PROFILE_FOUND, model.getFilteredPersonList().stream()
-                        .map(person -> person.getName().fullName)
-                        .reduce((name1, name2) -> name1 + ", " + name2)
-                        .orElse("No matching profile found")));
+
+        if (model.getFilteredPersonList().isEmpty()) {
+            return new CommandResult(Messages.MESSAGE_PROFILE_NOT_FOUND);
+        }
+
+        String names = model.getFilteredPersonList().stream()
+                .map(person -> person.getName().fullName)
+                .reduce((name1, name2) -> name1 + ", " + name2)
+                .orElse("");
+
+        return new CommandResult(String.format(Messages.MESSAGE_PROFILE_FOUND, names));
+
     }
 
     @Override
