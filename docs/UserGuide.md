@@ -2,11 +2,35 @@
 layout: page
 title: User Guide
 ---
+# HRelper User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+--------------------------------------------------------------------------------------------------------------------
+## Hello HR! Meet HRelper
+Welcome to HRelper, your trusted assistant for managing employee records with ease and speed.
+We understand that working in HR means wearing many hats — from onboarding new hires and updating staff details to managing departments and tracking employment history. It can quickly become overwhelming.
 
-* Table of Contents
-{:toc}
+That’s where HRelper comes in. Designed to simplify and streamline your workflow, HRelper helps you manage your employee database efficiently and confidently — so you can spend less time on spreadsheets and more time focusing on people.
+
+
+### Table of Contents
+
+- [Quick start](#quick-start)
+- [Features](#features)
+    - [Viewing help](#viewing-help--help)
+    - [Adding a person](#adding-a-person-add)
+    - [Listing all persons](#listing-all-persons--list)
+    - [Viewing a profile](#viewing-a-profile-view)
+    - [Editing a person](#editing-a-person--edit)
+    - [Filtering by](#filtering-by-findby)
+    - [Deleting a person](#deleting-a-person--delete)
+    - [Clearing all entries](#clearing-all-entries--clear)
+    - [Exiting the program](#exiting-the-program--exit)
+    - [Saving the data](#saving-the-data)
+    - [Editing the data file](#editing-the-data-file)
+    - [Archiving data files](#archiving-data-files-coming-in-v20)
+- [FAQ](#faq)
+- [Known issues](#known-issues)
+- [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -21,7 +45,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/Ui_2.0.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -66,7 +90,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/HelpMessage.png)
 
 Format: `help`
 
@@ -105,7 +129,7 @@ Format: `view NAME`
 Examples:
 * `view Alex Yeoh`
 
-![view_profile](images/UiView.png)
+![view_profile](images/ViewImage.png)
 
 ### Editing a person : `edit`
 
@@ -137,7 +161,7 @@ Format: `findByDepartment [MORE_KEYWORDS]`, `findByEmploymentType [MORE_KEYWORDS
 
 Examples:
 * `findByDepartment Finance` returns a list of contacts who are in the Finance Department <br>
-  ![result for 'find alex david'](images/UiFind.png)
+  ![result for 'find alex david'](images/FilterImage.png)
 
 ### Deleting a person : `delete`
 
