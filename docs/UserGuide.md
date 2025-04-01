@@ -30,6 +30,8 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
     - [Editing the data file](#editing-the-data-file)
     - [Archiving data files](#archiving-data-files-coming-in-v20)
 - [FAQ](#faq)
+    - [Q1: Will my data be lost if I close the app?](#q1)
+    - [Q2: Can I search by job title or department?](#q2)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
 
@@ -222,9 +224,12 @@ _Details coming soon ..._
 
 ## FAQ
 
-**Q1**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+### <a id="q1"></a>Q1: What happens if I close the app? Will my data be lost?
+**A**: No worries! HRelper automatically saves all your data after every change. When you reopen the app, your latest data will still be there.
 
+### <a id="q2"></a>Q2: Can I search for employees by job title or department?<br>
+**A**: Yes! Use commands like `findByDepartment`, `findByJobTitle`, or `findByEmploymentType`.
+Example: `findByDepartment Marketing` will show all employees in the Marketing department.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
