@@ -1,12 +1,14 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -32,6 +34,15 @@ public class ParserUtilTest {
     private static final String VALID_EMPLOYMENT_TYPE_1 = "Full-Time";
     private static final String VALID_JOB_TITLE_1 = "HR Coordinator";
     private static final String WHITESPACE = " \t\r\n";
+
+    private final AddressBookParser parser = new AddressBookParser();
+
+    @Test
+    public void parseFindCommand_invalidCommand_throwsParseException() {
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            FindCommand.MESSAGE_USAGE), () ->
+            parser.parseCommand("find foo bar"));
+    }
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {

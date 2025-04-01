@@ -1,41 +1,28 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
-import java.util.Arrays;
-
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 
 /**
- * Parses input arguments and creates a new FindCommand object
+ * Parses input arguments and creates a new FindCommand object that returns an error.
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand
      * and returns a Command object for execution.
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform to the expected format
      */
     @Override
     public FindCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
 
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        // No arguments should be processed for the "find" command, it just throws an error
+        if (!trimmedArgs.isEmpty()) {
+            throw new ParseException("Invalid command format! Please use 'findByDepartment',"
+            + "'findByEmploymentType', or 'findByJobTitle' instead.");
         }
 
-        // Check if the input starts with "findByDepartment", "findByJobTitle", or "findByEmploymentType"
-        String[] commandArgs = trimmedArgs.split("\\s+", 2); // Split into command type and actual argument
-
-        if (commandArgs.length < 2) {
-            throw new ParseException("Invalid number of arguments.");
-        }
-
-        // Default behavior: Assume it's a name search if no special command type is specified
-        String[] nameKeywords = trimmedArgs.split("\\s+");
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new FindCommand(); // Simply return the FindCommand to show the error message
     }
 }
