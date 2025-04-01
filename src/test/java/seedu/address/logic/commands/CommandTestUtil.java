@@ -44,7 +44,7 @@ public class CommandTestUtil {
     public static final String VALID_GENDER_AMY = "Female";
     public static final String VALID_GENDER_BOB = "Male";
     public static final String VALID_DOB_AMY = "01-Jan-2004";
-    public static final String VALID_DOB_BOB = "30-Nov-2002";
+    public static final String VALID_DOB_BOB = "19-Nov-2002";
     public static final String VALID_DATE_AMY = "10-Feb-2025";
     public static final String VALID_DATE_BOB = "10-Jan-2025";
     public static final String VALID_NATIONALITY_AMY = "Singaporean";
@@ -81,7 +81,7 @@ public class CommandTestUtil {
     public static final String INVALID_NRIC_DESC = " " + PREFIX_NRIC + "T02911a";
     public static final String INVALID_GENDER_DESC = " " + PREFIX_GENDER + "test";
     public static final String INVALID_DOB_DESC = " " + PREFIX_DOB + "10 Dec 2020";
-    public static final String INVALID_DATE_DESC = " " + PREFIX_DATE + "01-01-2020";
+    public static final String INVALID_DATE_DESC = " " + PREFIX_DATE + "01.01-2020";
     public static final String INVALID_NATIONALITY_DESC = " " + PREFIX_NATIONALITY + "singapore";
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "Teaching/Part-Time/Teacher"; // invalid department
