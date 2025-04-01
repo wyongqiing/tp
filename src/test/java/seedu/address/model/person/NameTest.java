@@ -32,8 +32,8 @@ public class NameTest {
         assertFalse(Name.isValidName("peter jack")); // non-capital letters
 
         // valid name
-        assertTrue(Name.isValidName("Peter Jack")); // alphabets only
-        assertTrue(Name.isValidName("Capital Tan")); // with capital letters
+        assertTrue(Name.isValidName("Peter Jack"));
+        assertTrue(Name.isValidName("Capital Tan"));
         assertTrue(Name.isValidName("David Roger Jackson Ray Jr")); // long names
     }
 
