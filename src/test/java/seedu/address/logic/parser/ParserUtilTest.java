@@ -1,12 +1,14 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -25,13 +27,22 @@ public class ParserUtilTest {
     private static final String INVALID_TAG = "#Human Resource/Full-Time/HR Coordinator";
 
     private static final String VALID_NAME = "Rachel Walker";
-    private static final String VALID_PHONE = "123456";
+    private static final String VALID_PHONE = "83075829";
     private static final String VALID_ADDRESS = "123 Main Street #0505";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_DEPARTMENT_1 = "Human Resources";
     private static final String VALID_EMPLOYMENT_TYPE_1 = "Full-Time";
     private static final String VALID_JOB_TITLE_1 = "HR Coordinator";
     private static final String WHITESPACE = " \t\r\n";
+
+    private final AddressBookParser parser = new AddressBookParser();
+
+    @Test
+    public void parseFindCommand_invalidCommand_throwsParseException() {
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            FindCommand.MESSAGE_USAGE), () ->
+            parser.parseCommand("find foo bar"));
+    }
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -165,14 +176,35 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTag_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
+    public void parseDepartment_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
         String departmentWithWhitespace = WHITESPACE + VALID_DEPARTMENT_1 + WHITESPACE;
-        Department department = new Department(VALID_DEPARTMENT_1);
+        Department department = new Department(departmentWithWhitespace);
         EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
         JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
         Tag expectedTag = new Tag(department, employmentType, jobTitle);
         assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
     }
+
+    @Test
+    public void parseEmploymentType_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
+        String employmentWithWhiteSpace = WHITESPACE + VALID_EMPLOYMENT_TYPE_1 + WHITESPACE;
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(employmentWithWhiteSpace);
+        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_1);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+        assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
+    }
+
+    @Test
+    public void parseJobTitle_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
+        String jobWithWhiteSpace = WHITESPACE + VALID_JOB_TITLE_1 + WHITESPACE;
+        Department department = new Department(VALID_DEPARTMENT_1);
+        EmploymentType employmentType = new EmploymentType(VALID_EMPLOYMENT_TYPE_1);
+        JobTitle jobTitle = new JobTitle(jobWithWhiteSpace);
+        Tag expectedTag = new Tag(department, employmentType, jobTitle);
+        assertEquals(expectedTag, ParserUtil.parseTag("Human Resources/Full-Time/HR Coordinator"));
+    }
+
 
     @Test
     public void parseTags_null_throwsNullPointerException() {
