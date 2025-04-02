@@ -34,15 +34,40 @@ public class JobTitle {
     public JobTitle(String jobTitle) {
         requireNonNull(jobTitle);
         checkArgument(isValidJobTitle(jobTitle), MESSAGE_CONSTRAINTS);
-        value = jobTitle;
+        value = mapInput(jobTitle);
+    }
+
+    private static String normalizeWhitespace(String input) {
+        return input.trim().replaceAll("\\s+", " ");
     }
 
     /**
      * Returns true if a given string is a valid job title.
      */
     public static boolean isValidJobTitle(String jobTitle) {
-        return VALID_JOB_TITLES.contains(jobTitle);
+        String normalizedInput = normalizeWhitespace(jobTitle.toLowerCase());
+
+        return VALID_JOB_TITLES.stream()
+                .map(validJobTitle -> normalizeWhitespace(validJobTitle.toLowerCase()))
+                .toList()
+                .contains(normalizedInput);
     }
+
+    /**
+     * Maps given string to a string in VALID_JOB_TITLES
+     */
+    public static String mapInput(String jobTitle) {
+        String normalizedInput = normalizeWhitespace(jobTitle.toLowerCase());
+
+        for (String validJobTitle : VALID_JOB_TITLES) {
+            if (normalizeWhitespace(validJobTitle.toLowerCase()).equals(normalizedInput)) {
+                return validJobTitle;
+            }
+        }
+
+        throw new IllegalArgumentException("Invalid job title: " + jobTitle);
+    }
+
 
     @Override
     public String toString() {

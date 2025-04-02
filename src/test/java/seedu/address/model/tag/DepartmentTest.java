@@ -30,7 +30,12 @@ public class DepartmentTest {
 
         // valid departments
         assertTrue(Department.isValidDepartment("Human Resources"));
+        assertTrue(Department.isValidDepartment("Human  Resources")); // extra space between words
         assertTrue(Department.isValidDepartment("Marketing"));
+        assertTrue(Department.isValidDepartment("Marketing    ")); // extra spaces after word
+        assertTrue(Department.isValidDepartment("    Marketing")); // extra spaces before word
+        assertTrue(Department.isValidDepartment("marketing")); // non capital letter
+        assertTrue(Department.isValidDepartment("marKEting")); // different capitalizations
     }
 
     @Test
