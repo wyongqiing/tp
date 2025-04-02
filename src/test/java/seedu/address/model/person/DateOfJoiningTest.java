@@ -26,13 +26,16 @@ public class DateOfJoiningTest {
         // invalid dates
         assertFalse(DateOfJoining.isValidDate("")); // empty string
         assertFalse(DateOfJoining.isValidDate(" ")); // spaces only
-        assertFalse(DateOfJoining.isValidDate("2015-01-01")); // wrong format
         assertFalse(DateOfJoining.isValidDate("2025-may-01")); // wrong format
-        assertFalse(DateOfJoining.isValidDate("01-01-2025")); // wrong format
         assertFalse(DateOfJoining.isValidDate("01 may 2025")); // wrong format
+        assertFalse(DateOfJoining.isValidDate("2025.01-01")); // wrong format
 
         // valid dates
-        assertTrue(DateOfJoining.isValidDate("20-May-2025")); // correct format
+        assertTrue(DateOfJoining.isValidDate("20-May-2025"));
+        assertTrue(DateOfJoining.isValidDate("2015-01-01"));
+        assertTrue(DateOfJoining.isValidDate("01-01-2025"));
+        assertTrue(DateOfJoining.isValidDate("01/01/2025"));
+        assertTrue(DateOfJoining.isValidDate("01.01.2025"));
     }
 
     @Test
