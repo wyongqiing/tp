@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.NoteCommand;
@@ -23,8 +24,8 @@ public class NoteCommandParser implements Parser<NoteCommand> {
     public NoteCommand parse(String args) throws ParseException {
         requireNonNull(args);
         String trimmedArgs = args.trim();
-        String[] input = trimmedArgs.split(" ");
-        if (input[0].isEmpty()){
+        String[] input = trimmedArgs.split(" ", 2);
+        if (input[0].isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE));
         }
 
@@ -35,8 +36,7 @@ public class NoteCommandParser implements Parser<NoteCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE), ive);
         }
 
-        String note = input[1];
-        return new NoteCommand(index, new Note(note));
+        return input.length == 1 ? new NoteCommand(index, new Note(" ")) : new NoteCommand(index, new Note(input[1]));
 
     }
 }

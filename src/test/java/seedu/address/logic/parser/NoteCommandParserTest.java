@@ -25,7 +25,7 @@ public class NoteCommandParserTest {
 
         // no remark
         userInput = targetIndex.getOneBased() + " ";
-        expectedCommand = new NoteCommand(INDEX_FIRST_PERSON, new Note(""));
+        expectedCommand = new NoteCommand(INDEX_FIRST_PERSON, new Note(" "));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
