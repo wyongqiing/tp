@@ -64,6 +64,8 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
    * `view` : Views the contact by their name.
    
    * `findByDepartment` : Lists all contacts in this specific department
+   
+   * `note`: add optional remarks to people in their address book and edit it if required. 
 
    * `exit` : Exits the app.
 
@@ -191,6 +193,20 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `findByDepartment Finance` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Adding a note : `note`
+
+Adds a note to the specified person from the address book.
+ 
+Format: `note INDEX NOTE`
+
+* Adds a note to the person at the specified `INDEX`. The index refers to the position of the person in the currently displayed list on the GUI. The index **must be a positive integer** 1, 2, 3, …​
+* All fields are compulsory
+* `NOTE` can be any string input
+* Existing note value will be updated to the input value 
+
+Examples:
+* `note 1 they/them`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -248,6 +264,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [ic/NRIC] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `findByDepartment KEYWORD `<br> e.g., `find James Jake`
+**Note** | `note INDEX NOTE` e.g. note 1 he likes aadvarks 
 **List** | `list`
 **Help** | `help`
 **View** | `view NAME [SURNAME]`<br> e.g., `view Alex Yeoh`
