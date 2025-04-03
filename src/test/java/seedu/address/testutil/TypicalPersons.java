@@ -58,7 +58,8 @@ public class TypicalPersons {
             .withDob("10-Mar-2001")
             .withDateOfJoining("15-Apr-2024")
             .withNationality("Singaporean")
-            .withAddress("311, Clementi Ave 2, #02-25").withNote("He can't take beer!")
+            .withAddress("311, Clementi Ave 2, #02-25")
+            .withNote("He can't take beer!")
             .withTags("Marketing/Part-Time/Marketing Specialist")
             .build();
 
