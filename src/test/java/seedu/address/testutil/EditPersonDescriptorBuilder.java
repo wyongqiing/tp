@@ -8,7 +8,6 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Gender;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Nationality;
-import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Department;
@@ -39,7 +38,6 @@ public class EditPersonDescriptorBuilder {
         descriptor.setName(person.getName());
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
-        descriptor.setNric(person.getNric());
         descriptor.setGender(person.getGender());
         descriptor.setDob(person.getDob());
         descriptor.setDateOfJoining(person.getDateOfJoining());
@@ -69,14 +67,6 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
-        return this;
-    }
-
-    /**
-     * Sets the {@code Nric} of the {@code EditPersonDescriptor} that we are building.
-     */
-    public EditPersonDescriptorBuilder withNric(String nric) {
-        descriptor.setNric(new Nric(nric));
         return this;
     }
 

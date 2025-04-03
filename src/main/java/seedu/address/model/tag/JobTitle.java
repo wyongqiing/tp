@@ -10,9 +10,18 @@ import java.util.Set;
  * Guarantees: immutable; is valid as declared in {@link #isValidJobTitle(String)}
  */
 public class JobTitle {
+    private static final String jobTitles = "Software Engineer, Data Analyst, Product Manager, HR Coordinator, "
+            + "Marketing Specialist, Sales Associate, Financial Analyst, Operations Manager, UX Designer, \n"
+            + "Project Manager, Business Consultant, Mechanical Engineer, Graphic Designer, "
+            + "Customer Support Representative, IT Technician, Electrical Engineer, Legal Advisor, \n"
+            + "Healthcare Administrator, Content Writer, Cybersecurity Analyst, Network Engineer, "
+            + "Quality Assurance Tester, Recruitment Specialist, Social Media Manager, Supply Chain Manager.";
 
-    public static final String MESSAGE_CONSTRAINTS = "Job title must contain alphabetic characters, "
-            + "and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Job title must contain alphabetic characters. \n"
+            + "It should not be blank. \n"
+            + "\n"
+            + "Here is the list of Job Titles: \n"
+            + jobTitles;
 
     private static final Set<String> VALID_JOB_TITLES = Set.of("Software Engineer", "Data Analyst", "Product Manager",
             "HR Coordinator", "Marketing Specialist", "Sales Associate",
