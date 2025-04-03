@@ -282,7 +282,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | user     | I can delete the employees profile              | so that I can removed outdated or incorrect records.              |
 | `* * *` | user     | I  can view a profiles             | so that I can get employee information |
 | `* * `  | user     | I can edit the profile             | so that i can update their information when needed.                |
-| `* *`   | user     | I can find contacts by tags (Department, Employment Type & Job Title)               | so that I can quickly see all employees in a specific team.       |
+| `* *`   | user     | I can find contacts by tags (Department, Employment Type or Job Title)               | so that I can quickly see all employees in a specific team.       |
 | `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
 
 *{More to be added}*
@@ -315,8 +315,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 4a1. HR cancels confirmation. Use case resumes at step 3.
 
-* 4b. HRelpher finds an existing employee profile.
-
+* 4b. HRelpher finds an existing employee profile by tags. (Department, Employment Type or Job Title)
   Use case resumes at step 3.
 
 * 5a. HR loses connection.
