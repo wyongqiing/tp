@@ -119,6 +119,13 @@ public class Department {
         throw new IllegalArgumentException("Invalid department: " + department);
     }
 
+    /**
+     * Returns a map of all departments and their short forms.
+     */
+    public static Map<String, String> getDepartmentsShortForm() {
+        return DEPARTMENTS_SHORT_FORM;
+    }
+
     @Override
     public String toString() {
         return value;

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindByDepartmentCommand;
 import seedu.address.model.person.DepartmentContainsKeywordPredicate;
+import seedu.address.model.tag.Department;
 
 public class FindByDepartmentCommandParserTest {
 
@@ -15,13 +16,13 @@ public class FindByDepartmentCommandParserTest {
     @Test
     public void parse_invalidDepartmentWithNumbers_throwsParseException() {
         assertParseFailure(parser, "HR123",
-            FindByDepartmentCommandParser.MESSAGE_DEPARTMENT_CONSTRAINTS);
+            Department.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_invalidDepartmentWithSpecialChars_throwsParseException() {
         assertParseFailure(parser, "Finance#",
-            FindByDepartmentCommandParser.MESSAGE_DEPARTMENT_CONSTRAINTS);
+            Department.MESSAGE_CONSTRAINTS);
     }
 
     @Test
