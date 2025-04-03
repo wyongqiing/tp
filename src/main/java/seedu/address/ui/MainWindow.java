@@ -16,6 +16,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Person;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -26,6 +27,8 @@ public class MainWindow extends UiPart<Stage> {
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
+
+    private boolean isDetailedView = false;
 
     private Stage primaryStage;
     private Logic logic;
@@ -131,10 +134,10 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void switchToPersonListView() {
-        // Remove existing homePersonCardPanel
+        isDetailedView = true;
+
         homePersonCardPanelPlaceholder.getChildren().clear();
 
-        // Load PersonListPanel with the filtered list (already filtered by ViewCommand)
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         homePersonCardPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
@@ -175,11 +178,9 @@ public class MainWindow extends UiPart<Stage> {
 
         homePersonCardPanel = new HomePersonCardPanel(logic.getAddressBook().getPersonList());
 
-        // Optional: Reset the result display message
-        resultDisplay.setFeedbackToUser("Returned to Home");
-
         // Add the home panel back into the placeholder
         homePersonCardPanelPlaceholder.getChildren().add(homePersonCardPanel.getRoot());
+        resultDisplay.setFeedbackToUser("Returned to Home");
     }
 
     void show() {
@@ -229,8 +230,13 @@ public class MainWindow extends UiPart<Stage> {
                 handleHome();
             }
 
-            if (commandText.toLowerCase().startsWith("view ")) {
+            if (commandText.toLowerCase().startsWith("view ") || commandText.toLowerCase().startsWith("list") ||
+            commandText.toLowerCase().startsWith("edit ")) {
                 switchToPersonListView();
+            } else {
+                if (isDetailedView) {
+                    handleMinimalView();
+                }
             }
 
             return commandResult;
@@ -239,5 +245,15 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+
+    private void handleMinimalView() {
+        isDetailedView = false;
+
+        homePersonCardPanelPlaceholder.getChildren().clear();
+
+        homePersonCardPanel = new HomePersonCardPanel(logic.getFilteredPersonList());
+        homePersonCardPanelPlaceholder.getChildren().add(homePersonCardPanel.getRoot());
     }
 }
