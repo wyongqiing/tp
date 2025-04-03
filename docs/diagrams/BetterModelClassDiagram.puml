@@ -23,7 +23,7 @@ Person *--> Email
 Person *--> Nric
 Person *--> Dob
 Person *--> DateOfJoining
-Person *--> Gender
 Person *--> Nationality
+Person *--> Gender
 Person *--> Address
 @enduml
