@@ -50,7 +50,6 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_NRIC + "NRIC] "
             + "[" + PREFIX_GENDER + "GENDER] "
             + "[" + PREFIX_DOB + "DOB] "
             + "[" + PREFIX_DATE + "DATE OF JOINING] "
