@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +10,8 @@ import java.util.Locale;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.DateOfJoining;
@@ -38,9 +41,17 @@ public class ParserUtil {
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
         String trimmedIndex = oneBasedIndex.trim();
-        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+
+        try {
+            Integer.parseInt(trimmedIndex);
+        } catch (NumberFormatException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), e);
         }
+
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
+            throw new ParseException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
@@ -246,14 +257,21 @@ public class ParserUtil {
      * @throws ParseException if the given {@code tag} is invalid.
      */
     public static Tag parseTag(String tags) throws ParseException {
-        requireNonNull(tags);
-        String[] tagList = tags.split("/");
-        if (!Tag.isValidTagName(tagList)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+        try {
+            requireNonNull(tags);
+            String[] tagList = tags.split("/");
+            if (tagList.length != 3 || tags.endsWith("/")) {
+                throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            }
+            Department department = new Department(tagList[0]);
+            EmploymentType employmentType = new EmploymentType(tagList[1]);
+            JobTitle jobTitle = new JobTitle(tagList[2]);
+            return new Tag(department, employmentType, jobTitle);
+        } catch (NullPointerException e) {
+            throw new NullPointerException(e.getMessage());
+        } catch (Exception e) {
+            throw new ParseException(e.getMessage());
         }
-        Department department = new Department(tagList[0]);
-        EmploymentType employmentType = new EmploymentType(tagList[1]);
-        JobTitle jobTitle = new JobTitle(tagList[2]);
-        return new Tag(department, employmentType, jobTitle);
+
     }
 }
