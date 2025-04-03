@@ -53,7 +53,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all contacts with full attributes.
 
    * `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25 t/Finance/Full-Time/Financial Analyst` : Adds a contact named `John Doe` to the Address Book.
 
@@ -64,6 +64,8 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
    * `view` : Views the contact by their name.
    
    * `findByDepartment` : Lists all contacts in this specific department
+   
+   * `note`: add optional remarks to people in their address book and edit it if required. 
 
    * `exit` : Exits the app.
 
@@ -113,7 +115,7 @@ Examples:
 
 ### Listing all persons : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all persons in the address book with full attributes.
 
 Format: `list`
 
@@ -193,6 +195,20 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `findByDepartment Finance` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Adding a note : `note`
+
+Adds a note to the specified person from the address book.
+ 
+Format: `note INDEX NOTE`
+
+* Adds a note to the person at the specified `INDEX`. The index refers to the position of the person in the currently displayed list on the GUI. The index **must be a positive integer** 1, 2, 3, …​
+* All fields are compulsory
+* `NOTE` can be any string input
+* Existing note value will be updated to the input value 
+
+Examples:
+* `note 1 they/them`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -250,6 +266,7 @@ Action | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `findByDepartment KEYWORD `<br> e.g., `find James Jake`
+**Note** | `note INDEX NOTE` e.g. note 1 he likes aadvarks 
 **List** | `list`
 **Help** | `help`
 **View** | `view NAME [SURNAME]`<br> e.g., `view Alex Yeoh`
