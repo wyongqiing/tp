@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -11,17 +12,30 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.parser.ViewCommandParser;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.ProfileContainsKeywordsPredicate;
+import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.TypicalPersons;
 
 public class ViewCommandTest {
 
     private Model model;
 
+    private final ViewCommandParser parser = new ViewCommandParser();
+
     @BeforeEach
     public void setUp() {
-        model = new ModelManager();
+        AddressBook ab = new AddressBook();
+        ab.setPersons(TypicalPersons.getTypicalPersons());
+        Person davidLi = new PersonBuilder().withName("David Li").build();
+        ab.addPerson(davidLi);
+        model = new ModelManager(ab, new UserPrefs());
     }
 
     @Test
@@ -60,25 +74,27 @@ public class ViewCommandTest {
     }
 
     @Test
-    public void execute_personFound_success() {
-        // Keyword matches the person's name "Alex"
-        ProfileContainsKeywordsPredicate predicate = new ProfileContainsKeywordsPredicate(List.of("Alex"));
+    public void execute_viewFullName_success() {
+        // Prepare predicate and command
+        ProfileContainsKeywordsPredicate predicate = new ProfileContainsKeywordsPredicate(List.of("David", "Li"));
         ViewCommand viewCommand = new ViewCommand(predicate);
 
         // Update model expected state
         model.updateFilteredPersonList(predicate);
-        // Execute command
+
+        // Execute command and assert result
         CommandResult result = viewCommand.execute(model);
+        assertEquals("Profile found: David Li", result.getFeedbackToUser());
+    }
 
-        String expectedMessage = String.format(
-                "%s's profile:",
-                model.getFilteredPersonList().stream()
-                        .map(person -> person.getName().fullName)
-                        .reduce((name1, name2) -> name1 + ", " + name2)
-                        .orElse("No matching profile found")
-        );
+    @Test
+    public void execute_viewSurname_success() {
+        ProfileContainsKeywordsPredicate predicate = new ProfileContainsKeywordsPredicate(List.of("Li"));
+        ViewCommand viewCommand = new ViewCommand(predicate);
+        model.updateFilteredPersonList(predicate);
 
-        assertEquals(expectedMessage, result.getFeedbackToUser());
+        CommandResult result = viewCommand.execute(model);
+        assertEquals("Profile found: David Li", result.getFeedbackToUser());
     }
 
     @Test
@@ -90,10 +106,24 @@ public class ViewCommandTest {
         CommandResult result = viewCommand.execute(model);
 
         String expectedMessage = String.format(
-                "%s's profile:",
-                "No matching profile found"
+                "%s",
+                "No matching profile found!!"
         );
 
         assertEquals(expectedMessage, result.getFeedbackToUser());
+    }
+
+    @Test
+    public void parse_invalidSymbols_throwsParseException() {
+        ParseException thrown = assertThrows(ParseException.class, () ->
+                parser.parse("@lex"));
+        assert(thrown.getMessage().equals("Names should only contain alphabetical characters and spaces."));
+    }
+
+    @Test
+    public void parse_nullString_throwsParseException() {
+        ParseException thrown = assertThrows(ParseException.class, () ->
+                parser.parse("null"));
+        assert(thrown.getMessage().equals("Name cannot be empty!!"));
     }
 }

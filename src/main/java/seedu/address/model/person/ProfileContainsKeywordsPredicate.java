@@ -3,11 +3,10 @@ package seedu.address.model.person;
 import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code Person}'s name matches the keywords given
+ * Tests that a {@code Person}'s full name or surname matches the keywords given
  */
 public class ProfileContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
@@ -18,9 +17,20 @@ public class ProfileContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        return keywords.stream().anyMatch(keyword ->
-                StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)
-        );
+        //Join keywords into a single lowercase string, trimming extra spaces
+        String inputName = String.join(" ", keywords).replaceAll("\\s+", " ").trim().toLowerCase();
+        String personName = person.getName().fullName.replaceAll("\\s+", " ").trim().toLowerCase();
+
+        // 1. Full name exact match
+        if (inputName.equals(personName)) {
+            return true;
+        }
+
+        // 2. Last word (surname) match
+        String[] nameParts = personName.split(" ");
+        String lastName = nameParts[nameParts.length - 1];
+        return inputName.equals(lastName);
+
     }
 
     @Override
