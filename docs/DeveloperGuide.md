@@ -383,6 +383,52 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 4a1. HRelper shows an empty list.
     Use case ends.
 
+** Use case: View Employee Details by Name**
+
+**MSS**
+
+1. HR requests to view detailed information of an employee.
+2. HRelper prompts for the employee's name.
+3. HR enters the employee's name.
+4. HRelper displays the comprehensive profile of the specified employee.
+   Use case ends.
+
+Extensions
+* 3a. The given name does not match any employee in the system.
+  * 3a1. HRelper shows an error message.
+    Use case resumes at step 2.
+* 3b. Multiple employees share the same name.
+  * 3b1. HRelper displays a list of all matching employees and asks HR to select one.
+  * 3b2. HR selects the intended employee.
+  * 3b3. HRelper displays the comprehensive profile of the selected employee.
+    Use case ends.
+* 4a. The employee profile has incomplete information.
+  * 4a1. HRelper displays the available information with indicators for missing fields.
+    Use case ends.
+
+**Use case: Add/Edit Note to Employee Profile by Index**
+
+**MSS**
+
+1. HR requests to add or edit a note for an employee.
+2. HRelper prompts for the employee index and note content.
+3. HR enters the employee index and new note content.
+4. HRelper updates the employee's profile with the new note.
+5. HRelper confirms the note has been added/updated.
+   Use case ends.
+
+Extensions
+* 3a. The given index is invalid.
+  * 3a1. HRelper shows an error message.
+    Use case resumes at step 2.
+* 3b. HR enters empty note content.
+  * 3b1. HRelper removes any existing note from the employee profile.
+  * 3b2. HRelper confirms the note has been removed.
+    Use case ends.
+* 4a. HR tries to add a note that exceeds the character limit.
+  * 4a1. HRelper shows an error message indicating the character limit.
+    Use case resumes at step 3.
+
 **Use case: Delete an Employee Profile**
 
 **MSS**
