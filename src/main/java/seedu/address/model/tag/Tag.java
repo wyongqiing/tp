@@ -14,7 +14,8 @@ import java.util.Objects;
  */
 public class Tag {
 
-    public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric";
+    public static final String MESSAGE_CONSTRAINTS = "Tags should contain 3 fields, separated with a '/' symbol: "
+            + "Department, Employment Type, Job Title";
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
     private final Department department;

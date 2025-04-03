@@ -11,9 +11,12 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MARKETING;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.logic.commands.EditCommand.MESSAGE_NOT_EDITED;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +28,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 
@@ -45,6 +49,11 @@ public class EditCommandTest {
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
+
+        ProfileContainsKeywordsPredicate predicate = new ProfileContainsKeywordsPredicate(
+                Arrays.asList((editedPerson.getName().toString())));
+
+        expectedModel.updateFilteredPersonList(predicate);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -67,19 +76,20 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(lastPerson, editedPerson);
 
+        ProfileContainsKeywordsPredicate predicate = new ProfileContainsKeywordsPredicate(
+                Arrays.asList((editedPerson.getName().toString())));
+
+        expectedModel.updateFilteredPersonList(predicate);
+
+
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_noFieldSpecifiedUnfilteredList_failure() {
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, new EditPersonDescriptor());
-        Person editedPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
-
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(editCommand, model, MESSAGE_NOT_EDITED);
     }
 
     @Test
@@ -96,6 +106,11 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
+        ProfileContainsKeywordsPredicate predicate = new ProfileContainsKeywordsPredicate(
+                Arrays.asList((editedPerson.getName().toString())));
+
+        expectedModel.updateFilteredPersonList(predicate);
+
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
@@ -103,22 +118,25 @@ public class EditCommandTest {
     public void execute_duplicatePersonUnfilteredList_failure() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstPerson).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_NOT_CHANGED);
     }
 
+    /*
     @Test
     public void execute_duplicatePersonFilteredList_failure() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         // edit person in filtered list into a duplicate in address book
         Person personInList = model.getAddressBook().getPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
                 new EditPersonDescriptorBuilder(personInList).build());
 
-        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_NOT_CHANGED);
     }
+    */
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {

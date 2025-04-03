@@ -10,9 +10,14 @@ import java.util.Set;
  * Guarantees: immutable; is valid as declared in {@link #isValidEmploymentType(String)}
  */
 public class EmploymentType {
+    private static final String employmentTypes = "Full-Time, Part-Time, Contract, Temporary, Internship, "
+            + "Freelance, Apprenticeship, Remote, Hybrid.";
 
     public static final String MESSAGE_CONSTRAINTS = "Employment type must contain alphabetic characters, "
-            + "and it should not be blank";
+            + "and the '-' symbol. It should not be blank. \n"
+            + "\n"
+            + "Here is the list of Employment Types: \n"
+            + employmentTypes;
 
     private static final Set<String> VALID_EMPLOYMENT_TYPES = Set.of("Full-Time", "Part-Time", "Contract",
             "Temporary", "Internship", "Freelance", "Apprenticeship", "Remote", "Hybrid");
@@ -33,14 +38,20 @@ public class EmploymentType {
                 .orElseThrow();
     }
 
+    private static String normalizeWhitespace(String input) {
+        return input.trim().replaceAll("\\s+", " ");
+    }
+
     /**
      * Returns true if a given string is a valid employment type.
      */
     public static boolean isValidEmploymentType(String employmentType) {
-        String normalizedInput = employmentType.trim().toLowerCase();
+        String normalizedInput = normalizeWhitespace(employmentType.toLowerCase());
+
         return VALID_EMPLOYMENT_TYPES.stream()
-                .map(String::toLowerCase)
-                .anyMatch(normalizedInput::equals);
+                .map(validEmploymentType -> normalizeWhitespace(validEmploymentType.toLowerCase()))
+                .toList()
+                .contains(normalizedInput);
     }
 
     @Override

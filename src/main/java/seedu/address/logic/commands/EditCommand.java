@@ -8,11 +8,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NATIONALITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,6 +33,7 @@ import seedu.address.model.person.Note;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -50,13 +50,12 @@ public class EditCommand extends Command {
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_NRIC + "NRIC] "
             + "[" + PREFIX_GENDER + "GENDER] "
             + "[" + PREFIX_DOB + "DOB] "
             + "[" + PREFIX_DATE + "DATE OF JOINING] "
             + "[" + PREFIX_NATIONALITY + "NATIONALITY] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "DEPARTMENT/EMPLOYMENT TYPE/JOB TITLE]...\n"
+            + "[" + PREFIX_TAG + "DEPARTMENT/EMPLOYMENT TYPE/JOB TITLE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -64,6 +63,9 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_NOT_CHANGED = "The field(s) provided to edit is already present.";
+
+    private ProfileContainsKeywordsPredicate predicate;
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -89,15 +91,24 @@ public class EditCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
+        if (!editPersonDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(EditCommand.MESSAGE_NOT_EDITED);
+        }
+
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        this.predicate = new ProfileContainsKeywordsPredicate(Arrays.asList(editedPerson.getName().toString()));
 
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
+        if (personToEdit.equals(editedPerson)) {
+            throw new CommandException(MESSAGE_NOT_CHANGED);
+        }
+
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(predicate);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
 
@@ -111,7 +122,7 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Nric updatedNric = editPersonDescriptor.getNric().orElse(personToEdit.getNric());
+        Nric updatedNric = personToEdit.getNric();
         Gender updatedGender = editPersonDescriptor.getGender().orElse(personToEdit.getGender());
         Dob updatedDob = editPersonDescriptor.getDob().orElse(personToEdit.getDob());
         DateOfJoining updatedDate = editPersonDescriptor.getDateOfJoining().orElse(personToEdit.getDateOfJoining());
@@ -155,7 +166,6 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
-        private Nric nric;
         private Gender gender;
         private Dob dob;
         private DateOfJoining dateOfJoining;
@@ -174,7 +184,6 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
-            setNric(toCopy.nric);
             setGender(toCopy.gender);
             setDob(toCopy.dob);
             setDateOfJoining(toCopy.dateOfJoining);
@@ -188,7 +197,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, nric, gender, dob, dateOfJoining,
+            return CollectionUtil.isAnyNonNull(name, phone, email, gender, dob, dateOfJoining,
                     nationality, address, tag);
         }
 
@@ -214,14 +223,6 @@ public class EditCommand extends Command {
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
-        }
-
-        public void setNric(Nric nric) {
-            this.nric = nric;
-        }
-
-        public Optional<Nric> getNric() {
-            return Optional.ofNullable(nric);
         }
 
         public void setGender(Gender gender) {
@@ -297,7 +298,6 @@ public class EditCommand extends Command {
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(nric, otherEditPersonDescriptor.nric)
                     && Objects.equals(gender, otherEditPersonDescriptor.gender)
                     && Objects.equals(dob, otherEditPersonDescriptor.dob)
                     && Objects.equals(dateOfJoining, otherEditPersonDescriptor.dateOfJoining)
@@ -313,7 +313,6 @@ public class EditCommand extends Command {
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
-                    .add("nric", nric)
                     .add("gender", gender)
                     .add("dob", dob)
                     .add("dateOfJoining", dateOfJoining)
