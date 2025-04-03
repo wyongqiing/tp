@@ -24,6 +24,10 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      */
     public ViewCommand parse(String args) throws ParseException {
 
+        if (args == null || args.trim().equalsIgnoreCase("null")) {
+            throw new ParseException("Name cannot be empty!!");
+        }
+
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(

@@ -1,9 +1,5 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.parser.ViewCommandParser;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -20,9 +18,13 @@ import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TypicalPersons;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class ViewCommandTest {
 
     private Model model;
+
+    private final ViewCommandParser parser = new ViewCommandParser();
 
     @BeforeEach
     public void setUp() {
@@ -106,5 +108,19 @@ public class ViewCommandTest {
         );
 
         assertEquals(expectedMessage, result.getFeedbackToUser());
+    }
+
+    @Test
+    public void parse_invalidSymbols_throwsParseException() {
+        ParseException thrown = assertThrows(ParseException.class, () ->
+                parser.parse("@lex"));
+        assert(thrown.getMessage().equals("Names should only contain alphabetical characters and spaces."));
+    }
+
+    @Test
+    public void parse_nullString_throwsParseException() {
+        ParseException thrown = assertThrows(ParseException.class, () ->
+                parser.parse("null"));
+        assert(thrown.getMessage().equals("Name cannot be empty!!"));
     }
 }
