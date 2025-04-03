@@ -325,7 +325,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 5a2. HRelpher prompts HR to continue where they left off. Use case resumes at step 3.
  
 **Use case: Find Employees by Department**
+
 **MSS**
+
 1. HR requests to find employees by department.
 2. HRelper prompts for the department keyword.
 3. HR enters the department keyword.
@@ -338,10 +340,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 * 4a. No employees found in the specified department.
   * 4a1. HRelper shows an empty list.
+
     Use case ends.
 
 **Use case: Find Employees by Job Title**
+
 **MSS**
+
 1. HR requests to find employees by job title.
 2. HRelper prompts for the job title keyword.
 3. HR enters the job title keyword.
@@ -357,10 +362,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 * 4a. No employees found with the specified job title.
   * 4a1. HRelper shows an empty list.
+
     Use case ends.
 
 **Use case: Find Employees by Employment Type**
+
 **MSS**
+
 1. HR requests to find employees by employment type.
 2. HRelper prompts for the employment type keyword.
 3. HR enters the employment type keyword.
