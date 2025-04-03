@@ -280,9 +280,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | ------- |----------|------------------------------------| ----------------------------------------------------------------- |
 | `* * *` | user     | I can add a profile                | so that I can store employee details in the address book.         |
 | `* * *` | user     | I can delete the employees profile              | so that I can removed outdated or incorrect records.              |
-| `* * *` | user     | I  can view a profiles             | so that I can get employee information |
+| `* * *` | user     | I can view a profiles             | so that I can get employee information |
 | `* * `  | user     | I can edit the profile             | so that i can update their information when needed.                |
-| `* *`   | user     | I can filter contacts by department | so that I can quickly see all employees in a specific team.       |
+| `* *`   | user     | I can find contacts by tags (Department, Employment Type or Job Title)               | so that I can quickly see all employees in a specific team.       |
 | `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
 
 *{More to be added}*
@@ -315,8 +315,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 4a1. HR cancels confirmation. Use case resumes at step 3.
 
-* 4b. HRelpher finds an existing employee profile.
-
+* 4b. HRelpher finds an existing employee profile by tags. (Department, Employment Type or Job Title)
   Use case resumes at step 3.
 
 * 5a. HR loses connection.
@@ -324,6 +323,111 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 5a1. HRelpher saves details.
 
     * 5a2. HRelpher prompts HR to continue where they left off. Use case resumes at step 3.
+ 
+**Use case: Find Employees by Department**
+
+**MSS**
+
+1. HR requests to find employees by department.
+2. HRelper prompts for the department keyword.
+3. HR enters the department keyword.
+4. HRelper displays a list of employees in the specified department.
+   Use case ends.
+
+**Extensions**
+* 3a. HR enters invalid characters in the department keyword.
+  * 3a1. HRelper shows an error message explaining valid department input format.
+    Use case resumes at step 2.
+* 4a. No employees found in the specified department.
+  * 4a1. HRelper shows an empty list.
+
+    Use case ends.
+
+**Use case: Find Employees by Job Title**
+
+**MSS**
+
+1. HR requests to find employees by job title.
+2. HRelper prompts for the job title keyword.
+3. HR enters the job title keyword.
+4. HRelper displays a list of employees with the specified job title.
+   Use case ends.
+
+**Extensions**
+* 3a. HR enters invalid characters in the job title keyword.
+  * 3a1. HRelper shows an error message explaining valid job title input format.
+    Use case resumes at step 2.
+* 3b. HR enters a keyword that is too short or ambiguous.
+  * 3b1. HRelper suggests using more specific keywords.
+    Use case resumes at step 2.
+* 4a. No employees found with the specified job title.
+  * 4a1. HRelper shows an empty list.
+
+    Use case ends.
+
+**Use case: Find Employees by Employment Type**
+
+**MSS**
+
+1. HR requests to find employees by employment type.
+2. HRelper prompts for the employment type keyword.
+3. HR enters the employment type keyword.
+4. HRelper displays a list of employees with the specified employment type.
+   Use case ends.
+
+**Extensions**
+* 3a. HR enters invalid characters in the employment type keyword.
+  * 3a1. HRelper shows an error message explaining valid employment type input format.
+    Use case resumes at step 2.
+* 4a. No employees found with the specified employment type.
+  * 4a1. HRelper shows an empty list.
+    Use case ends.
+
+** Use case: View Employee Details by Name**
+
+**MSS**
+
+1. HR requests to view detailed information of an employee.
+2. HRelper prompts for the employee's name.
+3. HR enters the employee's name.
+4. HRelper displays the comprehensive profile of the specified employee.
+   Use case ends.
+
+Extensions
+* 3a. The given name does not match any employee in the system.
+  * 3a1. HRelper shows an error message.
+    Use case resumes at step 2.
+* 3b. Multiple employees share the same name.
+  * 3b1. HRelper displays a list of all matching employees and asks HR to select one.
+  * 3b2. HR selects the intended employee.
+  * 3b3. HRelper displays the comprehensive profile of the selected employee.
+    Use case ends.
+* 4a. The employee profile has incomplete information.
+  * 4a1. HRelper displays the available information with indicators for missing fields.
+    Use case ends.
+
+**Use case: Add/Edit Note to Employee Profile by Index**
+
+**MSS**
+
+1. HR requests to add or edit a note for an employee.
+2. HRelper prompts for the employee index and note content.
+3. HR enters the employee index and new note content.
+4. HRelper updates the employee's profile with the new note.
+5. HRelper confirms the note has been added/updated.
+   Use case ends.
+
+Extensions
+* 3a. The given index is invalid.
+  * 3a1. HRelper shows an error message.
+    Use case resumes at step 2.
+* 3b. HR enters empty note content.
+  * 3b1. HRelper removes any existing note from the employee profile.
+  * 3b2. HRelper confirms the note has been removed.
+    Use case ends.
+* 4a. HR tries to add a note that exceeds the character limit.
+  * 4a1. HRelper shows an error message indicating the character limit.
+    Use case resumes at step 3.
 
 **Use case: Delete an Employee Profile**
 
@@ -369,7 +473,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **JavaFx**: A Java library used for building modern GUIs
 * **JSON**: An open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays
 * **CLI app**: Command-Line Interface application - A software application that allows users to interact with it through a text-based interface by typing commands in a console or terminal
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
 
 --------------------------------------------------------------------------------------------------------------------
 
