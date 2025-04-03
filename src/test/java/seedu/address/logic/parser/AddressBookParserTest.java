@@ -122,7 +122,7 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_view_nullString_throwsParseException() {
+    public void parseViewCommand_nullInput_throwsParseException() {
         assertThrows(ParseException.class, "Name cannot be empty!!", () ->
                 parser.parseCommand(ViewCommand.COMMAND_WORD + " null"));
     }

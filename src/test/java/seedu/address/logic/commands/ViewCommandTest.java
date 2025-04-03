@@ -1,5 +1,10 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -17,8 +22,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TypicalPersons;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ViewCommandTest {
 
