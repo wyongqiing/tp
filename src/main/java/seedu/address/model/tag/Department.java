@@ -13,19 +13,26 @@ import java.util.Set;
 public class Department {
     private static final String departments = "Human Resources, Finance, Accounting, Marketing, Sales, "
             + "Customer Service, Information Technology, \n"
-            + "Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, n"
+            + "Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, "
             + "Engineering, Quality Assurance, Product Management, Manufacturing, Public Relations, \n"
-            + "Corporate Communications, Compliance & Risk Management, Business Development, Data Science, \n"
+            + "Corporate Communications, Compliance & Risk Management, Business Development, Data Science, "
             + "Cybersecurity, Software Development, UX/UI Design, Artificial Intelligence & Machine Learning, \n"
-            + "Training & Development, Facilities Management, Administration, Health & Safety, \n"
+            + "Training & Development, Facilities Management, Administration, Health & Safety, "
             + "Diversity, Equity & Inclusion.";
 
-    public static final String MESSAGE_CONSTRAINTS = "Department must only contain alphabetic characters \n"
-            + "and the '&' symbol. \n"
-            + "Flexibility in department inputs is allowed where the validation is not case sensitive \n"
+    private static final String departmentsShortForm = "HR, CS, IT, R&D, SCM, Procurement, QA, PR, CorpComm, "
+            + "Risk & Compliance, BizDev, DS, CyberSec, SD, UX/UI, AI/ML, T&D, FM, H&S, DEI.";
+
+    public static final String MESSAGE_CONSTRAINTS = "Department must only contain alphabetic characters "
+            + "and the '&' symbol. It should not be blank. \n"
+            + "Flexibility in department inputs is allowed where the validation is not case sensitive "
             + "and short forms are allowed. \n"
+            + "\n"
             + "Here is the list of Departments: \n"
-            + departments;
+            + departments + "\n"
+            + "\n"
+            + "Here is the list of valid short forms: \n"
+            + departmentsShortForm;
 
     private static final Set<String> VALID_DEPARTMENTS = Set.of("Human Resources", "Finance", "Accounting",
             "Marketing", "Sales", "Customer Service", "Information Technology",

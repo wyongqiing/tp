@@ -362,9 +362,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **HRelpher**: A Human Resource management tool for managing employee profiles efficiently.
-* **Hiring Manager/HR**: The main user of HRelpher, responsible for managing employee records.
-* **Employee Profile**: A record containing an employee's details such as name, department, and contact information.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **UI**: User Interface - the space where interactions between humans (users) and machines (software or hardware) occur
+* **API**: Application Programming Interface - A set of rules, protocols, and tools that allows different software applications to communicate and interact with each other
+* **GUI**: Graphical User Interface - A type of user interface that allows users to interact with software applications or devices through graphical elements rather than using text-based commands
+* **JavaFx**: A Java library used for building modern GUIs
+* **JSON**: An open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays
+* **CLI app**: Command-Line Interface application - A software application that allows users to interact with it through a text-based interface by typing commands in a console or terminal
+* **Mainstream OS**: Windows, Linux, Unix, MacOS
 
 --------------------------------------------------------------------------------------------------------------------
 

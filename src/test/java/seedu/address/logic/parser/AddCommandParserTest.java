@@ -70,7 +70,7 @@ import seedu.address.model.person.Nationality;
 import seedu.address.model.person.Nric;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Department;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandParserTest {
@@ -339,7 +339,7 @@ public class AddCommandParserTest {
         // invalid tag
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                 + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB
-                + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
+                + INVALID_TAG_DESC, Department.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
