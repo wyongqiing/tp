@@ -9,12 +9,12 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
@@ -57,10 +57,12 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_view() throws Exception {
-        List<String> keywords = Arrays.asList("S1234567E", "S2217855F", "S7628910Y");
-        ViewCommand command = (ViewCommand) parser.parseCommand(
-                ViewCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new ViewCommand(new ProfileContainsKeywordsPredicate(keywords)), command);
+        List<String> inputNames = Arrays.asList("David", "Li", "Alex", "Tan", "Alex", "Yeoh");
+        String input = ViewCommand.COMMAND_WORD + " " + String.join(" ", inputNames);
+        ViewCommand expectedCommand = new ViewCommand(new ProfileContainsKeywordsPredicate(inputNames));
+
+        Command parsedCommand = parser.parseCommand(input);
+        assertEquals(expectedCommand, parsedCommand);
     }
 
     @Test
@@ -116,5 +118,11 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+    }
+
+    @Test
+    public void parseViewCommand_nullInput_throwsParseException() {
+        assertThrows(ParseException.class, "Name cannot be empty!!", () ->
+                parser.parseCommand(ViewCommand.COMMAND_WORD + " null"));
     }
 }
