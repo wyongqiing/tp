@@ -33,7 +33,7 @@ public class ViewCommandTest {
     public void setUp() {
         AddressBook ab = new AddressBook();
         ab.setPersons(TypicalPersons.getTypicalPersons());
-        Person davidLi = new PersonBuilder().withName("David Li").build();
+        Person davidLi = new PersonBuilder().withName("David Li").withNric("S0101010A").build();
         ab.addPerson(davidLi);
         model = new ModelManager(ab, new UserPrefs());
     }
