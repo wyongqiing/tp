@@ -11,6 +11,9 @@ import seedu.address.model.person.DepartmentContainsKeywordPredicate;
  */
 public class FindByDepartmentCommandParser implements Parser<FindByDepartmentCommand> {
 
+    public static final String MESSAGE_DEPARTMENT_CONSTRAINTS =
+            "Department names should only contain alphabetic characters and '&' symbols";
+
     /**
      * Parses the given {@code String} of arguments in the context of the FindByDepartmentCommand
      * and returns a FindByDepartmentCommand object for execution.
@@ -23,7 +26,20 @@ public class FindByDepartmentCommandParser implements Parser<FindByDepartmentCom
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindByDepartmentCommand.MESSAGE_USAGE));
         }
 
+        // Validate that department only contains alphabetic characters or '&'
+        if (!isValidDepartment(trimmedArgs)) {
+            throw new ParseException(MESSAGE_DEPARTMENT_CONSTRAINTS);
+        }
+
         // Now we only have the department keyword, so we can directly pass it to the predicate
         return new FindByDepartmentCommand(new DepartmentContainsKeywordPredicate(trimmedArgs));
+    }
+
+    /**
+     * Returns true if the department consists only of alphabetic characters and '&' symbols.
+     */
+    private boolean isValidDepartment(String department) {
+        return department.chars()
+                .allMatch(c -> Character.isLetter(c) || c == '&' || Character.isWhitespace(c));
     }
 }
