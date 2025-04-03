@@ -29,4 +29,18 @@ public class FindByJobTitleCommandParserTest {
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " \n Engineer  \t", expectedFindByJobTitleCommand);
     }
+
+    @Test
+    public void parse_invalidJobTitleWithNumbers_throwsParseException() {
+        assertParseFailure(parser, "Engineer123",
+            FindByJobTitleCommandParser.MESSAGE_JOBTITLE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_invalidJobTitleWithSpecialChars_throwsParseException() {
+        assertParseFailure(parser, "Manager@",
+            FindByJobTitleCommandParser.MESSAGE_JOBTITLE_CONSTRAINTS);
+    }
 }
+
+

@@ -9,15 +9,16 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
 public class FindCommandTest {
+    public static final String ERROR_MESSAGE = "Try using 'findByDepartment', "
+                                                + "'findByEmploymentType', or 'findByJobTitle' instead.";
+
     private Model model = new ModelManager();
 
     @Test
     public void execute_invalidCommand_showsErrorMessage() {
         // Create the FindCommand and execute it
         FindCommand command = new FindCommand();
-        String expectedMessage = MESSAGE_INVALID_COMMAND_FORMAT
-                + "\nTry using 'findByDepartment', 'findByEmploymentType', or 'findByJobTitle' instead.";
-
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ERROR_MESSAGE);
         // Execute the command and check the message
         CommandResult result = command.execute(model);
         assertEquals(expectedMessage, result.getFeedbackToUser());

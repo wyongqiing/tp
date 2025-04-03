@@ -11,6 +11,9 @@ import seedu.address.model.person.JobTitleContainsKeywordPredicate;
  */
 public class FindByJobTitleCommandParser implements Parser<FindByJobTitleCommand> {
 
+    public static final String MESSAGE_JOBTITLE_CONSTRAINTS =
+        "Job title search terms should only contain alphabetic characters and spaces";
+
     /**
      * Parses the given {@code String} of arguments in the context of the FindByJobTitleCommand
      * and returns a FindByJobTitleCommand object for execution.
@@ -23,7 +26,19 @@ public class FindByJobTitleCommandParser implements Parser<FindByJobTitleCommand
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindByJobTitleCommand.MESSAGE_USAGE));
         }
 
-        // Now we only have the job title keyword, so we can directly pass it to the predicate
+        // Validate that job title only contains alphabetic characters and spaces
+        if (!isValidJobTitleCharacters(trimmedArgs)) {
+            throw new ParseException(MESSAGE_JOBTITLE_CONSTRAINTS);
+        }
+
         return new FindByJobTitleCommand(new JobTitleContainsKeywordPredicate(trimmedArgs));
+    }
+
+    /**
+     * Returns true if the job title contains only alphabetic characters and spaces.
+     */
+    private boolean isValidJobTitleCharacters(String jobTitle) {
+        return jobTitle.chars()
+                .allMatch(c -> Character.isLetter(c) || Character.isWhitespace(c));
     }
 }

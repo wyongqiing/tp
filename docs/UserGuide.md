@@ -1,9 +1,7 @@
 ---
 layout: page
-title: User Guide
+title: HRelper User Guide
 ---
-# HRelper User Guide
-
 --------------------------------------------------------------------------------------------------------------------
 ## Hello HR! Meet HRelper
 Welcome to HRelper, your trusted assistant for managing employee records with ease and speed.
@@ -42,13 +40,13 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-F14-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for HRelper.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar hrelper.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/UI.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -61,9 +59,11 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 
    * `clear` : Deletes all contacts.
    
-   * `view` : Views the contact by their name.
+   * `view Lee` : Views the contact by their surname.
    
-   * `findByDepartment` : Lists all contacts in this specific department
+   * `edit 2 n/Betsy Crower`: Edits the name of the 2nd person to be `Betsy Crower`.
+   
+   * `findByDepartment Finance` : Lists all contacts in this specific department
    
    * `note`: add optional remarks to people in their address book and edit it if required. 
 
@@ -95,7 +95,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 
 Shows a message explaning how to access the help page.
 
-![help message](images/HelpMessage.png)
+![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -107,6 +107,7 @@ Adds a person to the address book.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
 
 * CAPITALISED words are parameters to be filled in.
+* Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
@@ -120,19 +121,19 @@ Format: `list`
 
 ### Viewing a profile: `view`
 
-Shows the full profile of the name given.
+Displays the full profile of an employee by matching their **full name** or **surname**.
 
-Format: `view NAME`
+Format: `view FULLNAME` or `view SURNAME`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* The search is **case-insensitive**.<br> e.g `hans` will match `Hans`
+* ⚠️ Order matters for full names.<br> e.g. `Hans Bo` will not match `Bo Hans`
 * Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* **Exact word match only** - partial names won't be matched.<br> e.g. `Han` will not match `Hans`
+* Persons matching the surname or full name will be returned (i.e. `OR` search).<br>
+  e.g. `Bo` will return name with same surname  `Hans Bo`, `Ling Bo` <br> e.g. `Hans Bo` will return `Hans Bo`
 
 Examples:
-* `view Alex Yeoh`
+* `view David Li`
 
 ![view_profile](images/ViewImage.png)
 
@@ -162,6 +163,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
+*  `edit 1 t/HR/Full-Time/HR Coordinator` Edits the tag of the 1st person to be `HR/Full-Time/HR Coordinator`.
 
 ### Filtering by: `findBy...`
 
@@ -224,14 +226,14 @@ Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+HRelper data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+HRelper data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+If your changes to the data file makes its format invalid, HRelper will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
@@ -249,8 +251,11 @@ _Details coming soon ..._
 ### <a id="q2"></a>Q2: Can I search for employees by job title or department?<br>
 **A**: Yes! Use commands like `findByDepartment`, `findByJobTitle`, or `findByEmploymentType`.
 Example: `findByDepartment Marketing` will show all employees in the Marketing department.
---------------------------------------------------------------------------------------------------------------------
 
+### <a id="q3"></a>Q3: How do I transfer my data to another computer?<br>
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous HRelper home folder.
+
+--------------------------------------------------------------------------------------------------------------------
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
@@ -265,9 +270,9 @@ Action | Format, Examples
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`<br>e.g., `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25 t/Finance/Full-Time/Financial Analyst`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [ic/NRIC] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `findByDepartment KEYWORD `<br> e.g., `find James Jake`
 **Note** | `note INDEX NOTE` e.g. note 1 he likes aadvarks 
 **List** | `list`
 **Help** | `help`
-**View** | `view NAME [SURNAME]`<br> e.g., `view Alex Yeoh`
+**View** | `view FULLNAME [SURNAME]`<br> e.g., `view Alex Yeoh` or `view Yeoh`

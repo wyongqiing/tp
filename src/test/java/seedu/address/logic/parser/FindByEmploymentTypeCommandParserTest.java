@@ -29,4 +29,16 @@ public class FindByEmploymentTypeCommandParserTest {
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " \n Full-time  \t", expectedFindByEmploymentTypeCommand);
     }
+
+    @Test
+    public void parse_invalidEmploymentTypeWithNumbers_throwsParseException() {
+        assertParseFailure(parser, "Full-time123",
+            FindByEmploymentTypeCommandParser.MESSAGE_EMPLOYMENTTYPE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_invalidEmploymentTypeWithSpecialChars_throwsParseException() {
+        assertParseFailure(parser, "Part-time@",
+            FindByEmploymentTypeCommandParser.MESSAGE_EMPLOYMENTTYPE_CONSTRAINTS);
+    }
 }
