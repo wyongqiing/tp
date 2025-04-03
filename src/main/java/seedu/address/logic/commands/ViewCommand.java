@@ -16,10 +16,10 @@ public class ViewCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Views the profile "
-            + "by the name. "
+            + "by the fullname or surname. "
             + "Existing profile will be shown.\n"
-            + "Parameters: NAME\n"
-            + "Example: " + COMMAND_WORD + " Alex";
+            + "Parameters: FULLNAME [SURNAME]\n"
+            + "Example: [" + COMMAND_WORD + " Tan] / [" + COMMAND_WORD + " Alex Tan]";
 
     private final ProfileContainsKeywordsPredicate predicate;
 

@@ -84,7 +84,7 @@ public class ViewCommandTest {
 
         // Execute command and assert result
         CommandResult result = viewCommand.execute(model);
-        assertEquals("David Li's profile:", result.getFeedbackToUser());
+        assertEquals("Profile found: David Li", result.getFeedbackToUser());
     }
 
     @Test
@@ -94,7 +94,7 @@ public class ViewCommandTest {
         model.updateFilteredPersonList(predicate);
 
         CommandResult result = viewCommand.execute(model);
-        assertEquals("David Li's profile:", result.getFeedbackToUser());
+        assertEquals("Profile found: David Li", result.getFeedbackToUser());
     }
 
     @Test
