@@ -53,7 +53,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all contacts with full attributes.
 
    * `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25 t/Finance/Full-Time/Financial Analyst` : Adds a contact named `John Doe` to the Address Book.
 
@@ -114,7 +114,7 @@ Examples:
 
 ### Listing all persons : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all persons in the address book with full attributes.
 
 Format: `list`
 
