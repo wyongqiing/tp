@@ -1,4 +1,4 @@
----
+22---
 layout: page
 title: Developer Guide
 ---
@@ -276,14 +276,15 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​  | I want to …​                       | So that I can…​                                                   |
-| ------- |----------|------------------------------------| ----------------------------------------------------------------- |
-| `* * *` | user     | I can add a profile                | so that I can store employee details in the address book.         |
-| `* * *` | user     | I can delete the employees profile              | so that I can removed outdated or incorrect records.              |
-| `* * *` | user     | I  can view a profiles             | so that I can get employee information |
-| `* * `  | user     | I can edit the profile             | so that i can update their information when needed.                |
-| `* *`   | user     | I can filter contacts by department | so that I can quickly see all employees in a specific team.       |
-| `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
+| Priority | As a …​  | I want to …​                                                     | So that I can…​                                                   |
+|----------|----------|------------------------------------------------------------------| ----------------------------------------------------------------- |
+| `* * *`  | user     | I can add a profile                                              | so that I can store employee details in the address book.         |
+| `* * *`  | user     | I can delete the employees profile                               | so that I can removed outdated or incorrect records.              |
+| `* * *`  | user     | I  can view a profiles                                           | so that I can get employee information |
+| `* * `   | user     | I can edit the profile                                           | so that i can update their information when needed.                |
+| `* *`    | user     | I can filter contacts by department                              | so that I can quickly see all employees in a specific team.       |
+| `* *`    | user     | I can add an extra optional note to a profile                    | so that I am aware of additional information about an employee
+| `*`      | user     | I can receive notifications when a contact’s details are updated | so that I am aware of changes                                            |
 
 *{More to be added}*
 
@@ -348,7 +349,44 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
+**Use case: View Employee Details by Name**
+
+**MSS**
+
+1. HR requests to view detailed information of an employee.
+2. HR enters the employee's name.
+3. HRelper displays the comprehensive profile of the specified employee.
+   Use case ends.
+
+**Extensions**
+
+* 3a. The given name does not match any employee in the system.
+    * 3a1. HRelper shows default "No matching profiles found" window.
+    * 3a2. User has the option to click on Home button to return to home page
+    * Use case resumes at step 2.
+
+* 3b. An employee name matches the given search keyword.
+    * 3b1. HRelper displays the comprehensive profile of the employee.
+    * 3b2. User has the option to click on Home button to return to home page
+      Use case ends.
+
+Use case: Add/Edit/Remove Note to Employee Profile by Index
+
+**MSS**
+
+1. HR requests to add or edit a note for an employee.
+2. HR enters the employee index and new note content.
+3. HRelper updates the employee's profile with the new note.
+   Use case ends.
+
+**Extensions**
+
+* 3a. The given index is invalid.
+    * 3a1. HRelper shows an error message.
+      Use case resumes at step 2.
+* 3b. HR enters empty note content.
+    * 3b1. HRelper removes any existing note from the employee profile.
+      Use case ends.
 
 ### Non-Functional Requirements
 

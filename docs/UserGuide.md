@@ -197,15 +197,18 @@ Examples:
 
 Adds a note to the specified person from the address book.
  
-Format: `note INDEX NOTE`
+Format: `note INDEX [NOTE]`
 
 * Adds a note to the person at the specified `INDEX`. The index refers to the position of the person in the currently displayed list on the GUI. The index **must be a positive integer** 1, 2, 3, …​
-* All fields are compulsory
-* `NOTE` can be any string input
-* Existing note value will be updated to the input value 
+* Square brackets [ ] represent optional fields
+* `NOTE` can be any string input 
+* Existing note value will be updated to the input value
 
 Examples:
 * `note 1 they/them`
+
+To update field to an empty string i.e. pseudo-delete 
+* `note 1`
 
 ### Clearing all entries : `clear`
 
