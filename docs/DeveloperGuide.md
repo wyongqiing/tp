@@ -312,6 +312,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 **Extensions**
+* 3a. HR enters invalid data for one or more attributes.
+  
+   * 3a1. HRelpher displays an error message indicating which field is invalid and the expected format.
+     
+   * 3a2. HR corrects the invalid entry.
+     Use case resumes at step 3.
 
 * 4a. HR decides to change details.
 
