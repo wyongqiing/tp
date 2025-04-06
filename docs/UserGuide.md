@@ -110,8 +110,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+
+* `add n/John Doe p/98765432 e/johnd@example.com ic/T0235300Z g/Male d/20-May-2001 j/15-Mar-2025 nat/American a/John street, block 123, #01-01 t/Human Resources/Full-Time/HR Coordinator`
 
 ### Listing all persons : `list`
 
@@ -152,7 +152,7 @@ HRelper will return to the overview page and display all employees again, with a
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS] [t/DEPARTMENT/EMPLOYMENT TYPE/JOB TITLE]`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Square brackets [ ] represent optional fields

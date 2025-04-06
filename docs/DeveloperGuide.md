@@ -1,9 +1,6 @@
-22---
-layout: page
-title: Developer Guide
+Developer Guide
 ---
 * Table of Contents
-{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -286,9 +283,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`   | user     | I can add an extra optional note to a profile                    | so that I am aware of additional information about an employee         
 | `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
 
-
-*{More to be added}*
-
 ### Use cases
 
 (For all use cases below, the **System** is the `HRelper` and the **Actor** is the `HR manager (HR)`, unless specified otherwise)
@@ -299,15 +293,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. HR requests to add an employee profile.
 
-2. HRelpher prompts for details of the employee.
+2. HRelper prompts for details of the employee.
 
 3. HR fills in the details.
 
-4. HRelpher requests HR to confirm the details.
+4. HRelper requests HR to confirm the details.
 
 5. HR confirms the details.
 
-6. HRelpher adds the employee to the system.
+6. HRelper adds the employee to the system.
 
     Use case ends.
 
@@ -317,14 +311,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 4a1. HR cancels confirmation. Use case resumes at step 3.
 
-* 4b. HRelpher finds an existing employee profile by tags. (Department, Employment Type or Job Title)
+* 4b. HRelper finds an existing employee profile by tags. (Department, Employment Type or Job Title)
   Use case resumes at step 3.
 
 * 5a. HR loses connection.
 
-    * 5a1. HRelpher saves details.
+    * 5a1. HRelper saves details.
 
-    * 5a2. HRelpher prompts HR to continue where they left off. Use case resumes at step 3.
+    * 5a2. HRelper prompts HR to continue where they left off. Use case resumes at step 3.
  
 **Use case: Find Employees by Department**
 
@@ -413,10 +407,9 @@ Extensions
 **MSS**
 
 1. HR requests to add or edit a note for an employee.
-2. HRelper prompts for the employee index and note content.
-3. HR enters the employee index and new note content.
-4. HRelper updates the employee's profile with the new note.
-5. HRelper confirms the note has been added/updated.
+2. HR enters the employee index and new note content.
+3. HRelper updates the employee's profile with the new note.
+
    Use case ends.
 
 Extensions
@@ -436,9 +429,9 @@ Extensions
 **MSS**
 
 1. HR requests to list employees.
-2. HRelpher shows a list of employees.
+2. HRelper shows a list of employees.
 3. HR requests to delete a specific employee in the list.
-4. HRelpher deletes the employee.
+4. HRelper deletes the employee.
 
    Use case ends.
 
@@ -450,7 +443,7 @@ Extensions
 
 * 3a. The given index is invalid.
 
-    * 3a1. HRelpher shows an error message.
+    * 3a1. HRelper shows an error message.
 
       Use case resumes at step 2.
 
@@ -504,7 +497,7 @@ Use case: Add/Edit/Remove Note to Employee Profile by Index
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **HRelpher**: A Human Resource management tool for managing employee profiles efficiently.
+* **HRelper**: A Human Resource management tool for managing employee profiles efficiently.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **UI**: User Interface - the space where interactions between humans (users) and machines (software or hardware) occur
 * **API**: Application Programming Interface - A set of rules, protocols, and tools that allows different software applications to communicate and interact with each other
@@ -519,8 +512,8 @@ Use case: Add/Edit/Remove Note to Employee Profile by Index
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+<div markdown="span" class="alert alert-info">Note: These instructions only provide a starting point for testers to work on;
+testers are expected to do more exploratory testing.
 
 </div>
 
