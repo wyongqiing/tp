@@ -13,7 +13,7 @@ import java.util.Set;
 public class Department {
     private static final String departments = "Human Resources, Finance, Accounting, Marketing, Sales, "
             + "Customer Service, Information Technology, \n"
-            + "Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, "
+            + "Research & Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, "
             + "Engineering, Quality Assurance, Product Management, Manufacturing, Public Relations, \n"
             + "Corporate Communications, Compliance & Risk Management, Business Development, Data Science, "
             + "Cybersecurity, Software Development, UX/UI Design, Artificial Intelligence & Machine Learning, \n"
@@ -24,9 +24,9 @@ public class Department {
             + "Risk & Compliance, BizDev, DS, CyberSec, SD, UX/UI, AI/ML, T&D, FM, H&S, DEI.";
 
     public static final String MESSAGE_CONSTRAINTS = "Department must only contain alphabetic characters "
-            + "and the '&' symbol. It should not be blank. \n"
+            + "and the '&' and '/' symbol. It should not be blank. \n"
             + "Flexibility in department inputs is allowed where the validation is not case sensitive "
-            + "and short forms are allowed. \n"
+            + "but short forms are allowed. \n"
             + "\n"
             + "Here is the list of Departments: \n"
             + departments + "\n"
@@ -36,7 +36,7 @@ public class Department {
 
     private static final Set<String> VALID_DEPARTMENTS = Set.of("Human Resources", "Finance", "Accounting",
             "Marketing", "Sales", "Customer Service", "Information Technology",
-            "Research and Development", "Operations", "Legal",
+            "Research & Development", "Operations", "Legal",
             "Supply Chain & Logistics", "Procurement & Purchasing", "Engineering",
             "Quality Assurance", "Product Management", "Manufacturing",
             "Public Relations", "Corporate Communications",
@@ -50,7 +50,7 @@ public class Department {
             Map.entry("Human Resources", "HR"),
             Map.entry("Customer Service", "CS"),
             Map.entry("Information Technology", "IT"),
-            Map.entry("Research and Development", "R&D"),
+            Map.entry("Research & Development", "R&D"),
             Map.entry("Supply Chain & Logistics", "SCM"),
             Map.entry("Procurement & Purchasing", "Procurement"),
             Map.entry("Quality Assurance", "QA"),
