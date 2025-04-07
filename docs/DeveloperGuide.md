@@ -518,7 +518,7 @@ testers are expected to do more exploratory testing.
    1. Download the jar file and copy into an empty folder
    2. Open a terminal and `cd` into the folder with the jar file.
    3. Run `java -jar hrelper.jar`.</br>
-      Expected: Shows the GUI with a set of sample contacts.</br> 
+      Expected: An empty address book will be shown.</br> 
       The window size may not be optimum.
 
 1. Saving window preferences
