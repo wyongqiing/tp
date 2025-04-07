@@ -1,5 +1,29 @@
 Developer Guide
 =======
+## Table of Contents
+
+1. [Acknowledgements](#acknowledgements)
+2. [Setting up, getting started](#setting-up-getting-started)
+3. [Design](#design)
+    - [Architecture](#architecture)
+      - [Main components of the architecture](#main-components-of-the-architecture)
+      - [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
+    - [UI Component](#ui-component)
+    - [Logic Component](#logic-component)
+    - [Model Component](#model-component)
+    - [Storage Component](#storage-component)
+    - [Common Classes](#common-classes)
+4. [Implementation](#implementation)
+    - [Undo/Redo Feature](#proposed-undoredo-feature)
+5. [Documentation, Logging, Testing, Configuration, DevOps](#documentation-logging-testing-configuration-dev-ops)
+6. [Appendix: Requirements](#appendix-requirements)
+    - [Product Scope](#product-scope)
+    - [User Stories](#user-stories)
+    - [Use Cases](#use-cases)
+    - [Non-Functional Requirements](#non-functional-requirements)
+    - [Glossary](#glossary)
+7. [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
+8. [Appendix: Planned Enhancement](#appendix-planned-enhancement)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -238,12 +262,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -487,7 +505,6 @@ Extensions
 5. The application should not crash for any input given by the user.
 6. The application will remain as a CLI based application.
 
-*{More to be added}*
 
 ### Glossary
 
@@ -577,10 +594,10 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
 3. **Implement `redo` functionality.**<br>
    After undoing a command, the user might want to reapply it. Currently, this requires retyping the command manually. We plan to add a redo feature to restore the most recently undone command.
 4. **Allow multiple deletions in a single command.**<br>
-   Currently, the delete command only supports deleting one contact at a time. We plan to support multiple deletions using comma-separated indexes, e.g., delete 1, 3, 5, to improve user efficiency.
+   Currently, the delete command only supports deleting one contact at a time. We plan to support multiple deletions using comma-separated indexes, e.g., `delete 1, 3, 5` to improve user efficiency.
 5. **Relax address format constraints.**<br>
    Currently, addresses must include a Singapore-style postal code with specific district prefixes. To support global users and remote workers, we plan to relax this validation to allow international formats or omit postal codes altogether.
-6. **Add support for data import/export using CSV files.**
+6. **Add support for data import/export using CSV files.**<br>
    Currently, HRelper stores and reads contact data in JSON format, which may not be familiar to non-technical users. HR teams often maintain contact records in Excel or Google Sheets and may need to perform bulk updates, generate reports, or share data externally.<br>
    We plan to introduce the ability to import data from CSV files, allowing HR teams to easily migrate existing records into HRelper without manually entering each contact. Similarly, we will support exporting current records to CSV format, enabling convenient data backup, offline reporting, and integration with other HR tools.
 
@@ -590,7 +607,7 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
      3. Allow HR to generate and share filtered reports easily
      4. Provide error messages when invalid or missing fields are detected during import
 
-7. Implement a command history tracker
+7. **Implement a command history tracker**.<br>
    Currently, HRelper does not store a history of previously entered commands. This can be inconvenient for users who wish to repeat a past command, especially if the command was long or complex (e.g., multi-field `add` or `edit` commands).
 
     We plan to implement a **command history tracker** that:
@@ -600,10 +617,10 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
    - Enables users to **reuse, modify, or re-execute** previous commands with ease.
 
    This enhancement improves usability by reducing the need for repetitive typing and helps users correct or retry failed commands quickly.
-8. Enable tag auto-suggestions when typing departments, job titles, or employment types.
+8. **Enable tag auto-suggestions when typing departments, job titles, or employment types.**
    Currently, users must remember and manually input the exact department/job title format. This can lead to errors or inconsistencies.
    We plan to implement autocomplete suggestions when the user begins typing tags (e.g., “Fin” suggests “Finance”) to improve speed, accuracy, and consistency in data entry.
-9. Add a mini HR dashboard for quick data overview.
+9. **Add a mini HR dashboard for quick data overview.**
    Currently, HRelper only displays contact information. For HR users managing a large database, a dashboard summarizing key statistics would be useful.
    We plan to introduce a sidebar or pop-up dashboard that shows:
 
