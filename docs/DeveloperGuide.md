@@ -40,11 +40,9 @@ It incorporates the following third-party libraries:
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
-
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
-
 ## **Design**
 
 <div markdown="span" class="alert alert-primary">
@@ -70,7 +68,7 @@ and [`MainApp`](https://github.com/AY2425S2-CS2103T-F14-2/tp/tree/master/src/mai
 in charge of the app launch and shut down.
 
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
-* At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+* At shut down, it shuts down the other components and invokes cleanup methods where necessary
 
 The bulk of the app's work is done by the following four components:
 
@@ -366,7 +364,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user    | I can add an extra optional note to a profile | so that I am aware of additional information about an employee.          |       
 
 ### Use cases
-
 (For all use cases below, the **System** is the `HRelper` and the **Actor** is the `HR manager (HR)`, unless specified
 otherwise)
 
@@ -395,18 +392,17 @@ otherwise)
     * 3a2. HR corrects the invalid entry.  
       Use case resumes at step 3.
 * 4a. HR decides to change details.
-
-    * 4a1. HR cancels confirmation.      
+    * 4a1. HR cancels confirmation.
       Use case resumes at step 3.
 
-* 4b. HRelper finds an existing employee profile by tags. (Department, Employment Type or Job Title)  
+* 4b. HRelper finds an existing employee profile by tags. (Department, Employment Type or Job Title)
   Use case resumes at step 3.
 
 * 5a. HR loses connection.
 
     * 5a1. HRelper saves details.
 
-    * 5a2. HRelper prompts HR to continue where they left off.   
+    * 5a2. HRelper prompts HR to continue where they left off. 
       Use case resumes at step 3.
 
 **Use case: Find Employees by Department**
@@ -416,13 +412,13 @@ otherwise)
 1. HR requests to find employees by department.
 2. HRelper prompts for the department keyword.
 3. HR enters the department keyword.
-4. HRelper displays a list of employees in the specified department.  
+4. HRelper displays a list of employees in the specified department.
    Use case ends.
 
 **Extensions**
 
 * 3a. HR enters invalid characters in the department keyword.
-    * 3a1. HRelper shows an error message explaining valid department input format.   
+    * 3a1. HRelper shows an error message explaining valid department input format.
       Use case resumes at step 2.
 * 4a. No employees found in the specified department.
     * 4a1. HRelper shows an empty list.
@@ -442,10 +438,10 @@ otherwise)
 **Extensions**
 
 * 3a. HR enters invalid characters in the job title keyword.
-    * 3a1. HRelper shows an error message explaining valid job title input format.   
+    * 3a1. HRelper shows an error message explaining valid job title input format.
       Use case resumes at step 2.
 * 3b. HR enters a keyword that is too short or ambiguous.
-    * 3b1. HRelper suggests using more specific keywords.   
+    * 3b1. HRelper suggests using more specific keywords.
       Use case resumes at step 2.
 * 4a. No employees found with the specified job title.
     * 4a1. HRelper shows an empty list. </br> Use case ends.
@@ -463,7 +459,7 @@ otherwise)
 **Extensions**
 
 * 3a. HR enters invalid characters in the employment type keyword.
-    * 3a1. HRelper shows an error message explaining valid employment type input format.  
+    * 3a1. HRelper shows an error message explaining valid employment type input format.
       Use case resumes at step 2.
 * 4a. No employees found with the specified employment type.
     * 4a1. HRelper shows an empty list.</br>
@@ -547,7 +543,7 @@ Extensions
 **Extensions**
 
 * 3a. The given index is invalid.
-    * 3a1. HRelper shows an error message.  
+    * 3a1. HRelper shows an error message.
       Use case resumes at step 2.
 * 3b. HR enters empty note content.
     * 3b1. HRelper removes any existing note from the employee profile.</br>
@@ -557,7 +553,7 @@ Extensions
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be 
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Managing contacts will remain as the core feature in all iterations.
 5. The application should not crash for any input given by the user.
@@ -711,7 +707,7 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
     - Gender and nationality statistics
     - This enhancement gives HR teams quick insights at a glance and supports workforce planning.
 
-10. **Enable editing multiple entries in one command.**  
+10. **Enable editing multiple entries in one command.**
     Currently, the `edit` command only supports updating one person at a time. In many HR workflows, bulk updates are
     needed (e.g., changing job titles for a group of interns or updating department names after restructuring).
 
@@ -725,4 +721,3 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
     - If any index is invalid, the system will display an error message and abort the operation to avoid partial
       updates.
     - This will significantly reduce repetitive commands and improve productivity when handling common changes.
-    

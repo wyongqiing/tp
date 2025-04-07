@@ -40,9 +40,9 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 
 --------------------------------------------------------------------------------------------------------------------
 ## ⚠️ Current HRelper Prototype Overview
-The current version of the HRelper is a prototype designed to showcase its core functionality.   
+The current version of the HRelper is a prototype designed to showcase its core functionality.
 
-* At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.  
+* At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.
 * Since this is just a prototype of how our HRelper works, in real world scenarios, we will customise the valid department list according to the company's needs. Each company should populate the valid department before using HRelper.
 * Attributes marked with an asterisk (*) indicate that they are in their current form because they follow the structure of the prototype.
 
@@ -69,14 +69,14 @@ The current version of the HRelper is a prototype designed to showcase its core 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
    * `clear` : Deletes all contacts.
-   
+
    * `view Lee` : Views the contact by their surname.
-   
+
    * `edit 2 n/Betsy Crower`: Edits the name of the 2nd person to be `Betsy Crower`.
-   
+
    * `findByDepartment Finance` : Lists all contacts in this specific department
-   
-   * `note`: Adds optional remarks to people in their address book and edit it if required. 
+
+   * `note`: Adds optional remarks to people in their address book and edit it if required.
 
    * `exit` : Exits the app.
 
@@ -94,7 +94,7 @@ The current version of the HRelper is a prototype designed to showcase its core 
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Words in `SQUARE BRACKETS [ ]` are optional parameters. <br>
-  e.g. in `edit 1 [n/NAME]`, `NAME` is an optional parameter 
+  e.g. in `edit 1 [n/NAME]`, `NAME` is an optional parameter
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -124,7 +124,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 * Phone numbers must be exactly 8 digits long and start with 6, 8, or 9.*
 * NRIC should start with S, T, F, or G, followed by 7 digits, and end with a capital letter.*
 * Gender is case-insensitive but will only take in Male, Female or Other.*
-* All dates (DOB or Date of Joining) must follow one of these formats: dd-MMM-yyyy, dd/MM/yyyy, dd.MM.yyyy, yyyy-MM-dd, or dd-MM-yyyy -> 
+* All dates (DOB or Date of Joining) must follow one of these formats: dd-MMM-yyyy, dd/MM/yyyy, dd.MM.yyyy, yyyy-MM-dd, or dd-MM-yyyy ->
   **Single-digit days and months must be zero-padded (e.g., use 01 instead of 1)**
 * DOB must be a valid date that is not in the future.
 * Date of Joining must be a valid date that is after DOB. Future dates are allowed to account for upcoming hires. (If the contract date is yet to be confirmed, please select the first day of the joining month.)
@@ -336,7 +336,7 @@ Action | Format, Examples
 **Find by Department** | `findByDepartment KEYWORD`<br> e.g., `findByDepartment HR`, `findByDepartment Fin`, `findByDepartment Information Technology` |
 **Find by Job Title** | `findByJobTitle KEYWORD`<br> e.g., `findByJobTitle Engineer`, `findByJobTitle Dev`, `findByJobTitle Coordinator` |
 **Find by Employment Type** | `findByEmploymentType EMPLOYMENT_TYPE`<br> e.g., `findByEmploymentType Full-Time`, `findByEmploymentType Contract` |
-**Note** | `note INDEX NOTE` <br> e.g. note 1 he likes aadvarks 
+**Note** | `note INDEX NOTE` <br> e.g. note 1 he likes aadvarks
 **List** | `list`
 **Help** | `help`
 **View** | `view FULLNAME` `view PARTIALNAME` <br> e.g., `view Alex Yeoh` or `view Yeoh`
@@ -344,8 +344,7 @@ Action | Format, Examples
 ## Valid Departments, Employment Types, Job Titles of HRelper
 
 Here are the valid inputs for the respective fields in this particular working prototype. <br>
-*Companies should customise such fields to fit their own business needs 
-
+*Companies should customise such fields to fit their own business needs
 Fields | Valid Inputs
 --------|------------------
 **Departments** |`Human Resources`, `Finance`, `Accounting`, `Marketing`, `Sales`, `Customer Service`, `Information Technology`, `Research and Development`, `Operations`, `Legal`, `Supply Chain & Logistics`, `Procurement & Purchasing`, `Engineering`, `Quality Assurance`, `Product Management`, `Manufacturing`, `Public Relations`, `Corporate Communications`, `Compliance & Risk Management`, `Business Development`, `Data Science`, `Cybersecurity`, `Software Development`, `UX/UI Design`, `Artificial Intelligence & Machine Learning`, `Training & Development`, `Facilities Management`, `Administration`, `Health & Safety`, `Diversity, Equity & Inclusion`
