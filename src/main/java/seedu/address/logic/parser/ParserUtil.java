@@ -182,7 +182,8 @@ public class ParserUtil {
         }
 
         if (parsedDate == null) {
-            throw new ParseException(Dob.MESSAGE_CONSTRAINTS);
+            throw new ParseException("Invalid date entered. \nPlease enter a real date (e.g. 30-Feb is invalid).\n"
+                    + DateOfJoining.MESSAGE_CONSTRAINTS);
         }
 
         // Always return the date in "dd-MMM-yyyy" format
@@ -227,7 +228,8 @@ public class ParserUtil {
         }
 
         if (parsedDate == null) {
-            throw new ParseException(DateOfJoining.MESSAGE_CONSTRAINTS);
+            throw new ParseException("Invalid date entered. \nPlease enter a real date (e.g. 30-Feb is invalid).\n"
+                    + DateOfJoining.MESSAGE_CONSTRAINTS);
         }
 
         // Always return the date in "dd-MMM-yyyy" format
