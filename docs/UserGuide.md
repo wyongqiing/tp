@@ -23,6 +23,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
     - [Editing a person](#editing-a-person--edit)
     - [Filtering by](#filtering-by-findby)
     - [Deleting a person](#deleting-a-person--delete)
+    - [Adding a note](#adding-a-note--note)
     - [Clearing all entries](#clearing-all-entries--clear)
     - [Exiting the program](#exiting-the-program--exit)
     - [Saving the data](#saving-the-data)
@@ -34,6 +35,8 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
     - [Q3: How do I transfer my data to another computer?](#q3)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
+- [Valid Departments, Employment Types, Job Titles](#valid-departments-employment-types-job-titles)
+- [Valid Short-Forms](#valid-short-forms)
 
 --------------------------------------------------------------------------------------------------------------------
 ## ⚠️ Current HRelper Prototype Overview
