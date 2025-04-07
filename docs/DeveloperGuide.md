@@ -1,9 +1,7 @@
----
-layout: page
-title: Developer Guide
----
+Developer Guide
+=======
+
 * Table of Contents
-{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -420,10 +418,9 @@ Extensions
 **MSS**
 
 1. HR requests to add or edit a note for an employee.
-2. HRelper prompts for the employee index and note content.
-3. HR enters the employee index and new note content.
-4. HRelper updates the employee's profile with the new note.
-5. HRelper confirms the note has been added/updated.</br>
+2. HR enters the employee index and new note content.
+3. HRelper updates the employee's profile with the new note.
+
    Use case ends.
 
 Extensions
@@ -443,9 +440,9 @@ Extensions
 **MSS**
 
 1. HR requests to list employees.
-2. HRelpher shows a list of employees.
+2. HRelper shows a list of employees.
 3. HR requests to delete a specific employee in the list.
-4. HRelpher deletes the employee.
+4. HRelper deletes the employee.
 
    Use case ends.
 
@@ -457,7 +454,7 @@ Extensions
 
 * 3a. The given index is invalid.
 
-    * 3a1. HRelpher shows an error message.
+    * 3a1. HRelper shows an error message.
 
       Use case resumes at step 2.
 
@@ -493,7 +490,7 @@ Extensions
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **HRelpher**: A Human Resource management tool for managing employee profiles efficiently.
+* **HRelper**: A Human Resource management tool for managing employee profiles efficiently.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **UI**: User Interface - the space where interactions between humans (users) and machines (software or hardware) occur
 * **Sequence Diagram**: A visual representation of the sequence of interactions between different objects, components, or actors in a system over time
@@ -509,8 +506,8 @@ Extensions
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+<div markdown="span" class="alert alert-info">Note: These instructions only provide a starting point for testers to work on;
+testers are expected to do more exploratory testing.
 
 </div>
 

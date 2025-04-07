@@ -149,7 +149,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+
+* `add n/John Doe p/98765432 e/johnd@example.com ic/T0235300Z g/Male d/20-May-2001 j/15-Mar-2025 nat/American a/John street, block 123, #01-01 t/Human Resources/Full-Time/HR Coordinator`
 * `add n/David Li p/91031282 e/lidavid@example.com ic/S9819013B g/Male d/31-Oct-1998 j/12-Feb-2025 nat/Chinese a/Blk 436 Serangoon Gardens Street 26, #16-43 t/Finance/Internship/Financial Analyst`
 
 ### Listing all persons : `list`
@@ -191,13 +192,14 @@ HRelper will return to the overview page and display all employees again, with a
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS/POSTAL CODE] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS/POSTAL CODE] [t/DEPARTMENT/EMPLOYMENT TYPE/JOB TITLE]`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Square brackets [ ] represent optional fields
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, even if editing only one item out of all, you need to include all items
+* Note that editing of NRIC is not allowed
 
 
 Examples:
@@ -339,7 +341,7 @@ Action | Format, Examples
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS/POSTAL CODE t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`<br>e.g., `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25/119278 t/Finance/Full-Time/Financial Analyst`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS/POSTAL CODE] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS/POSTAL CODE] [t/DEPARTMENT/EMPLOYMENT TYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find by Department** | `findByDepartment KEYWORD`<br> e.g., `findByDepartment HR`, `findByDepartment Fin`, `findByDepartment Information Technology` |
 **Find by Job Title** | `findByJobTitle KEYWORD`<br> e.g., `findByJobTitle Engineer`, `findByJobTitle Dev`, `findByJobTitle Coordinator` |
 **Find by Employment Type** | `findByEmploymentType EMPLOYMENT_TYPE`<br> e.g., `findByEmploymentType Full-Time`, `findByEmploymentType Contract` |
@@ -347,3 +349,43 @@ Action | Format, Examples
 **List** | `list`
 **Help** | `help`
 **View** | `view FULLNAME [SURNAME]`<br> e.g., `view Alex Yeoh` or `view Yeoh`
+
+## Valid Departments, Employment Types, Job Titles
+
+Here are the valid inputs for the respective fields in this particular working prototype. Companies should customise such fields to fit their own business needs 
+
+Fields | Valid Inputs
+--------|------------------
+**Departments** |`Human Resources, Finance, Accounting, Marketing, Sales, Customer Service, Information Technology, Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, Engineering, Quality Assurance, Product Management, Manufacturing, Public Relations,Corporate Communications, Compliance & Risk Management, Business Development, Data Science, Cybersecurity, Software Development, UX/UI Design, Artificial Intelligence & Machine Learning, Training & Development, Facilities Management, Administration, Health & Safety, Diversity, Equity & Inclusion`
+**Employment Types** |`Full-Time, Part-Time, Contract, Temporary, Internship, Freelance, Apprenticeship, Remote, Hybrid.`
+**Job Titles** |`Software Engineer, Data Analyst, Product Manager, HR Coordinator, Marketing Specialist, Sales Associate, Financial Analyst, Operations Manager, UX Designer, Project Manager, Business Consultant, Mechanical Engineer, Graphic Designer, Customer Support Representative, IT Technician, Electrical Engineer, Legal Advisor, Healthcare Administrator, Content Writer, Cybersecurity Analyst, Network Engineer, Quality Assurance Tester, Recruitment Specialist, Social Media Manager, Supply Chain Manager.`
+**Nationalities** |`Afghan`, `Albanian`, `Algerian`, `American`, `Andorran`, `Angolan`, `Argentine`,`Armenian`, `Australian`, `Austrian`, `Azerbaijani`, `Bahamian`, `Bahraini`,`Bangladeshi`, `Barbadian`, `Belarusian`, `Belgian`, `Belizean`, `Beninese`,`Bhutanese`, `Bolivian`, `Bosnian`, `Botswanan`, `Brazilian`, `British`,`Bruneian`, `Bulgarian`, `Burkinabé`, `Burmese`, `Burundian`, `Cambodian`, `Cameroonian`, `Canadian`, `Cape Verdean`, `Central African`, `Chadian`,`Chilean`, `Chinese`, `Colombian`, `Comorian`, `Congolese`, `Costa Rican`,`Croatian`, `Cuban`, `Cypriot`, `Czech`, `Danish`, `Djiboutian`, `Dominican`,`Dutch`, `Ecuadorian`, `Egyptian`, `Emirati`, `Equatorial Guinean`,`Eritrean`, `Estonian`, `Ethiopian`, `Fijian`, `Filipino`, `Finnish`, `French`,`Gabonese`, `Gambian`, `Georgian`, `German`, `Ghanaian`, `Greek`, `Grenadian`,`Guatemalan`, `Guinean`, `Guyanese`, `Haitian`, `Honduran`, `Hungarian`,`Icelandic`, `Indian`, `Indonesian`, `Iranian`, `Iraqi`, `Irish`, `Israeli`,`Italian`, `Ivorian`, `Jamaican`, `Japanese`, `Jordanian`, `Kazakh`, `Kenyan`,`Kiribati`, `Kuwaiti`, `Kyrgyz`, `Laotian`, `Latvian`, `Lebanese`, `Liberian`,`Libyan`, `Liechtenstein`, `Lithuanian`, `Luxembourgish`, `Malagasy`, `Malawian`,`Malaysian`, `Maldivian`, `Malian`, `Maltese`, `Marshallese`, `Mauritanian`,`Mauritian`, `Mexican`, `Micronesian`, `Moldovan`, `Monacan`, `Mongolian`,`Montenegrin`, `Moroccan`, `Mozambican`, `Namibian`, `Nauruan`, `Nepalese`,`New Zealander`, `Nicaraguan`, `Nigerien`, `Nigerian`, `North Korean`,`North Macedonian`, `Norwegian`, `Omani`, `Pakistani`, `Palauan`, `Palestinian`,`Panamanian`, `Papua New Guinean`, `Paraguayan`, `Peruvian`, `Polish`, `Portuguese`,`Qatari`, `Romanian`, `Russian`, `Rwandan`, `Saint Lucian`, `Salvadoran`, `Samoan`,`Saudi Arabian`, `Scottish`, `Senegalese`, `Serbian`, `Seychellois`, `Sierra Leonean`,`Singaporean`, `Slovak`, `Slovenian`, `Solomon Islander`, `Somali`, `South African`,`South Korean`, `South Sudanese`, `Spanish`, `Sri Lankan`, `Sudanese`, `Surinamese`,`Swazi`, `Swedish`, `Swiss`, `Syrian`, `Tajik`, `Tanzanian`, `Thai`, `Timorese`,`Togolese`, `Tongan`, `Trinidadian`, `Tunisian`, `Turkish`, `Turkmen`, `Tuvaluan`,`Ugandan`, `Ukrainian`, `Uruguayan`, `Uzbek`, `Vanuatuan`, `Venezuelan`, `Vietnamese`,`Welsh`, `Yemeni`, `Zambian`, `Zimbabwean`
+
+# Valid Short-Forms
+
+Please refer to the table for some valid short-form `department` tag inputs. The `department` to `short-form name` mapping is as follows
+
+| Department Name                                | Short-form    |
+|------------------------------------------------|---------------|
+| **Human resources**                            | `HR`          |
+| **Customer Service**                           | `CS`          |
+| **Information Technology**                     | `IT`          |
+| **Research and Development**                   | `R&D`         |
+| **Supply Chain & Logistics**                   | `SCM`         |
+| **Procurement & Purchasing**                   | `Procurement` |
+| **Quality Assurance**                          | `QA`          |
+| **Product Management**                         | `PR`          | 
+| **Corporate Communications**                   | `CorpComm`    |
+| **Business Development**                       | `BizDev`      |
+| **Data Science**                               | `DS`          |
+| **Cybersecurity**                              | `CyberSec`    |
+| **Software Development**                       | `SD`          |
+| **UX/UI Design**                               | `UX/UI`       |
+| **Artificial Intelligence & Machine Learning** | `AI/ML`       |
+| **Training & Development**                     | `T&D`         |
+| **Facilities Management**                      | `FM`          |
+| **Health & Safety**                            | `H&S`         |
+| **Diversity, Equity & Inclusion**              | `DEI`         |
+
+Note: `Finance` `Accounting` `Marketing` `Sales` `Operations` `Legal` `Engineering`
+`Manufacturing` `Public Relations` `Administration` <br> tags do not have valid short-forms
