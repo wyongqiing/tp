@@ -95,7 +95,7 @@ The current version of the HRelper is a prototype designed to showcase its core 
    
    * `findByDepartment Finance` : Lists all contacts in this specific department
    
-   * `note`: add optional remarks to people in their address book and edit it if required. 
+   * `note`: Adds optional remarks to people in their address book and edit it if required. 
 
    * `exit` : Exits the app.
 
@@ -139,14 +139,16 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 * Names are case-insensitive. The profile will automatically capitalise the first letter of each word and convert all other letters to lowercase.
 * Phone numbers must be exactly 8 digits long and start with 6, 8, or 9.*
 * NRIC should start with S, T, F, or G, followed by 7 digits, and end with a capital letter.*
-* Gender is case-sensitive and will only take in Male, Female or Other.*
-* Nationality follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
+* Gender is not case-sensitive but will only take in Male, Female or Other.*
+* Nationality is not case-sensitive but follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
+
+**To note: Each person is unique based on their NRIC**
 
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/David Li p/91031282 e/lidavid@example.com ic/S9819013B g/Male d/31-Oct-1998 j/12-Feb-2025 nat/Chinese a/Blk 436 Serangoon Gardens Street 26, #16-43 t/Finance/Internship/Financial Analyst`
+* `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25/119278 t/Finance/Full-Time/Financial Analyst`
+
 
 ### Listing all persons : `list`
 

@@ -3,6 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Set;
+
 /**
  * Represents a Person's gender in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidGender(String)}
@@ -10,7 +12,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Gender {
     public static final String MESSAGE_CONSTRAINTS =
             "Gender should only be either 'Male', 'Female' or 'Other', and should not be left blank";
-    public static final String VALIDATION_REGEX = "Male|Female|Other";
+
+    private static final Set<String> VALID_GENDERS = Set.of("Male", "Female", "Other");
 
     public final String value;
 
@@ -22,11 +25,25 @@ public class Gender {
     public Gender(String gender) {
         requireNonNull(gender);
         checkArgument(isValidGender(gender), MESSAGE_CONSTRAINTS);
-        value = gender;
+        value = capitalize(gender);
     }
 
-    public static boolean isValidGender(String test) {
-        return test.matches(VALIDATION_REGEX);
+    /**
+     * Returns if Gender is valid
+     */
+    public static boolean isValidGender(String gender) {
+        if (gender == null) {
+            throw new NullPointerException(MESSAGE_CONSTRAINTS); // throw NullPointerException instead
+        }
+        return VALID_GENDERS.stream()
+                .anyMatch(validGender -> validGender.equalsIgnoreCase(gender));
+    }
+
+    /**
+     * Capitalizes the gender input (e.g., "male" -> "Male")
+     */
+    private static String capitalize(String gender) {
+        return gender.substring(0, 1).toUpperCase() + gender.substring(1).toLowerCase();
     }
 
     @Override

@@ -85,12 +85,36 @@ public class Nationality {
     public Nationality(String nationality) {
         requireNonNull(nationality);
         checkArgument(isValidNationality(nationality), MESSAGE_CONSTRAINTS);
-        value = nationality;
+        this.value = capitalize(nationality);
     }
 
+    /**
+     * Returns if Nationality is valid
+     */
     public static boolean isValidNationality(String nationality) {
-        return VALID_NATIONALITIES.contains(nationality);
+        if (nationality == null) {
+            throw new NullPointerException(MESSAGE_CONSTRAINTS); // throw NullPointerException instead
+        }
+        return VALID_NATIONALITIES.stream()
+                .anyMatch(validNationality -> validNationality.equalsIgnoreCase(nationality));
     }
+
+    /**
+     * Capitalises the first letter of the input
+     */
+    private static String capitalize(String nationality) {
+        // Convert to proper case (e.g., "american" -> "American")
+        String[] words = nationality.split(" ");
+        StringBuilder capitalizedNationality = new StringBuilder();
+        for (String word : words) {
+            if (capitalizedNationality.length() > 0) {
+                capitalizedNationality.append(" ");
+            }
+            capitalizedNationality.append(word.substring(0, 1).toUpperCase()).append(word.substring(1).toLowerCase());
+        }
+        return capitalizedNationality.toString();
+    }
+
 
     @Override
     public String toString() {
