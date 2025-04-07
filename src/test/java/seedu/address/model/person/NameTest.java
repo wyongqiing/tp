@@ -34,6 +34,7 @@ public class NameTest {
         // valid name
         assertTrue(Name.isValidName("Peter Jack"));
         assertTrue(Name.isValidName("Capital Tan"));
+        assertTrue(Name.isValidName("CapitalTan")); // no spaces
         assertTrue(Name.isValidName("David Roger Jackson Ray Jr")); // long names
     }
 
