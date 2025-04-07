@@ -43,7 +43,12 @@ public class ParserUtil {
         String trimmedIndex = oneBasedIndex.trim();
 
         try {
-            Integer.parseInt(trimmedIndex);
+            long parsedIndex = Long.parseLong(trimmedIndex);
+
+            if (parsedIndex > Integer.MAX_VALUE || parsedIndex < Integer.MIN_VALUE) {
+                throw new ParseException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
+
         } catch (NumberFormatException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), e);
         }
