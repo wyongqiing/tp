@@ -176,12 +176,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleHome() {
         logger.fine("Home button clicked - Navigating back to Home view.");
-
+        logic.showAllPersons(); // Reset the filtered list
         homePersonCardPanelPlaceholder.getChildren().clear();
-
         homePersonCardPanel = new HomePersonCardPanel(logic.getAddressBook().getPersonList());
-
-        // Add the home panel back into the placeholder
         homePersonCardPanelPlaceholder.getChildren().add(homePersonCardPanel.getRoot());
         resultDisplay.setFeedbackToUser("Returned to Home");
     }
