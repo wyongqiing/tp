@@ -52,7 +52,7 @@ The current version of the HRelper is a prototype designed to showcase its core 
 
 1. Copy the file to the folder you want to use as the _home folder_ for HRelper.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar hrelper.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar [CS2103-F14-02][HRelper].jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/UI.png)
 
@@ -90,6 +90,9 @@ The current version of the HRelper is a prototype designed to showcase its core 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
+* Words in `SQUARE BRACKETS [ ]` are optional parameters. <br>
+  e.g. in `edit 1 [n/NAME]`, `NAME` is an optional parameter 
+
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
@@ -121,8 +124,9 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 * All dates (DOB or Date of Joining) must follow one of these formats: dd-MMM-yyyy, dd/MM/yyyy, dd.MM.yyyy, yyyy-MM-dd, or dd-MM-yyyy -> 
   **Single-digit days and months must be zero-padded (e.g., use 01 instead of 1)**
 * DOB must be a valid date that is not in the future.
-* Date of Joining must be a valid date. Future dates are allowed to account for upcoming hires. (If the contract date is yet to be confirmed, please select the first day of the joining month.)
+* Date of Joining must be a valid date that is after DOB. Future dates are allowed to account for upcoming hires. (If the contract date is yet to be confirmed, please select the first day of the joining month.)
 * Nationality is case-insensitive but follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
+* Address follows postal codes (specifically, the Postal Sector) defined by the [Urban Redevelopment Authority (URA)](https://www.ura.gov.sg/Corporate/-/media/Corporate/Property/PMI-Online/List_Of_Postal_Districts.pdf).
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
 **To note: Each person is unique based on their NRIC**
@@ -140,19 +144,22 @@ Format: `list`
 
 ### Viewing a profile: `view`
 
-Displays the full profile of an employee by matching their **full name** or **surname**.
+Displays the full profile of an employee by matching their **full name** or **partial name**.
 
-Format: `view FULLNAME` or `view SURNAME`
+Format: `view FULLNAME` or `view PARTIALNAME`
 
+* A partial name: one FULL word of a full name<br> e.g `David` of `David Li Wen Jun`
 * The search is **case-insensitive**.<br> e.g `hans` will match `Hans`
 * ⚠️ Order matters for full names.<br> e.g. `Hans Bo` will not match `Bo Hans`
 * Only the name is searched.
-* **Exact word match only** - partial names won't be matched.<br> e.g. `Han` will not match `Hans`
-* Persons matching the surname or full name will be returned (i.e. `OR` search).<br>
-  e.g. `Bo` will return name with same surname  `Hans Bo`, `Ling Bo` <br> e.g. `Hans Bo` will return `Hans Bo`
+* **Exact word match only** - prefix names won't be matched.<br> e.g. `Han` will not match `Hans`
+* Persons matching the partial name or full name will be returned (i.e. `OR` search).<br>
+  e.g. `view Bo` will return name with same partial name  `Hans Bo`, `Ling Bo` <br> e.g. `view Hans Bo` will return `Hans Bo`
 
 Examples:
 * `view David Li`
+* `view David`
+* `view Li`
 
 ![view_profile](images/ViewImage.png)
 
@@ -166,7 +173,7 @@ HRelper will return to the overview page and display all employees again, with a
 **Returned to Home**
 
 <table> <tr> <td align="center"><strong>Before returning to Home</strong><br><br> <img src="images/BeforeHome.png" alt="Before returning to home" width="400"/> </td> <td align="center"><strong>After returning to Home</strong><br><br> <img src="images/AfterHome.png" alt="images/AfterHome" width="400"/> </td> </tr> </table>
-<div markdown="span" class="alert alert-warning">SHORTCUT: press `F2` to navigate back to home page</div>
+<div markdown="span" class="alert alert-warning">SHORTCUT: press F2 to navigate back to home page</div>
 
 ### Editing a person : `edit`
 
@@ -180,6 +187,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF J
 * Existing values will be updated to the input values.
 * When editing tags, even if editing only one item out of all, you need to include all items
 * Note that editing of NRIC is not allowed
+* *Refer back to `add` command for validity of inputs
 
 
 Examples:
@@ -189,6 +197,8 @@ Examples:
 
 ### Filtering by: `findBy...`
 Filters the contacts by their department, job title, or employment type.
+
+*Refer to table of valid inputs and short-forms for HRelper
 
 #### `findByDepartment`
 Format: `findByDepartment KEYWORD`
@@ -202,8 +212,8 @@ Format: `findByDepartment KEYWORD`
 Examples:
 * `findByDepartment Finance` returns all contacts in the Finance department
 * `findByDepartment HR` returns all contacts in the Human Resources department
-* `findByDepartment Acc` returns all contacts in the Accounting department
-* `findByDepartment Sof` returns all contacts in the Software Development department
+* `findByDepartment Inf` returns all contacts in the Information Technology department
+* `findByDepartment Tec` returns all contacts in the Information Technology department
 
 #### `findByJobTitle`
 Format: `findByJobTitle KEYWORD`
@@ -225,7 +235,6 @@ Format: `findByEmploymentType EMPLOYMENT_TYPE`
 * Finds contacts with the specified employment type
 * Search must use exact employment type terms or their common variations
 * Only alphabetic characters and hyphens are allowed in search terms
-* Supported employment types: Full-Time, Part-Time, Contract, Internship
 
 Examples:
 * `findByEmploymentType Full-Time` returns all full-time employees
@@ -249,19 +258,18 @@ Examples:
 ### Adding a note : `note`
 
 Adds a note to the specified person from the address book.
- 
+
 Format: `note INDEX [NOTE]`
 
 * Adds a note to the person at the specified `INDEX`. The index refers to the position of the person in the currently displayed list on the GUI. The index **must be a positive integer** 1, 2, 3, …​
-* Square brackets [ ] represent optional fields
-* `NOTE` can be any string input 
-* Existing note value will be updated to the input value
+* Square brackets [ ] represent optional fields.
+* `NOTE` can be any string input.
+* Existing note value will be updated to the input value.
+* If the input is an empty string, the note will be reset.
+<br> `note 1`
 
 Examples:
 * `note 1 they/them`
-
-To update field to an empty string i.e. pseudo-delete 
-* `note 1`
 
 ### Clearing all entries : `clear`
 
@@ -303,14 +311,14 @@ _Details coming soon ..._
 **A**: Yes! Use commands like `findByDepartment`, `findByJobTitle`, or `findByEmploymentType`.
 Example: `findByDepartment Marketing` will show all employees in the Marketing department.
 
-### <a id="q3"></a>Q3: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous HRelper home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+3. HRelper currently does not validate whether email addresses are real, allowing users to input non-existent or invalid emails.
+4. HRelper does not currently verify the authenticity of user-provided addresses, which may result in the submission of inaccurate or non-existent locations.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -325,47 +333,48 @@ Action | Format, Examples
 **Find by Department** | `findByDepartment KEYWORD`<br> e.g., `findByDepartment HR`, `findByDepartment Fin`, `findByDepartment Information Technology` |
 **Find by Job Title** | `findByJobTitle KEYWORD`<br> e.g., `findByJobTitle Engineer`, `findByJobTitle Dev`, `findByJobTitle Coordinator` |
 **Find by Employment Type** | `findByEmploymentType EMPLOYMENT_TYPE`<br> e.g., `findByEmploymentType Full-Time`, `findByEmploymentType Contract` |
-**Note** | `note INDEX NOTE` e.g. note 1 he likes aadvarks 
+**Note** | `note INDEX NOTE` <br> e.g. note 1 he likes aadvarks 
 **List** | `list`
 **Help** | `help`
-**View** | `view FULLNAME [SURNAME]`<br> e.g., `view Alex Yeoh` or `view Yeoh`
+**View** | `view FULLNAME` `view PARTIALNAME` <br> e.g., `view Alex Yeoh` or `view Yeoh`
 
-## Valid Departments, Employment Types, Job Titles
+## Valid Departments, Employment Types, Job Titles of HRelper
 
-Here are the valid inputs for the respective fields in this particular working prototype. Companies should customise such fields to fit their own business needs 
+Here are the valid inputs for the respective fields in this particular working prototype. <br>
+*Companies should customise such fields to fit their own business needs 
 
 Fields | Valid Inputs
 --------|------------------
-**Departments** |`Human Resources, Finance, Accounting, Marketing, Sales, Customer Service, Information Technology, Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, Engineering, Quality Assurance, Product Management, Manufacturing, Public Relations,Corporate Communications, Compliance & Risk Management, Business Development, Data Science, Cybersecurity, Software Development, UX/UI Design, Artificial Intelligence & Machine Learning, Training & Development, Facilities Management, Administration, Health & Safety, Diversity, Equity & Inclusion`
-**Employment Types** |`Full-Time, Part-Time, Contract, Temporary, Internship, Freelance, Apprenticeship, Remote, Hybrid.`
-**Job Titles** |`Software Engineer, Data Analyst, Product Manager, HR Coordinator, Marketing Specialist, Sales Associate, Financial Analyst, Operations Manager, UX Designer, Project Manager, Business Consultant, Mechanical Engineer, Graphic Designer, Customer Support Representative, IT Technician, Electrical Engineer, Legal Advisor, Healthcare Administrator, Content Writer, Cybersecurity Analyst, Network Engineer, Quality Assurance Tester, Recruitment Specialist, Social Media Manager, Supply Chain Manager.`
-**Nationalities** |`Afghan`, `Albanian`, `Algerian`, `American`, `Andorran`, `Angolan`, `Argentine`,`Armenian`, `Australian`, `Austrian`, `Azerbaijani`, `Bahamian`, `Bahraini`,`Bangladeshi`, `Barbadian`, `Belarusian`, `Belgian`, `Belizean`, `Beninese`,`Bhutanese`, `Bolivian`, `Bosnian`, `Botswanan`, `Brazilian`, `British`,`Bruneian`, `Bulgarian`, `Burkinabé`, `Burmese`, `Burundian`, `Cambodian`, `Cameroonian`, `Canadian`, `Cape Verdean`, `Central African`, `Chadian`,`Chilean`, `Chinese`, `Colombian`, `Comorian`, `Congolese`, `Costa Rican`,`Croatian`, `Cuban`, `Cypriot`, `Czech`, `Danish`, `Djiboutian`, `Dominican`,`Dutch`, `Ecuadorian`, `Egyptian`, `Emirati`, `Equatorial Guinean`,`Eritrean`, `Estonian`, `Ethiopian`, `Fijian`, `Filipino`, `Finnish`, `French`,`Gabonese`, `Gambian`, `Georgian`, `German`, `Ghanaian`, `Greek`, `Grenadian`,`Guatemalan`, `Guinean`, `Guyanese`, `Haitian`, `Honduran`, `Hungarian`,`Icelandic`, `Indian`, `Indonesian`, `Iranian`, `Iraqi`, `Irish`, `Israeli`,`Italian`, `Ivorian`, `Jamaican`, `Japanese`, `Jordanian`, `Kazakh`, `Kenyan`,`Kiribati`, `Kuwaiti`, `Kyrgyz`, `Laotian`, `Latvian`, `Lebanese`, `Liberian`,`Libyan`, `Liechtenstein`, `Lithuanian`, `Luxembourgish`, `Malagasy`, `Malawian`,`Malaysian`, `Maldivian`, `Malian`, `Maltese`, `Marshallese`, `Mauritanian`,`Mauritian`, `Mexican`, `Micronesian`, `Moldovan`, `Monacan`, `Mongolian`,`Montenegrin`, `Moroccan`, `Mozambican`, `Namibian`, `Nauruan`, `Nepalese`,`New Zealander`, `Nicaraguan`, `Nigerien`, `Nigerian`, `North Korean`,`North Macedonian`, `Norwegian`, `Omani`, `Pakistani`, `Palauan`, `Palestinian`,`Panamanian`, `Papua New Guinean`, `Paraguayan`, `Peruvian`, `Polish`, `Portuguese`,`Qatari`, `Romanian`, `Russian`, `Rwandan`, `Saint Lucian`, `Salvadoran`, `Samoan`,`Saudi Arabian`, `Scottish`, `Senegalese`, `Serbian`, `Seychellois`, `Sierra Leonean`,`Singaporean`, `Slovak`, `Slovenian`, `Solomon Islander`, `Somali`, `South African`,`South Korean`, `South Sudanese`, `Spanish`, `Sri Lankan`, `Sudanese`, `Surinamese`,`Swazi`, `Swedish`, `Swiss`, `Syrian`, `Tajik`, `Tanzanian`, `Thai`, `Timorese`,`Togolese`, `Tongan`, `Trinidadian`, `Tunisian`, `Turkish`, `Turkmen`, `Tuvaluan`,`Ugandan`, `Ukrainian`, `Uruguayan`, `Uzbek`, `Vanuatuan`, `Venezuelan`, `Vietnamese`,`Welsh`, `Yemeni`, `Zambian`, `Zimbabwean`
+**Departments** |`Human Resources`, `Finance`, `Accounting`, `Marketing`, `Sales`, `Customer Service`, `Information Technology`, `Research and Development`, `Operations`, `Legal`, `Supply Chain & Logistics`, `Procurement & Purchasing`, `Engineering`, `Quality Assurance`, `Product Management`, `Manufacturing`, `Public Relations`, `Corporate Communications`, `Compliance & Risk Management`, `Business Development`, `Data Science`, `Cybersecurity`, `Software Development`, `UX/UI Design`, `Artificial Intelligence & Machine Learning`, `Training & Development`, `Facilities Management`, `Administration`, `Health & Safety`, `Diversity, Equity & Inclusion`
+**Employment Types** |`Full-Time`, `Part-Time`, `Contract`, `Temporary`, `Internship`, `Freelance`, `Apprenticeship`, `Remote`, `Hybrid`
+**Job Titles** | `Software Engineer`, `Data Analyst`, `Product Manager`, `HR Coordinator`, `Marketing Specialist`, `Sales Associate`, `Financial Analyst`, `Operations Manager`, `UX Designer`, `Project Manager`, `Business Consultant`, `Mechanical Engineer`, `Graphic Designer`, `Customer Support Representative`, `IT Technician`, `Electrical Engineer`, `Legal Advisor`, `Healthcare Administrator`, `Content Writer`, `Cybersecurity Analyst`, `Network Engineer`, `Quality Assurance Tester`, `Recruitment Specialist`, `Social Media Manager`, `Supply Chain Manager`
+**Nationalities** |`Afghan`, `Albanian`, `Algerian`, `American`, `Andorran`, `Angolan`, `Argentine`,`Armenian`, `Australian`, `Austrian`, `Azerbaijani`, `Bahamian`, `Bahraini`,`Bangladeshi`, `Barbadian`, `Belarusian`, `Belgian`, `Belizean`, `Beninese`,`Bhutanese`, `Bolivian`, `Bosnian`, `Botswanan`, `Brazilian`, `British`,`Bruneian`, `Bulgarian`, `Burkinabé`, `Burmese`, `Burundian`, `Cambodian`, `Cameroonian`, `Canadian`, `Cape Verdean`, `Central African`, `Chadian`,`Chilean`, `Chinese`, `Colombian`, `Comorian`, `Congolese`, `Costa Rican`,`Croatian`, `Cuban`, `Cypriot`, `Czech`, `Danish`, `Djiboutian`, `Dominican`,`Dutch`, `Ecuadorian`, `Egyptian`, `Emirati`, `Equatorial Guinean`,`Eritrean`, `Estonian`, `Ethiopian`, `Fijian`, `Filipino`, `Finnish`, `French`,`Gabonese`, `Gambian`, `Georgian`, `German`, `Ghanaian`, `Greek`, `Grenadian`,`Guatemalan`, `Guinean`, `Guyanese`, `Haitian`, `Honduran`, `Hungarian`,`Icelandic`, `Indian`, `Indonesian`, `Iranian`, `Iraqi`, `Irish`, `Israeli`,`Italian`, `Ivorian`, `Jamaican`, `Japanese`, `Jordanian`, `Kazakh`, `Kenyan`,`Kiribati`, `Kuwaiti`, `Kyrgyz`, `Laotian`, `Latvian`, `Lebanese`, `Liberian`,`Libyan`, `Liechtenstein`, `Lithuanian`, `Luxembourgish`, `Malagasy`, `Malawian`,`Malaysian`, `Maldivian`, `Malian`, `Maltese`, `Marshallese`, `Mauritanian`,`Mauritian`, `Mexican`, `Micronesian`, `Moldovan`, `Monacan`, `Mongolian`,`Montenegrin`, `Moroccan`, `Mozambican`, `Namibian`, `Nauruan`, `Nepalese`,`New Zealander`, `Nicaraguan`, `Nigerien`, `Nigerian`, `North Korean`,`North Macedonian`, `Norwegian`, `Omani`, `Pakistani`, `Palauan`, `Palestinian`,`Panamanian`, `Papua New Guinean`, `Paraguayan`, `Peruvian`, `Polish`, `Portuguese`,`Qatari`, `Romanian`, `Russian`, `Rwandan`, `Saint Lucian`, `Salvadoran`, `Samoan`,`Saudi Arabian`, `Scottish`, `Senegalese`, `Serbian`, `Seychellois`, `Sierra Leonean`,`Singaporean`, `Slovak`, `Slovenian`, `Solomon Islander`, `Somali`, `South African`,`South Korean`, `South Sudanese`, `Spanish`, `Sri Lankan`, `Sudanese`, `Surinamese`,`Swazi`, `Swedish`, `Swiss`, `Syrian`, `Tajik`, `Tanzanian`, `Thai`, `Timorese`,`Togolese`, `Tongan`, `Trinidadian`, `Tunisian`, `Turkish`, `Turkmen`, `Tuvaluan`,`Ugandan`, `Ukrainian`, `Uruguayan`, `Uzbek`, `Vanuatuan`, `Venezuelan`, `Vietnamese`,`Welsh`, `Yemeni`, `Zambian`, `Zimbabwean`, `Other`
 
-# Valid Short-Forms
+# Valid Short-Forms of HRelper
 
 Please refer to the table for some valid short-form `department` tag inputs. The `department` to `short-form name` mapping is as follows
 
-| Department Name                                | Short-form    |
-|------------------------------------------------|---------------|
-| **Human resources**                            | `HR`          |
-| **Customer Service**                           | `CS`          |
-| **Information Technology**                     | `IT`          |
-| **Research and Development**                   | `R&D`         |
-| **Supply Chain & Logistics**                   | `SCM`         |
+| Department Name                                | Short-form |
+|------------------------------------------------|-----------|
+| **Human resources**                            | `HR`      |
+| **Customer Service**                           | `CS`      |
+| **Information Technology**                     | `IT`      |
+| **Research and Development**                   | `R&D`     |
+| **Supply Chain & Logistics**                   | `SCM`     |
 | **Procurement & Purchasing**                   | `Procurement` |
-| **Quality Assurance**                          | `QA`          |
-| **Product Management**                         | `PR`          | 
-| **Corporate Communications**                   | `CorpComm`    |
-| **Business Development**                       | `BizDev`      |
-| **Data Science**                               | `DS`          |
-| **Cybersecurity**                              | `CyberSec`    |
-| **Software Development**                       | `SD`          |
-| **UX/UI Design**                               | `UX/UI`       |
-| **Artificial Intelligence & Machine Learning** | `AI/ML`       |
-| **Training & Development**                     | `T&D`         |
-| **Facilities Management**                      | `FM`          |
-| **Health & Safety**                            | `H&S`         |
-| **Diversity, Equity & Inclusion**              | `DEI`         |
+| **Quality Assurance**                          | `QA`      |
+| **Product Management**                         | `PR`      | 
+| **Corporate Communications**                   | `CorpComm` |
+| **Business Development**                       | `BizDev`  |
+| **Data Science**                               | `DS`      |
+| **Cybersecurity**                              | `CyberSec` |
+| **Software Development**                       | `SD`      |
+| **UX/UI Design**                               | `UX&UI`   |
+| **Artificial Intelligence & Machine Learning** | `AI&ML`   |
+| **Training & Development**                     | `T&D`     |
+| **Facilities Management**                      | `FM`      |
+| **Health & Safety**                            | `H&S`     |
+| **Diversity, Equity & Inclusion**              | `DEI`     |
 
 Note: `Finance` `Accounting` `Marketing` `Sales` `Operations` `Legal` `Engineering`
 `Manufacturing` `Public Relations` `Administration` <br> tags do not have valid short-forms

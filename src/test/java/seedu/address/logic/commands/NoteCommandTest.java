@@ -37,12 +37,13 @@ public class NoteCommandTest {
 
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_PERSON, new Note(editedPerson.getNote().value));
 
-        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, Messages.format(editedPerson));
+        String expectedMessage = NoteCommand.MESSAGE_ADD_NOTE_SUCCESS + " Name: " + editedPerson.getName().toString()
+                + "  Nric: " + editedPerson.getNric().toString() + "  Note: " + editedPerson.getNote().toString();
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 
-        assertCommandSuccess(noteCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(noteCommand, model, expectedMessage, model);
     }
 
     @Test
@@ -55,12 +56,13 @@ public class NoteCommandTest {
 
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_PERSON, new Note(editedPerson.getNote().value));
 
-        String expectedMessage = String.format(NoteCommand.MESSAGE_ADD_NOTE_SUCCESS, Messages.format(editedPerson));
+        String expectedMessage = NoteCommand.MESSAGE_ADD_NOTE_SUCCESS + " Name: " + editedPerson.getName().toString()
+                + "  Nric: " + editedPerson.getNric().toString() + "  Note: " + editedPerson.getNote().toString();
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 
-        assertCommandSuccess(noteCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(noteCommand, model, expectedMessage, model);
     }
 
     @Test

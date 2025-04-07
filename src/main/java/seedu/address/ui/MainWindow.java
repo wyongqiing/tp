@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private HomePersonCardPanel homePersonCardPanel;
     private PersonListPanel personListPanel;
+    private PersonNoteListPanel personNoteListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -145,6 +146,14 @@ public class MainWindow extends UiPart<Stage> {
         homePersonCardPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
+    private void switchToPersonNoteView() {
+        isDetailedView = true;
+
+        homePersonCardPanelPlaceholder.getChildren().clear();
+
+        personNoteListPanel = new PersonNoteListPanel(logic.getFilteredPersonList());
+        homePersonCardPanelPlaceholder.getChildren().add(personNoteListPanel.getRoot());
+    }
 
     /**
      * Sets the default size based on {@code guiSettings}.
@@ -233,6 +242,8 @@ public class MainWindow extends UiPart<Stage> {
             if (commandText.toLowerCase().startsWith("view ") || commandText.toLowerCase().startsWith("list")
                     || commandText.toLowerCase().startsWith("edit ")) {
                 switchToPersonListView();
+            } else if (commandText.toLowerCase().startsWith("note ")) {
+                switchToPersonNoteView();
             } else {
                 if (isDetailedView) {
                     handleMinimalView();
@@ -256,4 +267,7 @@ public class MainWindow extends UiPart<Stage> {
         homePersonCardPanel = new HomePersonCardPanel(logic.getFilteredPersonList());
         homePersonCardPanelPlaceholder.getChildren().add(homePersonCardPanel.getRoot());
     }
+
+
 }
+

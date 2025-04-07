@@ -29,6 +29,7 @@ public class DepartmentTest {
         assertFalse(Department.isValidDepartment("#Human Resources"));
 
         // valid departments
+        assertTrue(Department.isValidDepartment("hr"));
         assertTrue(Department.isValidDepartment("Human Resources"));
         assertTrue(Department.isValidDepartment("Human  Resources")); // extra space between words
         assertTrue(Department.isValidDepartment("Marketing"));
@@ -36,6 +37,26 @@ public class DepartmentTest {
         assertTrue(Department.isValidDepartment("    Marketing")); // extra spaces before word
         assertTrue(Department.isValidDepartment("marketing")); // non capital letter
         assertTrue(Department.isValidDepartment("marKEting")); // different capitalizations
+    }
+
+    @Test
+    public void isValidDepartmentInput() {
+        // null department
+        assertThrows(NullPointerException.class, () -> Department.isValidDepartmentInput(null));
+
+        // invalid departments
+        assertFalse(Department.isValidDepartmentInput(""));
+        assertFalse(Department.isValidDepartmentInput("#Human Resources"));
+
+        // valid departments
+        assertTrue(Department.isValidDepartmentInput("hr"));
+        assertTrue(Department.isValidDepartmentInput("Human Resources"));
+        assertTrue(Department.isValidDepartmentInput("Human  Resources")); // extra space between words
+        assertTrue(Department.isValidDepartmentInput("Marketing"));
+        assertTrue(Department.isValidDepartmentInput("Marketing    ")); // extra spaces after word
+        assertTrue(Department.isValidDepartmentInput("    Marketing")); // extra spaces before word
+        assertTrue(Department.isValidDepartmentInput("marketing")); // non capital letter
+        assertTrue(Department.isValidDepartmentInput("marKEting")); // different capitalizations
     }
 
     @Test

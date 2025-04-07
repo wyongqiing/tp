@@ -121,14 +121,15 @@ public class AddCommandParser implements Parser<AddCommand> {
         Gender gender = ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).get());
         Dob dob = ParserUtil.parseDob(argMultimap.getValue(PREFIX_DOB).get());
         DateOfJoining dateOfJoining = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
-        Nationality nationality = ParserUtil.parseNationality(argMultimap.getValue(PREFIX_NATIONALITY).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Note note = new Note("");
-        Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
 
         if (!dateOfJoining.toLocalDate().isAfter(dob.toLocalDate())) {
             throw new ParseException("Date of Joining must be after DOB.");
         }
+
+        Nationality nationality = ParserUtil.parseNationality(argMultimap.getValue(PREFIX_NATIONALITY).get());
+        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Note note = new Note("");
+        Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
 
         Person person = new Person(name, phone, email, nric, gender, dob, dateOfJoining,
                 nationality, address, note, tag);
