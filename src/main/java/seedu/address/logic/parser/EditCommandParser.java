@@ -16,6 +16,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Dob;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -59,6 +60,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setGender(ParserUtil.parseGender(argMultimap.getValue(PREFIX_GENDER).get()));
         }
         if (argMultimap.getValue(PREFIX_DOB).isPresent()) {
+            Dob dob = ParserUtil.parseDob(argMultimap.getValue(PREFIX_DOB).get());
             editPersonDescriptor.setDob(ParserUtil.parseDob(argMultimap.getValue(PREFIX_DOB).get()));
         }
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
