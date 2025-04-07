@@ -548,8 +548,21 @@ testers are expected to do more *exploratory* testing.
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Testing data persistence across sessions
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. Add a new person using the `add` command.
 
-1. _{ more test cases …​ }_
+    2. Close the app.
+
+    3. Re-launch the app. </br>
+       Expected: The newly added person should still be present in the list.
+
+You can try out other data changing commands such as `clear`,`delete`, `edit`.
+
+2. Dealing with missing data file
+
+    1. Exit the address book, if it is running.
+    2. delete the `hrelper.json` file inside the folder named `data`. It is located in the same folder as the jar file.
+    3. Relaunch the app. </br>
+       Expected: The app should create a new `hrelper.json` file filled with sample data.
+
