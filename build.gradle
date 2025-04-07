@@ -70,7 +70,7 @@ run {
 }
 
 shadowJar {
-    archiveFileName = '[CS2103-F14-02][HRelper].jar'
+    archiveFileName = '[CS2103T-F14-02][HRelper].jar'
 }
 
 defaultTasks 'clean', 'test'

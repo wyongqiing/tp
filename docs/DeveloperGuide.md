@@ -594,7 +594,7 @@ testers are expected to do more exploratory testing.
 
     1. Download the jar file and copy into an empty folder
     2. Open a terminal and `cd` into the folder with the jar file.
-    3. Run `java -jar [CS2103-F14-02][HRelper].jar`.</br>
+    3. Run `java -jar [CS2103T-F14-02][HRelper].jar`.</br>
        Expected: An empty address book will be shown.</br>
        The window size may not be optimum.
 
@@ -602,7 +602,7 @@ testers are expected to do more exploratory testing.
 
     1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-    1. Re-launch the app by rerunning `java -jar [CS2103-F14-02][HRelper].jar` in the terminal.<br>
+    1. Re-launch the app by rerunning `java -jar [CS2103T-F14-02][HRelper].jar` in the terminal.<br>
        Expected: The most recent window size and location is retained.
 
 ### Deleting a person
