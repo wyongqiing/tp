@@ -262,7 +262,12 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
+HRelper is designed for HR teams who:
+
+* manage a significant number of employee records and contact details.
+* find traditional spreadsheets inefficient or cumbersome for day-to-day contact management.
 * has a need to manage a significant number of contacts
+* require a structured system to track details like joining dates, NRICs, and other personal data.
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -285,9 +290,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`   | user     | I can filter contacts by department                              | so that I can quickly see all employees in a specific team.       |
 | `* *`   | user     | I can add an extra optional note to a profile                    | so that I am aware of additional information about an employee         
 | `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
-
-
-*{More to be added}*
 
 ### Use cases
 
@@ -477,6 +479,9 @@ Extensions
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. Managing contacts will remain as the core feature in all iterations.
+5. The application should not crash for any input given by the user.
+6. The application will remain as a CLI based application.
 
 *{More to be added}*
 
@@ -486,6 +491,7 @@ Extensions
 * **HRelpher**: A Human Resource management tool for managing employee profiles efficiently.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **UI**: User Interface - the space where interactions between humans (users) and machines (software or hardware) occur
+* **Sequence Diagram**: A visual representation of the sequence of interactions between different objects, components, or actors in a system over time
 * **API**: Application Programming Interface - A set of rules, protocols, and tools that allows different software applications to communicate and interact with each other
 * **GUI**: Graphical User Interface - A type of user interface that allows users to interact with software applications or devices through graphical elements rather than using text-based commands
 * **JavaFx**: A Java library used for building modern GUIs
