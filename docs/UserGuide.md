@@ -10,28 +10,6 @@ We understand that working in HR means wearing many hats — from onboarding new
 That’s where HRelper comes in. Designed to simplify and streamline your workflow, HRelper helps you manage your employee database efficiently and confidently — so you can spend less time on spreadsheets and more time focusing on people.
 
 --------------------------------------------------------------------------------------------------------------------
-## Callouts Convention
-
-The callout boxes below are used in documentation to enhance readability and provide important contextual information.
-
-<box type="info" seamless>
-
-**Info Box:**
-Provides additional information or context.
-</box>
-
-<box type="tip" seamless>
-
-**Tip Box:**
-Offers helpful tips or suggestions.
-</box>
-
-<box type="warning" seamless>
-
-**Caution Box:**
-Alerts you to potential issues or problems that may arise.
-</box>
---------------------------------------------------------------------------------------------------------------------
 
 ### Table of Contents
 
@@ -188,6 +166,7 @@ HRelper will return to the overview page and display all employees again, with a
 **Returned to Home**
 
 <table> <tr> <td align="center"><strong>Before returning to Home</strong><br><br> <img src="images/BeforeHome.png" alt="Before returning to home" width="400"/> </td> <td align="center"><strong>After returning to Home</strong><br><br> <img src="images/AfterHome.png" alt="images/AfterHome" width="400"/> </td> </tr> </table>
+<div markdown="span" class="alert alert-warning">SHORTCUT: press `F2` to navigate back to home page</div>
 
 ### Editing a person : `edit`
 
