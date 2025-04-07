@@ -361,7 +361,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user    | I can filter contacts by department           | so that I can quickly see all employees in a specific department.        |
 | `* *`    | user    | I can filter contacts by employement type     | so that I can quickly see all employees with a specific employment type. |
 | `* *`    | user    | I can filter contacts by job title            | so that I can quickly see all employees with a specific job title.       |
-| `* *`    | user    | I can add an extra optional note to a profile | so that I am aware of additional information about an employee.          |       
+| `* *`    | user    | I can add an extra optional note to a profile | so that I am aware of additional information about an employee.          |
 
 ### Use cases
 (For all use cases below, the **System** is the `HRelper` and the **Actor** is the `HR manager (HR)`, unless specified
@@ -389,7 +389,7 @@ otherwise)
 
 * 3a. HR enters invalid data for one or more attributes.
     * 3a1. HRelper displays an error message indicating which field is invalid and the expected format.
-    * 3a2. HR corrects the invalid entry.  
+    * 3a2. HR corrects the invalid entry.
       Use case resumes at step 3.
 * 4a. HR decides to change details.
     * 4a1. HR cancels confirmation.
@@ -402,7 +402,7 @@ otherwise)
 
     * 5a1. HRelper saves details.
 
-    * 5a2. HRelper prompts HR to continue where they left off. 
+    * 5a2. HRelper prompts HR to continue where they left off.
       Use case resumes at step 3.
 
 **Use case: Find Employees by Department**
@@ -553,7 +553,7 @@ Extensions
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be 
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Managing contacts will remain as the core feature in all iterations.
 5. The application should not crash for any input given by the user.
@@ -720,4 +720,5 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
     - The command will apply the same changes to all specified records.
     - If any index is invalid, the system will display an error message and abort the operation to avoid partial
       updates.
+    
     - This will significantly reduce repetitive commands and improve productivity when handling common changes.
