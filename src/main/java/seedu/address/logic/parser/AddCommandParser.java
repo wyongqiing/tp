@@ -44,9 +44,47 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_NRIC,
                         PREFIX_GENDER, PREFIX_DOB, PREFIX_DATE, PREFIX_NATIONALITY, PREFIX_ADDRESS, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_NRIC,
-                PREFIX_GENDER, PREFIX_DOB, PREFIX_DATE, PREFIX_NATIONALITY)
-                || !argMultimap.getPreamble().isEmpty()) {
+        // Check for missing required fields
+        StringBuilder missingFields = new StringBuilder();
+
+        if (!argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            missingFields.append("name (n/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+            missingFields.append("phone (p/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
+            missingFields.append("email (e/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_NRIC).isPresent()) {
+            missingFields.append("NRIC (ic/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_GENDER).isPresent()) {
+            missingFields.append("gender (g/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_DOB).isPresent()) {
+            missingFields.append("date of birth (d/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            missingFields.append("date of joining (j/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_NATIONALITY).isPresent()) {
+            missingFields.append("nationality (nat/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
+            missingFields.append("address (a/) ");
+        }
+        if (!argMultimap.getValue(PREFIX_TAG).isPresent()) {
+            missingFields.append("tag (t/: Department/Employment Type/Job Title) ");
+        }
+
+        // If any fields are missing, throw ParseException
+        if (missingFields.length() > 0) {
+            throw new ParseException("Missing required field: " + missingFields.toString().trim());
+        }
+
+        // Check for non-empty preamble
+        if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 

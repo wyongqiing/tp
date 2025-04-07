@@ -278,19 +278,53 @@ public class ParserUtil {
     public static Tag parseTag(String tags) throws ParseException {
         try {
             requireNonNull(tags);
-            String[] tagList = tags.split("/");
-            if (tagList.length != 3 || tags.endsWith("/")) {
+            String trimmedTags = tags.trim();
+
+            // Check if the input is empty after trimming
+            if (trimmedTags.isEmpty()) {
                 throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
             }
-            Department department = new Department(tagList[0]);
-            EmploymentType employmentType = new EmploymentType(tagList[1]);
-            JobTitle jobTitle = new JobTitle(tagList[2]);
+
+            String[] tagList = trimmedTags.split("/");
+
+            // Check for incorrect number of components or ends with /
+            if (tagList.length != 3 || trimmedTags.endsWith("/")) {
+                throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            }
+
+            // Check if any component is empty
+            for (String tagComponent : tagList) {
+                if (tagComponent.trim().isEmpty()) {
+                    throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+                }
+            }
+
+            // Validate and parse each component
+            if (!Department.isValidDepartment(tagList[0].trim())) {
+                throw new ParseException(Department.MESSAGE_CONSTRAINTS);
+            }
+
+            if (!EmploymentType.isValidEmploymentType(tagList[1].trim())) {
+                throw new ParseException(EmploymentType.MESSAGE_CONSTRAINTS);
+            }
+
+            if (!JobTitle.isValidJobTitle(tagList[2].trim())) {
+                throw new ParseException(JobTitle.MESSAGE_CONSTRAINTS);
+            }
+
+            Department department = new Department(tagList[0].trim());
+            EmploymentType employmentType = new EmploymentType(tagList[1].trim());
+            JobTitle jobTitle = new JobTitle(tagList[2].trim());
+
             return new Tag(department, employmentType, jobTitle);
         } catch (NullPointerException e) {
-            throw new NullPointerException(e.getMessage());
+            throw e;
+        } catch (ParseException pe) {
+            throw pe;
         } catch (Exception e) {
             throw new ParseException(e.getMessage());
         }
-
     }
 }
+
+

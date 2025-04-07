@@ -8,7 +8,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
 public class Address {
-    public static final String MESSAGE_CONSTRAINTS = "Addresses should follow the format: [address]/[postal code]\n"
+    public static final String MESSAGE_CONSTRAINTS = "Addresses should follow the format: [ADDRESS]/[POSTAL CODE]\n"
             + "where [address] is the street address and [postal code] is a valid 6-digit Singapore postal code.\n"
             + "The first two digits of the postal code must be a valid Singapore postal district (01-28).\n"
             + "Example: Blk 123 Clementi Avenue 3/123456";
