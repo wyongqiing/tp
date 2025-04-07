@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Note;
@@ -32,9 +30,9 @@ public class NoteCommandParser implements Parser<NoteCommand> {
 
         Index index;
         try {
-            index = ParserUtil.parseIndex(input[0]);
-        } catch (IllegalValueException ive) {
-            throw new ParseException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            index = ParserUtil.parseIndex(input[0], NoteCommand.MESSAGE_USAGE);
+        } catch (ParseException pe) {
+            throw pe;
         }
 
         return input.length == 1 ? new NoteCommand(index, new Note(" ")) : new NoteCommand(index, new Note(input[1]));

@@ -31,7 +31,7 @@ public class NoteCommandParserTest {
 
     @Test
     public void parse_missingCompulsoryField_failure() {
-        String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        String expectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, NoteCommand.MESSAGE_USAGE);
 
         // no parameters
         assertParseFailure(parser, NoteCommand.COMMAND_WORD, expectedMessage);
