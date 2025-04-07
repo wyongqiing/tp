@@ -719,6 +719,5 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
 
     - The command will apply the same changes to all specified records.
     - If any index is invalid, the system will display an error message and abort the operation to avoid partial
-      updates.
-    
+      updates. 
     - This will significantly reduce repetitive commands and improve productivity when handling common changes.

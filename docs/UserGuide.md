@@ -365,7 +365,7 @@ Please refer to the table for some valid short-form `department` tag inputs. The
 | **Supply Chain & Logistics**                   | `SCM`     |
 | **Procurement & Purchasing**                   | `Procurement` |
 | **Quality Assurance**                          | `QA`      |
-| **Product Management**                         | `PR`      | 
+| **Product Management**                         | `PR`      |
 | **Corporate Communications**                   | `CorpComm`|
 | **Business Development**                       | `BizDev`  |
 | **Data Science**                               | `DS`      |
