@@ -20,7 +20,8 @@ public class Name {
      * The first character of the name must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "([A-Z][a-zA-Z]*)(\\s+[A-Z][a-zA-Z]*)*";
+    public static final String VALIDATION_REGEX = "([\\p{L}]+(?:[.\\-'/][\\p{L}]+)*)"
+                                                    + "( ([\\p{L}]+(?:[.\\-'/][\\p{L}]+)*))*";
 
     public final String fullName;
 
