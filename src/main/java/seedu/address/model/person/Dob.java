@@ -3,6 +3,11 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Locale;
+
 /**
  * Represents a Person's dob in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDob(String)}
@@ -20,6 +25,18 @@ public class Dob {
                   + "|\\d{4}-\\d{2}-\\d{2}"
                   + "|\\d{2}-\\d{2}-\\d{4})$";
 
+
+    public static final String DATE_INVALID_MESSAGE = "The date given for DOB is invalid.";
+    public static final String FUTURE_DATE_INVALID = "DOB cannot be in the future.";
+
+    private static final DateTimeFormatter[] DATE_FORMATTERS = new DateTimeFormatter[] {
+            DateTimeFormatter.ofPattern("dd-MMM-yyyy").withLocale(Locale.ENGLISH),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy"),
+            DateTimeFormatter.ofPattern("dd.MM.yyyy"),
+            DateTimeFormatter.ofPattern("dd-MM-yyyy"),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    };
+
     public final String value;
 
     /**
@@ -30,6 +47,7 @@ public class Dob {
     public Dob(String dob) {
         requireNonNull(dob);
         checkArgument(isValidDob(dob), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDate(dob), DATE_INVALID_MESSAGE);
         value = dob;
     }
 
@@ -38,6 +56,38 @@ public class Dob {
      */
     public static boolean isValidDob(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns if a given string is a valid date.
+     */
+    public static boolean isValidDate(String test) {
+        for (DateTimeFormatter formatter : DATE_FORMATTERS) {
+            try {
+                LocalDate date = LocalDate.parse(test, formatter);
+                if (date != null) {
+                    return true; // Valid date
+                }
+                return true;
+            } catch (DateTimeParseException e) {
+                // Try next formatter
+            }
+        }
+        return false;
+    }
+
+    /**
+     * For converting to local date to compare with DateOfJoining
+     */
+    public LocalDate toLocalDate() {
+        for (DateTimeFormatter formatter : DATE_FORMATTERS) {
+            try {
+                return LocalDate.parse(value, formatter);
+            } catch (DateTimeParseException e) {
+                // try next formatter
+            }
+        }
+        throw new IllegalStateException("Invalid date format stored in value.");
     }
 
     @Override
