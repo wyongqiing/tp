@@ -34,6 +34,12 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 - [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
+## Current HRelper Prototype Overview
+The current version of the HRelper is a prototype designed to showcase its core functionality.   
+HR personnel using the app will be able to customize and populate it with their company's specific information, including departments, employment titles, job titles, and other relevant attributes.
+
+At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.
+
 
 ## Quick start
 
@@ -106,8 +112,9 @@ Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
 
-* CAPITALISED words are parameters to be filled in.
+* Names are case-insensitive. The profile will automatically capitalise the first letter of each word and convert all other letters to lowercase.
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
+
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
