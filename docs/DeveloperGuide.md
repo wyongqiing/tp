@@ -1,4 +1,4 @@
-22---
+---
 layout: page
 title: Developer Guide
 ---
@@ -369,9 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3b1. HRelper suggests using more specific keywords.
     Use case resumes at step 2.
 * 4a. No employees found with the specified job title.
-  * 4a1. HRelper shows an empty list.
-
-    Use case ends.
+  * 4a1. HRelper shows an empty list. </br> Use case ends.
 
 **Use case: Find Employees by Employment Type**
 
@@ -380,7 +378,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. HR requests to find employees by employment type.
 2. HRelper prompts for the employment type keyword.
 3. HR enters the employment type keyword.
-4. HRelper displays a list of employees with the specified employment type.
+4. HRelper displays a list of employees with the specified employment type.</br>
    Use case ends.
 
 **Extensions**
@@ -388,30 +386,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3a1. HRelper shows an error message explaining valid employment type input format.
     Use case resumes at step 2.
 * 4a. No employees found with the specified employment type.
-  * 4a1. HRelper shows an empty list.
+  * 4a1. HRelper shows an empty list.</br>
     Use case ends.
 
-** Use case: View Employee Details by Name**
+**Use case: View Employee Details by Full Name or Surname**
 
 **MSS**
 
-1. HR requests to view detailed information of an employee.
-2. HRelper prompts for the employee's name.
-3. HR enters the employee's name.
-4. HRelper displays the comprehensive profile of the specified employee.
+1. HR enters the employee's full name.
+2. HRelper displays the comprehensive profile of the specified employee.</br>
    Use case ends.
 
 Extensions
-* 3a. The given name does not match any employee in the system.
-  * 3a1. HRelper shows an error message.
+* 1a. The given name does not match any employee in the system.
+  * 1a1. HRelper shows an error message.</br>
     Use case resumes at step 2.
-* 3b. Multiple employees share the same name.
-  * 3b1. HRelper displays a list of all matching employees and asks HR to select one.
-  * 3b2. HR selects the intended employee.
-  * 3b3. HRelper displays the comprehensive profile of the selected employee.
+* 1b. Multiple employees share the same name.
+  * 1b1. HRelper displays a list of all matching employees.</br>
     Use case ends.
-* 4a. The employee profile has incomplete information.
-  * 4a1. HRelper displays the available information with indicators for missing fields.
+* 2a. The employee profile has incomplete information.
+  * 2a1. HRelper displays the available information with indicators for missing fields.</br>
     Use case ends.
 
 **Use case: Add/Edit Note to Employee Profile by Index**
@@ -422,19 +416,19 @@ Extensions
 2. HRelper prompts for the employee index and note content.
 3. HR enters the employee index and new note content.
 4. HRelper updates the employee's profile with the new note.
-5. HRelper confirms the note has been added/updated.
+5. HRelper confirms the note has been added/updated.</br>
    Use case ends.
 
 Extensions
 * 3a. The given index is invalid.
-  * 3a1. HRelper shows an error message.
+  * 3a1. HRelper shows an error message.</br>
     Use case resumes at step 2.
 * 3b. HR enters empty note content.
   * 3b1. HRelper removes any existing note from the employee profile.
-  * 3b2. HRelper confirms the note has been removed.
+  * 3b2. HRelper confirms the note has been removed.</br>
     Use case ends.
 * 4a. HR tries to add a note that exceeds the character limit.
-  * 4a1. HRelper shows an error message indicating the character limit.
+  * 4a1. HRelper shows an error message indicating the character limit.</br>
     Use case resumes at step 3.
 
 **Use case: Delete an Employee Profile**
@@ -460,34 +454,13 @@ Extensions
 
       Use case resumes at step 2.
 
-**Use case: View Employee Details by Name**
-
-**MSS**
-
-1. HR requests to view detailed information of an employee.
-2. HR enters the employee's name.
-3. HRelper displays the comprehensive profile of the specified employee.
-   Use case ends.
-
-**Extensions**
-
-* 3a. The given name does not match any employee in the system.
-    * 3a1. HRelper shows default "No matching profiles found" window.
-    * 3a2. User has the option to click on Home button to return to home page
-    * Use case resumes at step 2.
-
-* 3b. An employee name matches the given search keyword.
-    * 3b1. HRelper displays the comprehensive profile of the employee.
-    * 3b2. User has the option to click on Home button to return to home page
-      Use case ends.
-
-Use case: Add/Edit/Remove Note to Employee Profile by Index
+**Use case: Add/Edit/Remove Note to Employee Profile by Index**
 
 **MSS**
 
 1. HR requests to add or edit a note for an employee.
 2. HR enters the employee index and new note content.
-3. HRelper updates the employee's profile with the new note.
+3. HRelper updates the employee's profile with the new note.</br>
    Use case ends.
 
 **Extensions**
@@ -496,7 +469,7 @@ Use case: Add/Edit/Remove Note to Employee Profile by Index
     * 3a1. HRelper shows an error message.
       Use case resumes at step 2.
 * 3b. HR enters empty note content.
-    * 3b1. HRelper removes any existing note from the employee profile.
+    * 3b1. HRelper removes any existing note from the employee profile.</br>
       Use case ends.
 
 ### Non-Functional Requirements
