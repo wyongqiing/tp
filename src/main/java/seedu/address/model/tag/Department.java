@@ -21,7 +21,7 @@ public class Department {
             + "Diversity, Equity & Inclusion.";
 
     private static final String departmentsShortForm = "HR, CS, IT, R&D, SCM, Procurement, QA, PR, CorpComm, "
-            + "BizDev, DS, CyberSec, SD, UX/UI, AI & ML, T&D, FM, H&S, DEI.";
+            + "BizDev, DS, CyberSec, SD, UX&UI, AI&ML, T&D, FM, H&S, DEI.";
 
     public static final String MESSAGE_CONSTRAINTS = "Department search must only contain alphabetic characters "
             + "and the '&' symbol. It should not be blank.\n"
@@ -62,8 +62,8 @@ public class Department {
             Map.entry("Data Science", "DS"),
             Map.entry("Cybersecurity", "CyberSec"),
             Map.entry("Software Development", "SD"),
-            Map.entry("UX/UI Design", "UX/UI"),
-            Map.entry("Artificial Intelligence & Machine Learning", "AI & ML"),
+            Map.entry("UX/UI Design", "UX&UI"),
+            Map.entry("Artificial Intelligence & Machine Learning", "AI&ML"),
             Map.entry("Training & Development", "T&D"),
             Map.entry("Facilities Management", "FM"),
             Map.entry("Health & Safety", "H&S"),
@@ -114,6 +114,25 @@ public class Department {
         }
 
         return isDepartment || isShortForm || isPartialMatch;
+    }
+
+    /**
+     * Returns true if a given string is a valid department input.
+     */
+    public static boolean isValidDepartmentInput(String department) {
+        String normalizedInput = normalizeWhitespace(department.toLowerCase());
+
+        boolean isDepartment = VALID_DEPARTMENTS.stream()
+                .map(validDepartment -> normalizeWhitespace(validDepartment.toLowerCase()))
+                .toList()
+                .contains(normalizedInput);
+
+        boolean isShortForm = DEPARTMENTS_SHORT_FORM.values().stream()
+                .map(shortForm -> normalizeWhitespace(shortForm.toLowerCase()))
+                .toList()
+                .contains(normalizedInput);
+
+        return isDepartment || isShortForm;
     }
 
     /**

@@ -1,8 +1,8 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -11,6 +11,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Note;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.ProfileContainsKeywordsPredicate;
 
 
 /**
@@ -30,10 +31,11 @@ public class NoteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + "Likes to swim.";
 
-    public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to Person: %1$s";
-    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from Person: %1$s";
+    public static final String MESSAGE_ADD_NOTE_SUCCESS = "Added note to Person: ";
+    public static final String MESSAGE_DELETE_NOTE_SUCCESS = "Removed note from Person: ";
 
     private final Index index;
+    private ProfileContainsKeywordsPredicate predicate;
     private final Note note;
     /**
      * @param index of the person in the filtered person list to edit the remark
@@ -60,8 +62,9 @@ public class NoteCommand extends Command {
                 personToEdit.getNationality(), personToEdit.getAddress(),
                 note, personToEdit.getTag());
 
+        this.predicate = new ProfileContainsKeywordsPredicate(Arrays.asList(editedPerson.getName().toString()));
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(predicate);
 
         return new CommandResult(generateSuccessMessage(editedPerson));
     }
@@ -74,7 +77,8 @@ public class NoteCommand extends Command {
         String message = note.equals(new Note(" "))
                 && !(personToEdit.getNote().equals(new Note(" ")))
                 ? MESSAGE_DELETE_NOTE_SUCCESS : MESSAGE_ADD_NOTE_SUCCESS;
-        return String.format(message, Messages.format(personToEdit));
+        return message + " Name: " + personToEdit.getName().toString() + "  Nric: "
+                + personToEdit.getNric().toString() + "  Note: " + note.toString();
     }
 
     @Override
