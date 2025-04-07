@@ -23,20 +23,19 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
     - [Editing a person](#editing-a-person--edit)
     - [Filtering by](#filtering-by-findby)
     - [Deleting a person](#deleting-a-person--delete)
-    - [Adding a person](#adding-a-note--note)
+    - [Adding a note](#adding-a-note--note)
     - [Clearing all entries](#clearing-all-entries--clear)
     - [Exiting the program](#exiting-the-program--exit)
     - [Saving the data](#saving-the-data)
     - [Editing the data file](#editing-the-data-file)
     - [Archiving data files](#archiving-data-files-coming-in-v20)
 - [FAQ](#faq)
-    - [Q1: Will my data be lost if I close the app?](#q1)
-    - [Q2: Can I search by job title or department?](#q2)
-    - [Q3: How do I transfer my data to another computer?](#q3)
+    - [Q1: Will my data be lost if I close the app?](#a-idq1aq1-what-happens-if-i-close-the-app-will-my-data-be-lost)
+    - [Q2: Can I search by job title or department?](#a-idq2aq2-can-i-search-for-employees-by-job-title-or-departmentbr)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
-- [Valid Departments, Employment Types, Job Titles](#valid-departments-employment-types-job-titles)
-- [Valid Short-Forms](#valid-short-forms)
+- [Valid Departments, Employment Types, Job Titles](#valid-departments-employment-types-job-titles-of-hrelper)
+- [Valid Short-Forms](#valid-short-forms-of-hrelper)
 
 --------------------------------------------------------------------------------------------------------------------
 ## ⚠️ Current HRelper Prototype Overview
@@ -55,9 +54,11 @@ The current version of the HRelper is a prototype designed to showcase its core 
 
 1. Copy the file to the folder you want to use as the _home folder_ for HRelper.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar [CS2103T-F14-02][HRelper].jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/UI.png)
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar "[CS2103T-F14-02][HRelper]".jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. 
+![IntroPic](images/IntroPic.png) <br>
+<br>
+    This is how the app should look like after containing some data:![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
