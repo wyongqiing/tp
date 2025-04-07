@@ -9,6 +9,29 @@ We understand that working in HR means wearing many hats — from onboarding new
 
 That’s where HRelper comes in. Designed to simplify and streamline your workflow, HRelper helps you manage your employee database efficiently and confidently — so you can spend less time on spreadsheets and more time focusing on people.
 
+--------------------------------------------------------------------------------------------------------------------
+## Callouts Convention
+
+The callout boxes below are used in documentation to enhance readability and provide important contextual information.
+
+<box type="info" seamless>
+
+**Info Box:**
+Provides additional information or context.
+</box>
+
+<box type="tip" seamless>
+
+**Tip Box:**
+Offers helpful tips or suggestions.
+</box>
+
+<box type="warning" seamless>
+
+**Caution Box:**
+Alerts you to potential issues or problems that may arise.
+</box>
+--------------------------------------------------------------------------------------------------------------------
 
 ### Table of Contents
 
@@ -30,6 +53,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 - [FAQ](#faq)
     - [Q1: Will my data be lost if I close the app?](#q1)
     - [Q2: Can I search by job title or department?](#q2)
+    - [Q3: How do I transfer my data to another computer?](#q3)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
 
@@ -122,7 +146,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/David Li p/91031282 e/lidavid@example.com ic/S9819013B g/Male d/31-Oct-1998 j/12-Feb-2025 nat/Chinese a/Blk 436 Serangoon Gardens Street 26, #16-43 t/Finance/Internship/Financial Analyst`
 
 ### Listing all persons : `list`
 
@@ -271,7 +295,7 @@ HRelper data are saved in the hard disk automatically after any command that cha
 
 ### Editing the data file
 
-HRelper data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+HRelper data are saved automatically as a JSON file `[JAR file location]/data/hrelper.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, HRelper will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
