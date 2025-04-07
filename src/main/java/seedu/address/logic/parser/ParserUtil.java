@@ -50,7 +50,11 @@ public class ParserUtil {
             }
 
         } catch (NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), e);
+            if (!trimmedIndex.matches("\\d+")) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), e);
+            } else {
+                throw new ParseException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, e);
+            }
         }
 
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
@@ -300,7 +304,7 @@ public class ParserUtil {
             }
 
             // Validate and parse each component
-            if (!Department.isValidDepartment(tagList[0].trim())) {
+            if (!Department.isValidDepartmentInput(tagList[0].trim())) {
                 throw new ParseException(Department.MESSAGE_CONSTRAINTS);
             }
 
