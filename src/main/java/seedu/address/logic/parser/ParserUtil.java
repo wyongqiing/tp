@@ -158,14 +158,18 @@ public class ParserUtil {
         if (!Dob.isValidDob(trimmedDob)) {
             throw new ParseException(Dob.MESSAGE_CONSTRAINTS);
         }
+        if (!Dob.isValidDate(trimmedDob)) {
+            throw new ParseException(Dob.DATE_INVALID_MESSAGE);
+        }
 
         List<String> formats = List.of(
                 "dd-MMM-yyyy",
                 "dd/MM/yyyy",
                 "dd.MM.yyyy",
                 "yyyy-MM-dd",
-                "dd-MM-YYYY"
+                "dd-MM-yyyy"
         );
+
 
         Date parsedDate = null;
         java.text.ParseException lastException = null;
@@ -182,7 +186,13 @@ public class ParserUtil {
         }
 
         if (parsedDate == null) {
-            throw new ParseException(Dob.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Dob.DATE_INVALID_MESSAGE);
+        }
+
+        // Check if date is in the future
+        Date today = new Date();
+        if (parsedDate.after(today)) {
+            throw new ParseException(Dob.FUTURE_DATE_INVALID);
         }
 
         // Always return the date in "dd-MMM-yyyy" format
@@ -204,12 +214,16 @@ public class ParserUtil {
             throw new ParseException(DateOfJoining.MESSAGE_CONSTRAINTS);
         }
 
+        if (!DateOfJoining.isAValidDate(trimmedDate)) {
+            throw new ParseException(DateOfJoining.DATE_INVALID_MESSAGE);
+        }
+
         List<String> formats = List.of(
                 "dd-MMM-yyyy",
                 "dd/MM/yyyy",
                 "dd.MM.yyyy",
                 "yyyy-MM-dd",
-                "dd-MM-YYYY"
+                "dd-MM-yyyy"
         );
 
         Date parsedDate = null;
@@ -227,7 +241,7 @@ public class ParserUtil {
         }
 
         if (parsedDate == null) {
-            throw new ParseException(DateOfJoining.MESSAGE_CONSTRAINTS);
+            throw new ParseException(DateOfJoining.DATE_INVALID_MESSAGE);
         }
 
         // Always return the date in "dd-MMM-yyyy" format

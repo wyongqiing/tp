@@ -116,7 +116,8 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor)
+            throws CommandException {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
@@ -130,6 +131,11 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Tag updatedTag = editPersonDescriptor.getTag().orElse(personToEdit.getTag());
         Note updatedNote = editPersonDescriptor.getNote().orElse(personToEdit.getNote());
+
+        if (!updatedDate.toLocalDate().isAfter(updatedDob.toLocalDate())) {
+            throw new CommandException("Date of Joining must be after DOB.");
+        }
+
         return new Person(updatedName, updatedPhone, updatedEmail, updatedNric, updatedGender, updatedDob, updatedDate,
                 updatedNationality, updatedAddress, updatedNote, updatedTag);
     }
