@@ -44,7 +44,7 @@ public class TypicalPersons {
             .withDob("01-Oct-1991")
             .withDateOfJoining("15-Apr-2024")
             .withNationality("Singaporean")
-            .withAddress("123, Jurong West Ave 6, #08-111")
+            .withAddress("123, Jurong West Ave 6, #08-111/101010")
             .withNote("In wonderland")
             .withTags("Human Resources/Full-Time/HR Coordinator")
             .build();
@@ -58,7 +58,7 @@ public class TypicalPersons {
             .withDob("10-Mar-2001")
             .withDateOfJoining("15-Apr-2024")
             .withNationality("Singaporean")
-            .withAddress("311, Clementi Ave 2, #02-25")
+            .withAddress("311, Clementi Ave 2, #02-25/202020")
             .withNote("He can't take beer!")
             .withTags("Marketing/Part-Time/Marketing Specialist")
             .build();
@@ -72,7 +72,7 @@ public class TypicalPersons {
             .withDob("20-Aug-2002")
             .withDateOfJoining("15-Apr-2024")
             .withNationality("American")
-            .withAddress("wall street")
+            .withAddress("wall street/010101")
             .withNote("weathers")
             .withTags("Information Technology/Full-Time/Software Engineer")
             .build();
@@ -86,7 +86,7 @@ public class TypicalPersons {
             .withDob("19-Aug-2001")
             .withDateOfJoining("15-Apr-2024")
             .withNationality("American")
-            .withAddress("10th street")
+            .withAddress("10th street/020202")
             .withNote("cormier")
             .withTags("Finance/Internship/Financial Analyst")
             .build();
@@ -100,7 +100,7 @@ public class TypicalPersons {
             .withDob("28-Dec-2002")
             .withDateOfJoining("15-Apr-2024")
             .withNationality("Indonesian")
-            .withAddress("michegan ave")
+            .withAddress("michegan ave/030303")
             .withNote("lee")
             .withTags("Information Technology/Full-Time/Data Analyst")
             .build();
@@ -114,7 +114,7 @@ public class TypicalPersons {
             .withDob("30-Feb-2004")
             .withDateOfJoining("01-Jan-2024")
             .withNationality("Singaporean")
-            .withAddress("little tokyo")
+            .withAddress("little tokyo/272727")
             .withNote("and shrek")
             .withTags("Information Technology/Part-Time/Data Analyst")
             .build();
@@ -128,7 +128,7 @@ public class TypicalPersons {
             .withDob("27-Sep-2004")
             .withDateOfJoining("01-Jan-2024")
             .withNationality("American")
-            .withAddress("4th street")
+            .withAddress("4th street/282828")
             .withNote("Yeo.")
             .withTags("Engineering/Part-Time/Electrical Engineer")
             .build();
@@ -143,7 +143,7 @@ public class TypicalPersons {
             .withDob("10-Dec-2001")
             .withDateOfJoining("15-Dec-2024")
             .withNationality("Singaporean")
-            .withAddress("little india")
+            .withAddress("little india/034343")
             .withNote("Bee Hoon")
             .withTags("Finance/Internship/Financial Analyst")
             .build();
@@ -157,7 +157,7 @@ public class TypicalPersons {
             .withDob("01-Jan-2008")
             .withDateOfJoining("15-Dec-2024")
             .withNationality("Singaporean")
-            .withAddress("chicago ave")
+            .withAddress("chicago ave/078901")
             .withNote("nothing")
             .withTags("Finance/Internship/Financial Analyst")
             .build();

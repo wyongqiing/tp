@@ -3,11 +3,11 @@
     "name": "Valid Person",
     "phone": "94820424",
     "email": "hans@example.com",
-    "address": "4th street"
+    "address": "4th street/282828"
   }, {
     "name": "Person With Invalid Phone Field",
     "phone": "948asdf2424",
     "email": "hans@example.com",
-    "address": "4th street"
+    "address": "4th street/200980"
   } ]
 }
