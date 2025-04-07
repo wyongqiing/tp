@@ -23,15 +23,17 @@ public class Department {
     private static final String departmentsShortForm = "HR, CS, IT, R&D, SCM, Procurement, QA, PR, CorpComm, "
             + "Risk & Compliance, BizDev, DS, CyberSec, SD, UX/UI, AI/ML, T&D, FM, H&S, DEI.";
 
-    public static final String MESSAGE_CONSTRAINTS = "Department must only contain alphabetic characters "
-            + "and the '&' and '/' symbol. It should not be blank. \n"
-            + "Flexibility in department inputs is allowed where the validation is not case sensitive "
-            + "but short forms are allowed. \n"
+    public static final String MESSAGE_CONSTRAINTS = "Department search must only contain alphabetic characters, "
+            + "the '&' symbol, and the '/' symbol. It should not be blank.\n"
+            + "The search is flexible and supports:\n"
+            + "- Full department names (e.g., 'Human Resources')\n"
+            + "- Department short forms (e.g., 'HR' for Human Resources)\n"
+            + "- Partial matching with at least 3 consecutive letters (e.g., 'Fin' for Finance)\n"
             + "\n"
-            + "Here is the list of Departments: \n"
+            + "Here is the list of Departments:\n"
             + departments + "\n"
             + "\n"
-            + "Here is the list of valid short forms: \n"
+            + "Here is the list of valid short forms:\n"
             + departmentsShortForm;
 
     private static final Set<String> VALID_DEPARTMENTS = Set.of("Human Resources", "Finance", "Accounting",
@@ -102,7 +104,17 @@ public class Department {
                 .toList()
                 .contains(normalizedInput);
 
-        return isDepartment || isShortForm;
+        // Check for partial match (3 or more consecutive letters)
+        boolean isPartialMatch = false;
+        if (normalizedInput.length() >= 3) {
+            isPartialMatch = VALID_DEPARTMENTS.stream()
+                    .anyMatch(validDepartment -> {
+                        String normalizedDept = normalizeWhitespace(validDepartment.toLowerCase());
+                        return normalizedDept.contains(normalizedInput);
+                    });
+        }
+
+        return isDepartment || isShortForm || isPartialMatch;
     }
 
     /**

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: AddressBook Level-3
+title: HRelper
 ---
 
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
@@ -8,10 +8,10 @@ title: AddressBook Level-3
 
 ![Ui](images/UI.png)
 
-**HRelper is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+**HRelper** is a desktop Human Resource (HR) management application designed to streamline the way users manage employee contact and profile details. Built for efficiency and speed, HRelper combines the familiarity of a Graphical User Interface (GUI) with the power and precision of a Command Line Interface (CLI).
 
-* If you are interested in using AddressBook, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing AddressBook, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+* If you are interested in using HRelper, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
+* If you are interested about developing HRelper, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
 
 
 **Acknowledgements**
