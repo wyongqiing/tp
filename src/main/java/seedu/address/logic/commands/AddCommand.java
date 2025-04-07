@@ -12,6 +12,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -71,8 +76,33 @@ public class AddCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
+        // Add the validation for date of birth vs date of joining
+        if (!isDateOfJoiningValid(toAdd.getDob().value, toAdd.getDateOfJoining().value)) {
+            throw new CommandException("Date of joining cannot be earlier than date of birth.");
+        }
+
         model.addPerson(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+    }
+
+    /**
+     * Checks if the date of joining is valid (not earlier than date of birth)
+     * @param dobString Date of birth in dd-MMM-yyyy format
+     * @param dojString Date of joining in dd-MMM-yyyy format
+     * @return true if date of joining is valid, false otherwise
+     */
+    private boolean isDateOfJoiningValid(String dobString, String dojString) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+            Date dob = sdf.parse(dobString);
+            Date doj = sdf.parse(dojString);
+
+            // Check if date of joining is on or after date of birth
+            return !doj.before(dob);
+        } catch (ParseException e) {
+            // This shouldn't happen since we've already validated the format
+            return false;
+        }
     }
 
     @Override
