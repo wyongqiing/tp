@@ -1,8 +1,6 @@
 Developer Guide
 =======
 
-* Table of Contents
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
@@ -39,7 +37,8 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2425S2-CS2103T-F14-2/tp/tree/master/src/main
+/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2425S2-CS2103T-F14-2/tp/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -71,7 +70,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2425S2-CS2103T-F14-2/tp/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -88,7 +87,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2425S2-CS2103T-F14-2/tp/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -118,14 +117,14 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-F14-2/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+* stores the HRelper data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -139,12 +138,12 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2425S2-CS2103T-F14-2/tp/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both HRelper data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -164,9 +163,9 @@ This section describes some noteworthy details on how certain features are imple
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+* `VersionedAddressBook#commit()` — Saves the current HRelper state in its history.
+* `VersionedAddressBook#undo()` — Restores the previous HRelper state from its history.
+* `VersionedAddressBook#redo()` — Restores a previously undone HRelper state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
 
@@ -284,15 +283,16 @@ HRelper is designed for HR teams who:
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​  | I want to …​                       | So that I can…​                                                   |
-| ------- |----------|------------------------------------| ----------------------------------------------------------------- |
-| `* * *` | user     | I can add a profile                | so that I can store employee details in the address book.         |
-| `* * *` | user     | I can delete the employees profile              | so that I can removed outdated or incorrect records.              |
-| `* * *` | user     | I can view a profiles             | so that I can get employee information |
-| `* * `  | user     | I can edit the profile             | so that i can update their information when needed.                |
-| `* *`   | user     | I can filter contacts by department                              | so that I can quickly see all employees in a specific team.       |
-| `* *`   | user     | I can add an extra optional note to a profile                    | so that I am aware of additional information about an employee         
-| `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
+| Priority | As a …​  | I want to …​                              | So that I can…​                                                          |
+| ------- |----------|-------------------------------------------|--------------------------------------------------------------------------|
+| `* * *` | user     | I can add a profile                       | so that I can store employee details in the address book.                |
+| `* * *` | user     | I can delete the employees profile        | so that I can removed outdated or incorrect records.                     |
+| `* * *` | user     | I can view a profiles                     | so that I can get employee information.                                  |
+| `* * `  | user     | I can edit the profile                    | so that i can update their information when needed.                      |
+| `* *`   | user     | I can filter contacts by department       | so that I can quickly see all employees in a specific department.        |
+| `* *`   | user     | I can filter contacts by employement type | so that I can quickly see all employees with a specific employment type. |
+| `* *`   | user     | I can filter contacts by job title         | so that I can quickly see all employees with a specific job title.       |
+| `* *`   | user     | I can add an extra optional note to a profile                    | so that I am aware of additional information about an employee.           
 
 ### Use cases
 
@@ -319,23 +319,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 * 3a. HR enters invalid data for one or more attributes.
   
-   * 3a1. HRelpher displays an error message indicating which field is invalid and the expected format.
+   * 3a1. HRelper displays an error message indicating which field is invalid and the expected format.
      
-   * 3a2. HR corrects the invalid entry.
+   * 3a2. HR corrects the invalid entry.  
      Use case resumes at step 3.
 
 * 4a. HR decides to change details.
 
-    * 4a1. HR cancels confirmation. Use case resumes at step 3.
+    * 4a1. HR cancels confirmation.      
+     Use case resumes at step 3.
 
-* 4b. HRelper finds an existing employee profile by tags. (Department, Employment Type or Job Title)
+* 4b. HRelper finds an existing employee profile by tags. (Department, Employment Type or Job Title)  
   Use case resumes at step 3.
 
 * 5a. HR loses connection.
 
     * 5a1. HRelper saves details.
 
-    * 5a2. HRelper prompts HR to continue where they left off. Use case resumes at step 3.
+    * 5a2. HRelper prompts HR to continue where they left off.   
+     Use case resumes at step 3.
  
 **Use case: Find Employees by Department**
 
@@ -344,12 +346,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. HR requests to find employees by department.
 2. HRelper prompts for the department keyword.
 3. HR enters the department keyword.
-4. HRelper displays a list of employees in the specified department.
+4. HRelper displays a list of employees in the specified department.  
    Use case ends.
 
 **Extensions**
 * 3a. HR enters invalid characters in the department keyword.
-  * 3a1. HRelper shows an error message explaining valid department input format.
+  * 3a1. HRelper shows an error message explaining valid department input format.   
     Use case resumes at step 2.
 * 4a. No employees found in the specified department.
   * 4a1. HRelper shows an empty list.
@@ -368,10 +370,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 * 3a. HR enters invalid characters in the job title keyword.
-  * 3a1. HRelper shows an error message explaining valid job title input format.
+  * 3a1. HRelper shows an error message explaining valid job title input format.   
     Use case resumes at step 2.
 * 3b. HR enters a keyword that is too short or ambiguous.
-  * 3b1. HRelper suggests using more specific keywords.
+  * 3b1. HRelper suggests using more specific keywords.   
     Use case resumes at step 2.
 * 4a. No employees found with the specified job title.
   * 4a1. HRelper shows an empty list. </br> Use case ends.
@@ -388,7 +390,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 * 3a. HR enters invalid characters in the employment type keyword.
-  * 3a1. HRelper shows an error message explaining valid employment type input format.
+  * 3a1. HRelper shows an error message explaining valid employment type input format.  
     Use case resumes at step 2.
 * 4a. No employees found with the specified employment type.
   * 4a1. HRelper shows an empty list.</br>
@@ -425,7 +427,7 @@ Extensions
 
 Extensions
 * 3a. The given index is invalid.
-  * 3a1. HRelper shows an error message.</br>
+  * 3a1. HRelper shows an error message.</br> 
     Use case resumes at step 2.
 * 3b. HR enters empty note content.
   * 3b1. HRelper removes any existing note from the employee profile.
@@ -454,7 +456,7 @@ Extensions
 
 * 3a. The given index is invalid.
 
-    * 3a1. HRelper shows an error message.
+    * 3a1. HRelper shows an error message.   
 
       Use case resumes at step 2.
 
@@ -470,7 +472,7 @@ Extensions
 **Extensions**
 
 * 3a. The given index is invalid.
-    * 3a1. HRelper shows an error message.
+    * 3a1. HRelper shows an error message.  
       Use case resumes at step 2.
 * 3b. HR enters empty note content.
     * 3b1. HRelper removes any existing note from the employee profile.</br>
@@ -517,7 +519,7 @@ testers are expected to do more exploratory testing.
 
    1. Download the jar file and copy into an empty folder
    2. Open a terminal and `cd` into the folder with the jar file.
-   3. Run `java -jar hrelper.jar`.</br>
+   3. Run `java -jar [CS2103-F14-02][HRelper].jar`.</br>
       Expected: An empty address book will be shown.</br> 
       The window size may not be optimum.
 
@@ -525,7 +527,7 @@ testers are expected to do more exploratory testing.
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by rerunning `java -jar hrelper.jar` in the terminal.<br>
+   1. Re-launch the app by rerunning `java -jar [CS2103-F14-02][HRelper].jar` in the terminal.<br>
        Expected: The most recent window size and location is retained.
 
 ### Deleting a person
@@ -558,8 +560,8 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
 
 2. Dealing with missing data file
 
-    1. Exit the address book, if it is running.
-    2. delete the `hrelper.json` file inside the folder named `data`. It is located in the same folder as the jar file.
+    1. Exit HRelper, if it is running.
+    2. delete the `addressbook.json` file inside the folder named `data`. It is located in the same folder as the jar file.
     3. Relaunch the app. </br>
-       Expected: The app should create a new `hrelper.json` file filled with sample data.
+       Expected: The app should create a new `addressbook.json` file filled with sample data.
 
