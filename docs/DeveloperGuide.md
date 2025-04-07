@@ -363,7 +363,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user    | I can filter contacts by department           | so that I can quickly see all employees in a specific department.        |
 | `* *`    | user    | I can filter contacts by employement type     | so that I can quickly see all employees with a specific employment type. |
 | `* *`    | user    | I can filter contacts by job title            | so that I can quickly see all employees with a specific job title.       |
-| `* *`    | user    | I can add an extra optional note to a profile | so that I am aware of additional information about an employee.          |        
+| `* *`    | user    | I can add an extra optional note to a profile | so that I am aware of additional information about an employee.          |       
 
 ### Use cases
 
