@@ -299,15 +299,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. HR requests to add an employee profile.
 
-2. HRelpher prompts for details of the employee.
+2. HRelper prompts for details of the employee.
 
 3. HR fills in the details.
 
-4. HRelpher requests HR to confirm the details.
+4. HRelper requests HR to confirm the details.
 
 5. HR confirms the details.
 
-6. HRelpher adds the employee to the system.
+6. HRelper adds the employee to the system.
 
     Use case ends.
 
@@ -317,14 +317,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 4a1. HR cancels confirmation. Use case resumes at step 3.
 
-* 4b. HRelpher finds an existing employee profile by tags. (Department, Employment Type or Job Title)
+* 4b. HRelper finds an existing employee profile by tags. (Department, Employment Type or Job Title)
   Use case resumes at step 3.
 
 * 5a. HR loses connection.
 
-    * 5a1. HRelpher saves details.
+    * 5a1. HRelper saves details.
 
-    * 5a2. HRelpher prompts HR to continue where they left off. Use case resumes at step 3.
+    * 5a2. HRelper prompts HR to continue where they left off. Use case resumes at step 3.
  
 **Use case: Find Employees by Department**
 

@@ -106,8 +106,9 @@ Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
 
-* CAPITALISED words are parameters to be filled in.
+* Names are case-insensitive. The profile will automatically capitalise the first letter of each word and convert all other letters to lowercase.
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
+
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`

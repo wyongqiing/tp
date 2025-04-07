@@ -33,7 +33,7 @@ public class Nationality {
             + "Spanish, Sri Lankan, Sudanese, Surinamese, Swazi, Swedish, Swiss, Syrian, Tajik,\n "
             + "Tanzanian, Thai, Timorese, Togolese, Tongan, Trinidadian, Tunisian, Turkish, Turkmen,\n "
             + "Tuvaluan, Ugandan, Ukrainian, Uruguayan, Uzbek, Vanuatuan, Venezuelan, Vietnamese,\n "
-            + "Welsh, Yemeni, Zambian, Zimbabwean;";
+            + "Welsh, Yemeni, Zambian, Zimbabwean, Other;";
 
     public static final String MESSAGE_CONSTRAINTS =
             "Nationality must contain only alphabetic characters and may include spaces for multi-word nationalities,"
