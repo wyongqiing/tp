@@ -15,20 +15,20 @@ public class FindByDepartmentCommandParserTest {
 
     @Test
     public void parse_invalidDepartmentWithNumbers_throwsParseException() {
-        assertParseFailure(parser, "HR123",
-            Department.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "HR123", "Department does not exist. "
+            + Department.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_invalidDepartmentWithSpecialChars_throwsParseException() {
-        assertParseFailure(parser, "Finance#",
-            Department.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "Finance#", "Department does not exist. "
+            + Department.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_validDepartmentWithAmpersand_returnsFindByDepartmentCommand() {
         FindByDepartmentCommand expectedCommand =
-                new FindByDepartmentCommand(new DepartmentContainsKeywordPredicate("Finance & Accounting"));
-        assertParseSuccess(parser, "Finance & Accounting", expectedCommand);
+                new FindByDepartmentCommand(new DepartmentContainsKeywordPredicate("R&D"));
+        assertParseSuccess(parser, "R&D", expectedCommand);
     }
 }

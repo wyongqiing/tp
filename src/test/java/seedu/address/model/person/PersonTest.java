@@ -99,7 +99,7 @@ public class PersonTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different dob -> returns false
-        editedAlice = new PersonBuilder(ALICE).withAddress(VALID_DOB_BOB).build();
+        editedAlice = new PersonBuilder(ALICE).withDob(VALID_DOB_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different dateOfJoining -> returns false

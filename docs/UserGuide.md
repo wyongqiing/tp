@@ -36,10 +36,10 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 --------------------------------------------------------------------------------------------------------------------
 ## Current HRelper Prototype Overview
 The current version of the HRelper is a prototype designed to showcase its core functionality.   
-HR personnel using the app will be able to customize and populate it with their company's specific information, including departments, employment titles, job titles, and other relevant attributes.
 
-At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.
-
+* At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.  
+* Since this is just a prototype of how our HRelper works, in real world scenarios, we will customise the valid department list according to the company's needs. Each company should populate the valid department before using HRelper.
+* Attributes marked with an asterisk (*) indicate that they are in their current form because they follow the structure of the prototype.
 
 ## Quick start
 
@@ -59,7 +59,7 @@ At present, the prototype is tailored to Singapore, meaning that phone numbers a
 
    * `list` : Lists all contacts with full attributes.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25 t/Finance/Full-Time/Financial Analyst` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25/119278 t/Finance/Full-Time/Financial Analyst` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -110,9 +110,13 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS/POSTAL CODE t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
 
 * Names are case-insensitive. The profile will automatically capitalise the first letter of each word and convert all other letters to lowercase.
+* Phone numbers must be exactly 8 digits long and start with 6, 8, or 9.*
+* NRIC should start with S, T, F, or G, followed by 7 digits, and end with a capital letter.*
+* Gender is case-sensitive and will only take in Male, Female or Other.*
+* Nationality follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
 
@@ -159,7 +163,7 @@ HRelper will return to the overview page and display all employees again, with a
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS/POSTAL CODE] [t/TAG]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Square brackets [ ] represent optional fields
@@ -167,26 +171,56 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Existing values will be updated to the input values.
 * When editing tags, even if editing only one item out of all, you need to include all items
 
+
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
 *  `edit 1 t/HR/Full-Time/HR Coordinator` Edits the tag of the 1st person to be `HR/Full-Time/HR Coordinator`.
 
 ### Filtering by: `findBy...`
+Filters the contacts by their department, job title, or employment type.
 
-Filters the contacts through their tags
+#### `findByDepartment`
+Format: `findByDepartment KEYWORD`
 
-Format: `findByDepartment [MORE_KEYWORDS]`, `findByEmploymentType [MORE_KEYWORDS]`, `findByJobTitle [MORE_KEYWORDS]`
-
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Finds contacts who belong to departments that match the specified keyword
+* Search is case-insensitive (e.g., "finance" will match "Finance")
+* Accepts department short forms (e.g., "HR" will match "Human Resources")
+* For partial matches, keyword must contain at least 3 consecutive letters of the department name
+* Only alphabetic characters and the '&' symbol are allowed in department search terms
 
 Examples:
-* `findByDepartment Finance` returns a list of contacts who are in the Finance Department <br>
-  ![result for 'find alex david'](images/FilterImage.png)
+* `findByDepartment Finance` returns all contacts in the Finance department
+* `findByDepartment HR` returns all contacts in the Human Resources department
+* `findByDepartment Acc` returns all contacts in the Accounting department
+* `findByDepartment Sof` returns all contacts in the Software Development department
+
+#### `findByJobTitle`
+Format: `findByJobTitle KEYWORD`
+
+* Finds contacts whose job titles match the specified keyword
+* Search is case-insensitive
+* Will match if the keyword matches a full word in the job title
+* For partial matches, keyword must contain at least 3 consecutive letters of a word in the job title
+* Only alphabetic characters are allowed in job title search terms
+
+Examples:
+* `findByJobTitle Engineer` returns all engineers
+* `findByJobTitle Dev` returns all developers
+* `findByJobTitle Coord` returns all coordinators
+
+#### `findByEmploymentType`
+Format: `findByEmploymentType EMPLOYMENT_TYPE`
+
+* Finds contacts with the specified employment type
+* Search must use exact employment type terms or their common variations
+* Only alphabetic characters and hyphens are allowed in search terms
+* Supported employment types: Full-Time, Part-Time, Contract, Internship
+
+Examples:
+* `findByEmploymentType Full-Time` returns all full-time employees
+* `findByEmploymentType Part-Time` returns all part-time employees
+* `findByEmploymentType Contract` returns all contractors
 
 ### Deleting a person : `delete`
 
@@ -274,11 +308,13 @@ Example: `findByDepartment Marketing` will show all employees in the Marketing d
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`<br>e.g., `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25 t/Finance/Full-Time/Financial Analyst`
+**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS/POSTAL CODE t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`<br>e.g., `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25/119278 t/Finance/Full-Time/Financial Analyst`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `findByDepartment KEYWORD `<br> e.g., `find James Jake`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS/POSTAL CODE] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Find by Department** | `findByDepartment KEYWORD`<br> e.g., `findByDepartment HR`, `findByDepartment Fin`, `findByDepartment Information Technology` |
+**Find by Job Title** | `findByJobTitle KEYWORD`<br> e.g., `findByJobTitle Engineer`, `findByJobTitle Dev`, `findByJobTitle Coordinator` |
+**Find by Employment Type** | `findByEmploymentType EMPLOYMENT_TYPE`<br> e.g., `findByEmploymentType Full-Time`, `findByEmploymentType Contract` |
 **Note** | `note INDEX NOTE` e.g. note 1 he likes aadvarks 
 **List** | `list`
 **Help** | `help`

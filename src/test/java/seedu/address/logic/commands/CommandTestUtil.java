@@ -49,8 +49,8 @@ public class CommandTestUtil {
     public static final String VALID_DATE_BOB = "10-Jan-2025";
     public static final String VALID_NATIONALITY_AMY = "Singaporean";
     public static final String VALID_NATIONALITY_BOB = "American";
-    public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
-    public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1/191128";
+    public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3/010101";
     public static final String VALID_TAG_HUMAN_RESOURCE = "Human Resources/Full-Time/HR Coordinator";
     public static final String VALID_TAG_MARKETING = "Marketing/Part-Time/Marketing Specialist";
 
