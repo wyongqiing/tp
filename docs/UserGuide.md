@@ -237,9 +237,10 @@ Format: `findByEmploymentType EMPLOYMENT_TYPE`
 * Only alphabetic characters and hyphens are allowed in search terms
 
 Examples:
-* `findByEmploymentType Full-Time` returns all full-time employees
 * `findByEmploymentType Part-Time` returns all part-time employees
 * `findByEmploymentType Contract` returns all contractors
+* `findByEmploymentType Full-Time` returns all full-time employees (e.g shown below)
+![findByEmploymentType](images/findByEmploymentType.png)
 
 ### Deleting a person : `delete`
 
