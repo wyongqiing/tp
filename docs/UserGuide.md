@@ -178,20 +178,49 @@ Examples:
 *  `edit 1 t/HR/Full-Time/HR Coordinator` Edits the tag of the 1st person to be `HR/Full-Time/HR Coordinator`.
 
 ### Filtering by: `findBy...`
+Filters the contacts by their department, job title, or employment type.
 
-Filters the contacts through their tags
+#### `findByDepartment`
+Format: `findByDepartment KEYWORD`
 
-Format: `findByDepartment [MORE_KEYWORDS]`, `findByEmploymentType [MORE_KEYWORDS]`, `findByJobTitle [MORE_KEYWORDS]`
-
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Finds contacts who belong to departments that match the specified keyword
+* Search is case-insensitive (e.g., "finance" will match "Finance")
+* Accepts department short forms (e.g., "HR" will match "Human Resources")
+* For partial matches, keyword must contain at least 3 consecutive letters of the department name
+* Only alphabetic characters and the '&' symbol are allowed in department search terms
 
 Examples:
-* `findByDepartment Finance` returns a list of contacts who are in the Finance Department <br>
-  ![result for 'find alex david'](images/FilterImage.png)
+* `findByDepartment Finance` returns all contacts in the Finance department
+* `findByDepartment HR` returns all contacts in the Human Resources department
+* `findByDepartment Acc` returns all contacts in the Accounting department
+* `findByDepartment Sof` returns all contacts in the Software Development department
+
+#### `findByJobTitle`
+Format: `findByJobTitle KEYWORD`
+
+* Finds contacts whose job titles match the specified keyword
+* Search is case-insensitive
+* Will match if the keyword matches a full word in the job title
+* For partial matches, keyword must contain at least 3 consecutive letters of a word in the job title
+* Only alphabetic characters are allowed in job title search terms
+
+Examples:
+* `findByJobTitle Engineer` returns all engineers
+* `findByJobTitle Dev` returns all developers
+* `findByJobTitle Coord` returns all coordinators
+
+#### `findByEmploymentType`
+Format: `findByEmploymentType EMPLOYMENT_TYPE`
+
+* Finds contacts with the specified employment type
+* Search must use exact employment type terms or their common variations
+* Only alphabetic characters and hyphens are allowed in search terms
+* Supported employment types: Full-Time, Part-Time, Contract, Internship
+
+Examples:
+* `findByEmploymentType Full-Time` returns all full-time employees
+* `findByEmploymentType Part-Time` returns all part-time employees
+* `findByEmploymentType Contract` returns all contractors
 
 ### Deleting a person : `delete`
 
