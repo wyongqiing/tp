@@ -159,6 +159,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF J
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, even if editing only one item out of all, you need to include all items
+* Note that editing of NRIC is not allowed
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
