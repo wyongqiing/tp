@@ -563,3 +563,62 @@ You can try out other data changing commands such as `clear`,`delete`, `edit`.
     3. Relaunch the app. </br>
        Expected: The app should create a new `hrelper.json` file filled with sample data.
 
+## **Appendix: Planned Enhancement**
+**Team Size** : 5
+
+1. **Add a confirmation window before executing sensitive commands** (e.g., edit, delete).<br>
+   Currently, once a command is entered, the system immediately executes it without confirmation. 
+   This can be risky, especially for delete operations. We plan to add a pop-up confirmation dialog 
+   before executing critical actions to prevent accidental edits or deletions.
+2. **Implement `undo` functionality.**<br>
+   There is currently no way to revert a mistake. If a user accidentally deletes or modifies a record, it cannot be recovered. We plan to introduce an undo feature that allows users to revert the most recent command that modified data.
+3. **Implement `redo` functionality.**<br>
+   After undoing a command, the user might want to reapply it. Currently, this requires retyping the command manually. We plan to add a redo feature to restore the most recently undone command.
+4. **Allow multiple deletions in a single command.**<br>
+   Currently, the delete command only supports deleting one contact at a time. We plan to support multiple deletions using comma-separated indexes, e.g., delete 1, 3, 5, to improve user efficiency.
+5. **Relax address format constraints.**<br>
+   Currently, addresses must include a Singapore-style postal code with specific district prefixes. To support global users and remote workers, we plan to relax this validation to allow international formats or omit postal codes altogether.
+6. **Add support for data import/export using CSV files.**
+   Currently, HRelper stores and reads contact data in JSON format, which may not be familiar to non-technical users. HR teams often maintain contact records in Excel or Google Sheets and may need to perform bulk updates, generate reports, or share data externally.<br>
+   We plan to introduce the ability to import data from CSV files, allowing HR teams to easily migrate existing records into HRelper without manually entering each contact. Similarly, we will support exporting current records to CSV format, enabling convenient data backup, offline reporting, and integration with other HR tools.
+
+   * This feature will:
+     1. Reduce manual entry and setup time
+     2. Improve compatibility with spreadsheet tools
+     3. Allow HR to generate and share filtered reports easily
+     4. Provide error messages when invalid or missing fields are detected during import
+
+7. Implement a command history tracker
+   Currently, HRelper does not store a history of previously entered commands. This can be inconvenient for users who wish to repeat a past command, especially if the command was long or complex (e.g., multi-field `add` or `edit` commands).
+
+    We plan to implement a **command history tracker** that:
+
+   - Maintains a chronological log of previously executed commands.
+   - Allows users to **navigate the history using arrow keys** (↑ / ↓) in the command box.
+   - Enables users to **reuse, modify, or re-execute** previous commands with ease.
+
+   This enhancement improves usability by reducing the need for repetitive typing and helps users correct or retry failed commands quickly.
+8. Enable tag auto-suggestions when typing departments, job titles, or employment types.
+   Currently, users must remember and manually input the exact department/job title format. This can lead to errors or inconsistencies.
+   We plan to implement autocomplete suggestions when the user begins typing tags (e.g., “Fin” suggests “Finance”) to improve speed, accuracy, and consistency in data entry.
+9. Add a mini HR dashboard for quick data overview.
+   Currently, HRelper only displays contact information. For HR users managing a large database, a dashboard summarizing key statistics would be useful.
+   We plan to introduce a sidebar or pop-up dashboard that shows:
+
+    - Total number of employees
+    - Department breakdown
+    - Employment type distribution
+    - Gender and nationality statistics
+    - This enhancement gives HR teams quick insights at a glance and supports workforce planning.
+
+10. **Enable editing multiple entries in one command.**  
+    Currently, the `edit` command only supports updating one person at a time. In many HR workflows, bulk updates are needed (e.g., changing job titles for a group of interns or updating department names after restructuring).
+
+    We plan to enhance the `edit` command to support **batch editing** using comma-separated indexes and a shared set of fields. <br>
+    For example:<br>
+    `edit 2, 4, 5 t/IT/Intern/Software Intern`
+    This would apply the same tag update to persons at index 2, 4, and 5.
+
+    - The command will apply the same changes to all specified records.
+    - If any index is invalid, the system will display an error message and abort the operation to avoid partial updates.
+    - This will significantly reduce repetitive commands and improve productivity when handling common changes.
