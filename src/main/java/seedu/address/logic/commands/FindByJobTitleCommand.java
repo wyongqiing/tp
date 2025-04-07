@@ -14,7 +14,7 @@ public class FindByJobTitleCommand extends Command {
     public static final String COMMAND_WORD = "findByJobTitle";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all persons whose job title contains the specified keyword.\n"
-            + "Parameters:  EMPLOYMENTTYPE_KEYWORD\n"
+            + "Parameters:  JOBTITLE_KEYWORD\n"
             + "Example: " + COMMAND_WORD + " HR Coordinator";
 
     private final JobTitleContainsKeywordPredicate predicate;

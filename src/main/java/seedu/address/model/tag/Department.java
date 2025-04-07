@@ -102,7 +102,17 @@ public class Department {
                 .toList()
                 .contains(normalizedInput);
 
-        return isDepartment || isShortForm;
+        // Check for partial match (3 or more consecutive letters)
+        boolean isPartialMatch = false;
+        if (normalizedInput.length() >= 3) {
+            isPartialMatch = VALID_DEPARTMENTS.stream()
+                    .anyMatch(validDepartment -> {
+                        String normalizedDept = normalizeWhitespace(validDepartment.toLowerCase());
+                        return normalizedDept.contains(normalizedInput);
+                    });
+        }
+
+        return isDepartment || isShortForm || isPartialMatch;
     }
 
     /**
