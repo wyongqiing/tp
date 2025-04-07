@@ -29,7 +29,7 @@ public class SampleDataUtilTest {
         assertEquals("01-Oct-1990", person.getDob().value);
         assertEquals("12-Feb-2025", person.getDateOfJoining().value);
         assertEquals("Singaporean", person.getNationality().value);
-        assertEquals("Blk 30 Geylang Street 29, #06-40", person.getAddress().value);
+        assertEquals("Blk 30 Geylang Street 29, #06-40/101010", person.getAddress().value);
         assertEquals("Human Resources", person.getTag().getValue()[0]);
         assertEquals("Full-Time", person.getTag().getValue()[1]);
         assertEquals("HR Coordinator", person.getTag().getValue()[2]);

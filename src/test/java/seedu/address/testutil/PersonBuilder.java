@@ -29,7 +29,7 @@ public class PersonBuilder {
     public static final String DEFAULT_DOB = "01-Jan-2020";
     public static final String DEFAULT_DATE = "17-Mar-2025";
     public static final String DEFAULT_NATIONALITY = "Singaporean";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111/098726";
     public static final String DEFAULT_DEPARTMENT = "Finance";
     public static final String DEFAULT_EMPLOYMENT_TYPE = "Full-Time";
     public static final String DEFAULT_JOB_TITLE = "Financial Analyst";

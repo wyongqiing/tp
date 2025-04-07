@@ -35,7 +35,7 @@ public class AddCommand extends Command {
             + PREFIX_DOB + "DOB "
             + PREFIX_DATE + "DATE OF JOINING "
             + PREFIX_NATIONALITY + "NATIONALITY "
-            + PREFIX_ADDRESS + "ADDRESS "
+            + PREFIX_ADDRESS + "ADDRESS/POSTAL CODE "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
@@ -46,7 +46,7 @@ public class AddCommand extends Command {
             + PREFIX_DOB + "02-Jan-2001 "
             + PREFIX_DATE + "15-Apr-2025 "
             + PREFIX_NATIONALITY + "Singaporean "
-            + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
+            + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25/119780 "
             + PREFIX_TAG + "Finance/Full-Time/Financial Analyst\n\n"
             + "Command to follow: add n/ p/ e/ ic/ g/ d/ j/ nat/ a/ t/// ";
 

@@ -28,7 +28,7 @@ public class ParserUtilTest {
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "83075829";
-    private static final String VALID_ADDRESS = "123 Main Street #0505";
+    private static final String VALID_ADDRESS = "123 Main Street #0505/233948";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_DEPARTMENT_1 = "Human Resources";
     private static final String VALID_EMPLOYMENT_TYPE_1 = "Full-Time";
