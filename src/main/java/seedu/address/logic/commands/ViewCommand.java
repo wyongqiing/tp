@@ -18,7 +18,7 @@ public class ViewCommand extends Command {
             + ": Views the profile "
             + "by the fullname or surname. "
             + "Existing profile will be shown.\n"
-            + "Parameters: FULLNAME [SURNAME]\n"
+            + "Parameters: FULLNAME or PARTIALNAME\n"
             + "Example: [" + COMMAND_WORD + " Tan] / [" + COMMAND_WORD + " Alex Tan]";
 
     private final ProfileContainsKeywordsPredicate predicate;
