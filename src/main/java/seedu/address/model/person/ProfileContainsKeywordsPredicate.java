@@ -17,19 +17,18 @@ public class ProfileContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        //Join keywords into a single lowercase string, trimming extra spaces
-        String inputName = String.join(" ", keywords).replaceAll("\\s+", " ").trim().toLowerCase();
-        String personName = person.getName().fullName.replaceAll("\\s+", " ").trim().toLowerCase();
 
-        // 1. Full name exact match
-        if (inputName.equals(personName)) {
-            return true;
+        String[] personWords = person.getName().fullName.trim().split("\\s+");
+
+        for (String keyword : keywords) {
+            for (String word : personWords) {
+                if (word.equalsIgnoreCase(keyword)) {
+                    return true; // match found
+                }
+            }
         }
 
-        // 2. Last word (surname) match
-        String[] nameParts = personName.split(" ");
-        String lastName = nameParts[nameParts.length - 1];
-        return inputName.equals(lastName);
+        return false; // no match
 
     }
 
