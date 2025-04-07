@@ -240,69 +240,81 @@ public class AddCommandParserTest {
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: name (n/)");
+                "Missing required field: name (n/)\n"
+                + "Eg: n/John Doe");
 
         // missing phone prefix
         assertParseFailure(parser, NAME_DESC_BOB + VALID_PHONE_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: phone (p/)");
+                "Missing required field: phone (p/)\n"
+                + "Eg: p/91234567");
 
         // missing email prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + VALID_EMAIL_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: email (e/)");
+                "Missing required field: email (e/)\n"
+                + "Eg: e/johndoe@example.com");
 
         // missing nric prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + VALID_NRIC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: NRIC (ic/)");
+                "Missing required field: NRIC (ic/)\n"
+                + "Eg: ic/S1234567D");
 
         // missing gender prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + VALID_GENDER_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: gender (g/)");
+                "Missing required field: gender (g/)\n"
+                + "Eg: g/Male");
 
         // missing dob prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + VALID_DOB_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: date of birth (d/)");
+                "Missing required field: date of birth (d/)\n"
+                + "Eg: d/20-03-1990");
 
         // missing date of joining prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + VALID_DATE_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: date of joining (j/)");
+                "Missing required field: date of joining (j/)\n"
+                + "Eg: j/15-04-2023");
 
         // missing nationality prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + VALID_NATIONALITY_BOB
                         + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
-                "Missing required field: nationality (nat/)");
+                "Missing required field: nationality (nat/)\n"
+                + "Eg: nat/Singaporean");
 
         // missing address prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + VALID_ADDRESS_BOB + TAG_DESC_MARKETING,
-                "Missing required field: address (a/)");
+                "Missing required field: address (a/)\n"
+                + "Eg: a/123 Main Street #05-01/119278");
 
         // missing tag prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
                         + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
                         + ADDRESS_DESC_BOB,
-                "Missing required field: tag (t/: Department/Employment Type/Job Title)");
+                "Missing required field: tag (t/)\n"
+                + "Eg: t/Marketing/Full-Time/Product Manager");
 
         // all prefixes missing
         assertParseFailure(parser, VALID_NAME_BOB + VALID_PHONE_BOB + VALID_EMAIL_BOB + VALID_NRIC_BOB
                         + VALID_GENDER_BOB + VALID_DOB_BOB + VALID_DATE_BOB + VALID_NATIONALITY_BOB
                         + VALID_ADDRESS_BOB,
-                "Missing required field: name (n/) phone (p/) email (e/) NRIC (ic/) gender (g/) date of birth (d/) "
-                + "date of joining (j/) nationality (nat/) address (a/) "
-                + "tag (t/: Department/Employment Type/Job Title)");
+                "Missing required field: name (n/) phone (p/) email (e/) NRIC (ic/) gender (g/) "
+                + "date of birth (d/) date of joining (j/) nationality (nat/) address (a/) tag (t/)\n"
+                + "Eg: n/John Doe p/91234567 e/johndoe@example.com ic/S1234567D g/Male "
+                + "d/20-03-1990 j/15-04-2023 nat/Singaporean a/123 Main Street #05-01/119278 "
+                + "t/Marketing/Full-Time/Product Manager");
     }
 
     @Test

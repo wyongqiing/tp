@@ -44,43 +44,67 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_NRIC,
                         PREFIX_GENDER, PREFIX_DOB, PREFIX_DATE, PREFIX_NATIONALITY, PREFIX_ADDRESS, PREFIX_TAG);
 
-        // Check for missing required fields
-        StringBuilder missingFields = new StringBuilder();
+        StringBuilder missingFieldsHeader = new StringBuilder("Missing required field: ");
+        StringBuilder missingFieldsExamples = new StringBuilder("Eg: ");
+        boolean hasMissingFields = false;
 
         if (!argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            missingFields.append("name (n/) ");
+            missingFieldsHeader.append("name (n/) ");
+            missingFieldsExamples.append("n/John Doe ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            missingFields.append("phone (p/) ");
+            missingFieldsHeader.append("phone (p/) ");
+            missingFieldsExamples.append("p/91234567 ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            missingFields.append("email (e/) ");
+            missingFieldsHeader.append("email (e/) ");
+            missingFieldsExamples.append("e/johndoe@example.com ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_NRIC).isPresent()) {
-            missingFields.append("NRIC (ic/) ");
+            missingFieldsHeader.append("NRIC (ic/) ");
+            missingFieldsExamples.append("ic/S1234567D ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_GENDER).isPresent()) {
-            missingFields.append("gender (g/) ");
+            missingFieldsHeader.append("gender (g/) ");
+            missingFieldsExamples.append("g/Male ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_DOB).isPresent()) {
-            missingFields.append("date of birth (d/) ");
+            missingFieldsHeader.append("date of birth (d/) ");
+            missingFieldsExamples.append("d/20-03-1990 ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            missingFields.append("date of joining (j/) ");
+            missingFieldsHeader.append("date of joining (j/) ");
+            missingFieldsExamples.append("j/15-04-2023 ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_NATIONALITY).isPresent()) {
-            missingFields.append("nationality (nat/) ");
+            missingFieldsHeader.append("nationality (nat/) ");
+            missingFieldsExamples.append("nat/Singaporean ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            missingFields.append("address (a/) ");
+            missingFieldsHeader.append("address (a/) ");
+            missingFieldsExamples.append("a/123 Main Street #05-01/119278 ");
+            hasMissingFields = true;
         }
         if (!argMultimap.getValue(PREFIX_TAG).isPresent()) {
-            missingFields.append("tag (t/: Department/Employment Type/Job Title) ");
+            missingFieldsHeader.append("tag (t/) ");
+            missingFieldsExamples.append("t/Marketing/Full-Time/Product Manager ");
+            hasMissingFields = true;
         }
 
-        // If any fields are missing, throw ParseException
-        if (missingFields.length() > 0) {
-            throw new ParseException("Missing required field: " + missingFields.toString().trim());
+        // If any fields are missing, throw ParseException with specific message
+        if (hasMissingFields) {
+            throw new ParseException(
+                missingFieldsHeader.toString().trim() + "\n"
+                + missingFieldsExamples.toString().trim()
+            );
         }
 
         // Check for non-empty preamble
