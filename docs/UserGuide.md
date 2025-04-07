@@ -58,7 +58,7 @@ Alerts you to potential issues or problems that may arise.
 - [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
-## Current HRelper Prototype Overview
+## ⚠️ Current HRelper Prototype Overview
 The current version of the HRelper is a prototype designed to showcase its core functionality.   
 
 * At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.  
@@ -139,8 +139,11 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 * Names are case-insensitive. The profile will automatically capitalise the first letter of each word and convert all other letters to lowercase.
 * Phone numbers must be exactly 8 digits long and start with 6, 8, or 9.*
 * NRIC should start with S, T, F, or G, followed by 7 digits, and end with a capital letter.*
-* Gender is not case-sensitive but will only take in Male, Female or Other.*
-* Nationality is not case-sensitive but follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
+* Gender is case-insensitive but will only take in Male, Female or Other.*
+* All dates (DOB or Date of Joining) must follow one of these formats: dd-MMM-yyyy, dd/MM/yyyy, dd.MM.yyyy, yyyy-MM-dd, or dd-MM-yyyy -> Single-digit days and months must be zero-padded (e.g., use 01 instead of 1)
+* DOB must be a valid date that is not in the future.
+* Date of Joining must be a valid date. Future dates are allowed to account for upcoming hires. (If the contract date is yet to be confirmed, please select the first day of the joining month.)
+* Nationality is case-insensitive but follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
 **To note: Each person is unique based on their NRIC**
