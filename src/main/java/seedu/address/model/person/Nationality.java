@@ -12,7 +12,7 @@ import java.util.Set;
 public class Nationality {
     private static final String nationalities = " Armenian, Australian, Austrian, Azerbaijani, Bahamian, Bahraini,\n "
             + "Bangladeshi, Barbadian, Belarusian, Belgian, Belizean, Beninese, Bhutanese,\n "
-            + "Bolivian, Bosnian, Botswanan, Brazilian, British, Bruneian, Bulgarian, Burkinabé,\n "
+            + "Bolivian, Bosnian, Botswanan, Brazilian, British, Bruneian, Bulgarian, Burkinabe,\n "
             + "Burmese, Burundian, Cambodian, Cameroonian, Canadian, Cape Verdean, Central African,\n "
             + "Chadian, Chilean, Chinese, Colombian, Comorian, Congolese, Costa Rican, Croatian,\n "
             + "Cuban, Cypriot, Czech, Danish, Djiboutian, Dominican, Dutch, Ecuadorian, Egyptian,\n "
@@ -46,7 +46,7 @@ public class Nationality {
             "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini",
             "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese",
             "Bhutanese", "Bolivian", "Bosnian", "Botswanan", "Brazilian", "British",
-            "Bruneian", "Bulgarian", "Burkinabé", "Burmese", "Burundian", "Cambodian",
+            "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian",
             "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian",
             "Chilean", "Chinese", "Colombian", "Comorian", "Congolese", "Costa Rican",
             "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican",

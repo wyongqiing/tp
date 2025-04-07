@@ -36,10 +36,10 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 --------------------------------------------------------------------------------------------------------------------
 ## Current HRelper Prototype Overview
 The current version of the HRelper is a prototype designed to showcase its core functionality.   
-HR personnel using the app will be able to customize and populate it with their company's specific information, including departments, employment titles, job titles, and other relevant attributes.
 
-At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.
-
+* At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.  
+* Since this is just a prototype of how our HRelper works, in real world scenarios, we will customise the valid department list according to the company's needs. Each company should populate the valid department before using HRelper.
+* Attributes marked with an asterisk (*) indicate that they are in their current form because they follow the structure of the prototype.
 
 ## Quick start
 
@@ -113,6 +113,10 @@ Adds a person to the address book.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
 
 * Names are case-insensitive. The profile will automatically capitalise the first letter of each word and convert all other letters to lowercase.
+* Phone numbers must be exactly 8 digits long and start with 6, 8, or 9.*
+* NRIC should start with S, T, F, or G, followed by 7 digits, and end with a capital letter.*
+* Gender is case-sensitive and will only take in Male, Female or Other.*
+* Nationality follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
 
@@ -166,6 +170,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, even if editing only one item out of all, you need to include all items
+
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
