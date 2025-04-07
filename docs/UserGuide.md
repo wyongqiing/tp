@@ -126,6 +126,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOIN
 * DOB must be a valid date that is not in the future.
 * Date of Joining must be a valid date that is after DOB. Future dates are allowed to account for upcoming hires. (If the contract date is yet to be confirmed, please select the first day of the joining month.)
 * Nationality is case-insensitive but follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
+* Address follows postal codes (specifically, the Postal Sector) defined by the [Urban Redevelopment Authority (URA)](https://www.ura.gov.sg/Corporate/-/media/Corporate/Property/PMI-Online/List_Of_Postal_Districts.pdf).
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
 **To note: Each person is unique based on their NRIC**
