@@ -36,7 +36,7 @@
         <Label text="Nric:" styleClass="cell_header_label" />
         <Label fx:id="nric" styleClass="cell_small_label" text="\$nric" />
       </HBox>
-      <HBox spacing="5">
+      <HBox spacing="5" alignment="BASELINE_LEFT">
         <Label text="Gender:" styleClass="cell_header_label" />
         <Label fx:id="gender" styleClass="cell_small_label" text="\$gender" />
       </HBox>
