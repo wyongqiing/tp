@@ -21,10 +21,10 @@ public class Department {
             + "Diversity, Equity & Inclusion.";
 
     private static final String departmentsShortForm = "HR, CS, IT, R&D, SCM, Procurement, QA, PR, CorpComm, "
-            + "Risk & Compliance, BizDev, DS, CyberSec, SD, UX/UI, AI/ML, T&D, FM, H&S, DEI.";
+            + "BizDev, DS, CyberSec, SD, UX/UI, AI & ML, T&D, FM, H&S, DEI.";
 
-    public static final String MESSAGE_CONSTRAINTS = "Department search must only contain alphabetic characters, "
-            + "the '&' symbol, and the '/' symbol. It should not be blank.\n"
+    public static final String MESSAGE_CONSTRAINTS = "Department search must only contain alphabetic characters "
+            + "and the '&' symbol. It should not be blank.\n"
             + "The search is flexible and supports:\n"
             + "- Full department names (e.g., 'Human Resources')\n"
             + "- Department short forms (e.g., 'HR' for Human Resources)\n"
@@ -58,13 +58,12 @@ public class Department {
             Map.entry("Quality Assurance", "QA"),
             Map.entry("Public Relations", "PR"),
             Map.entry("Corporate Communications", "CorpComm"),
-            Map.entry("Compliance & Risk Management", "Risk & Compliance"),
             Map.entry("Business Development", "BizDev"),
             Map.entry("Data Science", "DS"),
             Map.entry("Cybersecurity", "CyberSec"),
             Map.entry("Software Development", "SD"),
             Map.entry("UX/UI Design", "UX/UI"),
-            Map.entry("Artificial Intelligence & Machine Learning", "AI/ML"),
+            Map.entry("Artificial Intelligence & Machine Learning", "AI & ML"),
             Map.entry("Training & Development", "T&D"),
             Map.entry("Facilities Management", "FM"),
             Map.entry("Health & Safety", "H&S"),

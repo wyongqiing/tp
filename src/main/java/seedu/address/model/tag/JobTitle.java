@@ -10,12 +10,39 @@ import java.util.Set;
  * Guarantees: immutable; is valid as declared in {@link #isValidJobTitle(String)}
  */
 public class JobTitle {
-    private static final String jobTitles = "Software Engineer, Data Analyst, Product Manager, HR Coordinator, "
-            + "Marketing Specialist, Sales Associate, Financial Analyst, Operations Manager, UX Designer, \n"
-            + "Project Manager, Business Consultant, Mechanical Engineer, Graphic Designer, "
-            + "Customer Support Representative, IT Technician, Electrical Engineer, Legal Advisor, \n"
-            + "Healthcare Administrator, Content Writer, Cybersecurity Analyst, Network Engineer, "
-            + "Quality Assurance Tester, Recruitment Specialist, Social Media Manager, Supply Chain Manager.";
+    private static final String jobTitles = "Software Engineer, DevOps Engineer, Front-End Developer, "
+            + "Back-End Developer, Full-Stack Developer, Machine Learning Engineer, Data Engineer,  \n"
+            + "Electrical Engineer, Mechanical Engineer, Civil Engineer, Robotics Engineer, Systems Engineer, "
+            + "Embedded Systems Developer, Test Automation Engineer, Aerospace Engineer, Chemical Engineer, \n"
+            + "Hardware Engineer, Biomedical Engineer, Data Analyst, Business Intelligence Analyst, "
+            + "Data Scientist, Financial Analyst, Quantitative Analyst, Risk Analyst, \n"
+            + "Market Research Analyst, Statistician, Data Architect, Database Administrator, "
+            + "Pricing Analyst, Operations Research Analyst, Product Manager, Associate Product Manager, \n"
+            + "Technical Product Manager, UX Designer, UI Designer, UX Researcher, Product Designer, "
+            + "Interaction Designer, Creative Director, Industrial Designer, Marketing Specialist, \n"
+            + "Digital Marketing Manager, SEO Specialist, Content Marketer, Growth Marketing Manager, "
+            + "Brand Manager, Sales Associate, Account Executive, Account Manager, \n"
+            + "Business Development Representative, Sales Manager, Partnership Manager, Social Media Manager, "
+            + "Customer Success Manager, Operations Manager, Chief Executive Officer, Chief Operating Officer, \n"
+            + "Chief Marketing Officer, Chief Technology Officer, Project Manager, Program Manager, "
+            + "Strategy Consultant, Business Consultant, General Manager, HR Coordinator, \n"
+            + "Recruitment Specialist, Office Manager, Executive Assistant, Administrative Assistant, "
+            + "Talent Acquisition Specialist, HR Generalist, Payroll Specialist, Customer Support Representative, \n"
+            + "Call Center Agent, IT Technician, Network Administrator, Systems Administrator, "
+            + "Cybersecurity Analyst, Information Security Analyst, IT Support Specialist, IT Project Manager, \n"
+            + "Cloud Engineer, Network Engineer, DevSecOps Engineer, Healthcare Administrator, "
+            + "Registered Nurse, Medical Assistant, Physical Therapist, Pharmacist, \n"
+            + "Clinical Research Coordinator, Mental Health Counselor, Medical Billing Specialist, Legal Advisor, "
+            + "Paralegal, Corporate Lawyer, Compliance Officer, Auditor, \n"
+            + "Accountant, Bookkeeper, Tax Analyst, Financial Planner, "
+            + "Investment Analyst, Electrician, Plumber, Welder, \n"
+            + "Construction Worker, Warehouse Manager, Logistics Coordinator, Supply Chain Manager, "
+            + "Procurement Specialist, Quality Assurance Tester, Field Service Technician, Graphic Designer, \n"
+            + "Content Writer, Copywriter, Technical Writer, Video Editor, "
+            + "Motion Graphics Designer, Photographer, Art Director, Animator, \n"
+            + "Editor, Journalist, Podcast Producer.";
+
+
 
     public static final String MESSAGE_CONSTRAINTS = "Job title must contain alphabetic characters. \n"
             + "It should not be blank. \n"
@@ -23,15 +50,39 @@ public class JobTitle {
             + "Here is the list of Job Titles: \n"
             + jobTitles;
 
-    private static final Set<String> VALID_JOB_TITLES = Set.of("Software Engineer", "Data Analyst", "Product Manager",
-            "HR Coordinator", "Marketing Specialist", "Sales Associate",
-            "Financial Analyst", "Operations Manager", "UX Designer",
-            "Project Manager", "Business Consultant", "Mechanical Engineer",
-            "Graphic Designer", "Customer Support Representative", "IT Technician",
-            "Electrical Engineer", "Legal Advisor", "Healthcare Administrator",
-            "Content Writer", "Cybersecurity Analyst", "Network Engineer",
-            "Quality Assurance Tester", "Recruitment Specialist",
-            "Social Media Manager", "Supply Chain Manager");
+    private static final Set<String> VALID_JOB_TITLES = Set.of(
+            "Software Engineer", "DevOps Engineer", "Front-End Developer", "Back-End Developer",
+            "Full-Stack Developer", "Machine Learning Engineer", "Data Engineer", "Electrical Engineer",
+            "Mechanical Engineer", "Civil Engineer", "Robotics Engineer", "Systems Engineer",
+            "Embedded Systems Developer", "Test Automation Engineer", "Aerospace Engineer", "Chemical Engineer",
+            "Hardware Engineer", "Biomedical Engineer", "Data Analyst", "Business Intelligence Analyst",
+            "Data Scientist", "Financial Analyst", "Quantitative Analyst", "Risk Analyst",
+            "Market Research Analyst", "Statistician", "Data Architect", "Database Administrator",
+            "Pricing Analyst", "Operations Research Analyst", "Product Manager", "Associate Product Manager",
+            "Technical Product Manager", "UX Designer", "UI Designer", "UX Researcher", "Product Designer",
+            "Interaction Designer", "Creative Director", "Industrial Designer", "Marketing Specialist",
+            "Digital Marketing Manager", "SEO Specialist", "Content Marketer", "Growth Marketing Manager",
+            "Brand Manager", "Sales Associate", "Account Executive", "Account Manager",
+            "Business Development Representative", "Sales Manager", "Partnership Manager", "Social Media Manager",
+            "Customer Success Manager", "Operations Manager", "Chief Executive Officer", "Chief Operating Officer",
+            "Chief Marketing Officer", "Chief Technology Officer", "Project Manager", "Program Manager",
+            "Strategy Consultant", "Business Consultant", "General Manager", "HR Coordinator", "Recruitment Specialist",
+            "Office Manager", "Executive Assistant", "Administrative Assistant", "Talent Acquisition Specialist",
+            "HR Generalist", "Payroll Specialist", "Customer Support Representative", "Call Center Agent",
+            "IT Technician", "Network Administrator", "Systems Administrator", "Cybersecurity Analyst",
+            "Information Security Analyst", "IT Support Specialist", "IT Project Manager", "Cloud Engineer",
+            "Network Engineer", "DevSecOps Engineer", "Healthcare Administrator", "Registered Nurse",
+            "Medical Assistant", "Physical Therapist", "Pharmacist", "Clinical Research Coordinator",
+            "Mental Health Counselor", "Medical Billing Specialist", "Legal Advisor", "Paralegal",
+            "Corporate Lawyer", "Compliance Officer", "Auditor", "Accountant", "Bookkeeper",
+            "Tax Analyst", "Financial Planner", "Investment Analyst", "Electrician", "Plumber",
+            "Welder", "Construction Worker", "Warehouse Manager", "Logistics Coordinator",
+            "Supply Chain Manager", "Procurement Specialist", "Quality Assurance Tester",
+            "Field Service Technician", "Graphic Designer", "Content Writer", "Copywriter",
+            "Technical Writer", "Video Editor", "Motion Graphics Designer", "Photographer",
+            "Art Director", "Animator", "Editor", "Journalist", "Podcast Producer"
+    );
+
 
     public final String value;
 

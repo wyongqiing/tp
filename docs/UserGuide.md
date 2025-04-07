@@ -9,6 +9,7 @@ We understand that working in HR means wearing many hats — from onboarding new
 
 That’s where HRelper comes in. Designed to simplify and streamline your workflow, HRelper helps you manage your employee database efficiently and confidently — so you can spend less time on spreadsheets and more time focusing on people.
 
+--------------------------------------------------------------------------------------------------------------------
 
 ### Table of Contents
 
@@ -30,10 +31,17 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 - [FAQ](#faq)
     - [Q1: Will my data be lost if I close the app?](#q1)
     - [Q2: Can I search by job title or department?](#q2)
+    - [Q3: How do I transfer my data to another computer?](#q3)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
+## ⚠️ Current HRelper Prototype Overview
+The current version of the HRelper is a prototype designed to showcase its core functionality.   
+
+* At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.  
+* Since this is just a prototype of how our HRelper works, in real world scenarios, we will customise the valid department list according to the company's needs. Each company should populate the valid department before using HRelper.
+* Attributes marked with an asterisk (*) indicate that they are in their current form because they follow the structure of the prototype.
 
 ## Quick start
 
@@ -53,7 +61,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 
    * `list` : Lists all contacts with full attributes.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25 t/Finance/Full-Time/Financial Analyst` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25/119278 t/Finance/Full-Time/Financial Analyst` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -65,7 +73,7 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
    
    * `findByDepartment Finance` : Lists all contacts in this specific department
    
-   * `note`: add optional remarks to people in their address book and edit it if required. 
+   * `note`: Adds optional remarks to people in their address book and edit it if required. 
 
    * `exit` : Exits the app.
 
@@ -104,14 +112,25 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS/POSTAL CODE t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`
 
-* CAPITALISED words are parameters to be filled in.
+* Names are case-insensitive. The profile will automatically capitalise the first letter of each word and convert all other letters to lowercase.
+* Phone numbers must be exactly 8 digits long and start with 6, 8, or 9.*
+* NRIC should start with S, T, F, or G, followed by 7 digits, and end with a capital letter.*
+* Gender is case-insensitive but will only take in Male, Female or Other.*
+* All dates (DOB or Date of Joining) must follow one of these formats: dd-MMM-yyyy, dd/MM/yyyy, dd.MM.yyyy, yyyy-MM-dd, or dd-MM-yyyy -> 
+  **Single-digit days and months must be zero-padded (e.g., use 01 instead of 1)**
+* DOB must be a valid date that is not in the future.
+* Date of Joining must be a valid date. Future dates are allowed to account for upcoming hires. (If the contract date is yet to be confirmed, please select the first day of the joining month.)
+* Nationality is case-insensitive but follows a pre-defined set of common nationalities. In the rare case where a nationality is not specified, choose 'Other'.
 * Tag fields (i.e. Department, Employment Type, Job Title) are case-insensitive. Additionally, certain short forms are valid for Department.
 
+**To note: Each person is unique based on their NRIC**
+
+
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25/119278 t/Finance/Full-Time/Financial Analyst`
+
 
 ### Listing all persons : `list`
 
@@ -147,18 +166,21 @@ HRelper will return to the overview page and display all employees again, with a
 **Returned to Home**
 
 <table> <tr> <td align="center"><strong>Before returning to Home</strong><br><br> <img src="images/BeforeHome.png" alt="Before returning to home" width="400"/> </td> <td align="center"><strong>After returning to Home</strong><br><br> <img src="images/AfterHome.png" alt="images/AfterHome" width="400"/> </td> </tr> </table>
+<div markdown="span" class="alert alert-warning">SHORTCUT: press `F2` to navigate back to home page</div>
 
 ### Editing a person : `edit`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS/POSTAL CODE] [t/DEPARTMENT/EMPLOYMENT TYPE/JOB TITLE]`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Square brackets [ ] represent optional fields
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, even if editing only one item out of all, you need to include all items
+* Note that editing of NRIC is not allowed
+
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
@@ -166,20 +188,49 @@ Examples:
 *  `edit 1 t/HR/Full-Time/HR Coordinator` Edits the tag of the 1st person to be `HR/Full-Time/HR Coordinator`.
 
 ### Filtering by: `findBy...`
+Filters the contacts by their department, job title, or employment type.
 
-Filters the contacts through their tags
+#### `findByDepartment`
+Format: `findByDepartment KEYWORD`
 
-Format: `findByDepartment [MORE_KEYWORDS]`, `findByEmploymentType [MORE_KEYWORDS]`, `findByJobTitle [MORE_KEYWORDS]`
-
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Finds contacts who belong to departments that match the specified keyword
+* Search is case-insensitive (e.g., "finance" will match "Finance")
+* Accepts department short forms (e.g., "HR" will match "Human Resources")
+* For partial matches, keyword must contain at least 3 consecutive letters of the department name
+* Only alphabetic characters and the '&' symbol are allowed in department search terms
 
 Examples:
-* `findByDepartment Finance` returns a list of contacts who are in the Finance Department <br>
-  ![result for 'find alex david'](images/FilterImage.png)
+* `findByDepartment Finance` returns all contacts in the Finance department
+* `findByDepartment HR` returns all contacts in the Human Resources department
+* `findByDepartment Acc` returns all contacts in the Accounting department
+* `findByDepartment Sof` returns all contacts in the Software Development department
+
+#### `findByJobTitle`
+Format: `findByJobTitle KEYWORD`
+
+* Finds contacts whose job titles match the specified keyword
+* Search is case-insensitive
+* Will match if the keyword matches a full word in the job title
+* For partial matches, keyword must contain at least 3 consecutive letters of a word in the job title
+* Only alphabetic characters are allowed in job title search terms
+
+Examples:
+* `findByJobTitle Engineer` returns all engineers
+* `findByJobTitle Dev` returns all developers
+* `findByJobTitle Coord` returns all coordinators
+
+#### `findByEmploymentType`
+Format: `findByEmploymentType EMPLOYMENT_TYPE`
+
+* Finds contacts with the specified employment type
+* Search must use exact employment type terms or their common variations
+* Only alphabetic characters and hyphens are allowed in search terms
+* Supported employment types: Full-Time, Part-Time, Contract, Internship
+
+Examples:
+* `findByEmploymentType Full-Time` returns all full-time employees
+* `findByEmploymentType Part-Time` returns all part-time employees
+* `findByEmploymentType Contract` returns all contractors
 
 ### Deleting a person : `delete`
 
@@ -230,7 +281,7 @@ HRelper data are saved in the hard disk automatically after any command that cha
 
 ### Editing the data file
 
-HRelper data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+HRelper data are saved automatically as a JSON file `[JAR file location]/data/hrelper.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, HRelper will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
@@ -267,12 +318,54 @@ Example: `findByDepartment Marketing` will show all employees in the Marketing d
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`<br>e.g., `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25 t/Finance/Full-Time/Financial Analyst`
+**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL ic/NRIC g/GENDER d/DOB j/DATE OF JOINING nat/NATIONALITY a/ADDRESS/POSTAL CODE t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE`<br>e.g., `add n/John Doe p/98765432 e/johnd@example.com ic/T0312345A g/Male d/02-Jan-2001 j/15-Apr-2025 nat/Singaporean a/311, Clementi Ave 2, #02-25/119278 t/Finance/Full-Time/Financial Analyst`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS] [t/DEPARTMENT/EMPLOYMENTTYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `findByDepartment KEYWORD `<br> e.g., `find James Jake`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [g/GENDER] [d/DOB] [j/DATE OF JOINING] [nat/NATIONALITY] [a/ADDRESS/POSTAL CODE] [t/DEPARTMENT/EMPLOYMENT TYPE/JOBTITLE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Find by Department** | `findByDepartment KEYWORD`<br> e.g., `findByDepartment HR`, `findByDepartment Fin`, `findByDepartment Information Technology` |
+**Find by Job Title** | `findByJobTitle KEYWORD`<br> e.g., `findByJobTitle Engineer`, `findByJobTitle Dev`, `findByJobTitle Coordinator` |
+**Find by Employment Type** | `findByEmploymentType EMPLOYMENT_TYPE`<br> e.g., `findByEmploymentType Full-Time`, `findByEmploymentType Contract` |
 **Note** | `note INDEX NOTE` e.g. note 1 he likes aadvarks 
 **List** | `list`
 **Help** | `help`
 **View** | `view FULLNAME [SURNAME]`<br> e.g., `view Alex Yeoh` or `view Yeoh`
+
+## Valid Departments, Employment Types, Job Titles
+
+Here are the valid inputs for the respective fields in this particular working prototype. Companies should customise such fields to fit their own business needs 
+
+Fields | Valid Inputs
+--------|------------------
+**Departments** |`Human Resources, Finance, Accounting, Marketing, Sales, Customer Service, Information Technology, Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, Engineering, Quality Assurance, Product Management, Manufacturing, Public Relations,Corporate Communications, Compliance & Risk Management, Business Development, Data Science, Cybersecurity, Software Development, UX/UI Design, Artificial Intelligence & Machine Learning, Training & Development, Facilities Management, Administration, Health & Safety, Diversity, Equity & Inclusion`
+**Employment Types** |`Full-Time, Part-Time, Contract, Temporary, Internship, Freelance, Apprenticeship, Remote, Hybrid.`
+**Job Titles** |`Software Engineer, Data Analyst, Product Manager, HR Coordinator, Marketing Specialist, Sales Associate, Financial Analyst, Operations Manager, UX Designer, Project Manager, Business Consultant, Mechanical Engineer, Graphic Designer, Customer Support Representative, IT Technician, Electrical Engineer, Legal Advisor, Healthcare Administrator, Content Writer, Cybersecurity Analyst, Network Engineer, Quality Assurance Tester, Recruitment Specialist, Social Media Manager, Supply Chain Manager.`
+**Nationalities** |`Afghan`, `Albanian`, `Algerian`, `American`, `Andorran`, `Angolan`, `Argentine`,`Armenian`, `Australian`, `Austrian`, `Azerbaijani`, `Bahamian`, `Bahraini`,`Bangladeshi`, `Barbadian`, `Belarusian`, `Belgian`, `Belizean`, `Beninese`,`Bhutanese`, `Bolivian`, `Bosnian`, `Botswanan`, `Brazilian`, `British`,`Bruneian`, `Bulgarian`, `Burkinabé`, `Burmese`, `Burundian`, `Cambodian`, `Cameroonian`, `Canadian`, `Cape Verdean`, `Central African`, `Chadian`,`Chilean`, `Chinese`, `Colombian`, `Comorian`, `Congolese`, `Costa Rican`,`Croatian`, `Cuban`, `Cypriot`, `Czech`, `Danish`, `Djiboutian`, `Dominican`,`Dutch`, `Ecuadorian`, `Egyptian`, `Emirati`, `Equatorial Guinean`,`Eritrean`, `Estonian`, `Ethiopian`, `Fijian`, `Filipino`, `Finnish`, `French`,`Gabonese`, `Gambian`, `Georgian`, `German`, `Ghanaian`, `Greek`, `Grenadian`,`Guatemalan`, `Guinean`, `Guyanese`, `Haitian`, `Honduran`, `Hungarian`,`Icelandic`, `Indian`, `Indonesian`, `Iranian`, `Iraqi`, `Irish`, `Israeli`,`Italian`, `Ivorian`, `Jamaican`, `Japanese`, `Jordanian`, `Kazakh`, `Kenyan`,`Kiribati`, `Kuwaiti`, `Kyrgyz`, `Laotian`, `Latvian`, `Lebanese`, `Liberian`,`Libyan`, `Liechtenstein`, `Lithuanian`, `Luxembourgish`, `Malagasy`, `Malawian`,`Malaysian`, `Maldivian`, `Malian`, `Maltese`, `Marshallese`, `Mauritanian`,`Mauritian`, `Mexican`, `Micronesian`, `Moldovan`, `Monacan`, `Mongolian`,`Montenegrin`, `Moroccan`, `Mozambican`, `Namibian`, `Nauruan`, `Nepalese`,`New Zealander`, `Nicaraguan`, `Nigerien`, `Nigerian`, `North Korean`,`North Macedonian`, `Norwegian`, `Omani`, `Pakistani`, `Palauan`, `Palestinian`,`Panamanian`, `Papua New Guinean`, `Paraguayan`, `Peruvian`, `Polish`, `Portuguese`,`Qatari`, `Romanian`, `Russian`, `Rwandan`, `Saint Lucian`, `Salvadoran`, `Samoan`,`Saudi Arabian`, `Scottish`, `Senegalese`, `Serbian`, `Seychellois`, `Sierra Leonean`,`Singaporean`, `Slovak`, `Slovenian`, `Solomon Islander`, `Somali`, `South African`,`South Korean`, `South Sudanese`, `Spanish`, `Sri Lankan`, `Sudanese`, `Surinamese`,`Swazi`, `Swedish`, `Swiss`, `Syrian`, `Tajik`, `Tanzanian`, `Thai`, `Timorese`,`Togolese`, `Tongan`, `Trinidadian`, `Tunisian`, `Turkish`, `Turkmen`, `Tuvaluan`,`Ugandan`, `Ukrainian`, `Uruguayan`, `Uzbek`, `Vanuatuan`, `Venezuelan`, `Vietnamese`,`Welsh`, `Yemeni`, `Zambian`, `Zimbabwean`
+
+# Valid Short-Forms
+
+Please refer to the table for some valid short-form `department` tag inputs. The `department` to `short-form name` mapping is as follows
+
+| Department Name                                | Short-form    |
+|------------------------------------------------|---------------|
+| **Human resources**                            | `HR`          |
+| **Customer Service**                           | `CS`          |
+| **Information Technology**                     | `IT`          |
+| **Research and Development**                   | `R&D`         |
+| **Supply Chain & Logistics**                   | `SCM`         |
+| **Procurement & Purchasing**                   | `Procurement` |
+| **Quality Assurance**                          | `QA`          |
+| **Product Management**                         | `PR`          | 
+| **Corporate Communications**                   | `CorpComm`    |
+| **Business Development**                       | `BizDev`      |
+| **Data Science**                               | `DS`          |
+| **Cybersecurity**                              | `CyberSec`    |
+| **Software Development**                       | `SD`          |
+| **UX/UI Design**                               | `UX/UI`       |
+| **Artificial Intelligence & Machine Learning** | `AI/ML`       |
+| **Training & Development**                     | `T&D`         |
+| **Facilities Management**                      | `FM`          |
+| **Health & Safety**                            | `H&S`         |
+| **Diversity, Equity & Inclusion**              | `DEI`         |
+
+Note: `Finance` `Accounting` `Marketing` `Sales` `Operations` `Legal` `Engineering`
+`Manufacturing` `Public Relations` `Administration` <br> tags do not have valid short-forms

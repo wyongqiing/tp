@@ -12,7 +12,7 @@ import java.util.Set;
 public class Nationality {
     private static final String nationalities = " Armenian, Australian, Austrian, Azerbaijani, Bahamian, Bahraini,\n "
             + "Bangladeshi, Barbadian, Belarusian, Belgian, Belizean, Beninese, Bhutanese,\n "
-            + "Bolivian, Bosnian, Botswanan, Brazilian, British, Bruneian, Bulgarian, Burkinabé,\n "
+            + "Bolivian, Bosnian, Botswanan, Brazilian, British, Bruneian, Bulgarian, Burkinabe,\n "
             + "Burmese, Burundian, Cambodian, Cameroonian, Canadian, Cape Verdean, Central African,\n "
             + "Chadian, Chilean, Chinese, Colombian, Comorian, Congolese, Costa Rican, Croatian,\n "
             + "Cuban, Cypriot, Czech, Danish, Djiboutian, Dominican, Dutch, Ecuadorian, Egyptian,\n "
@@ -33,7 +33,7 @@ public class Nationality {
             + "Spanish, Sri Lankan, Sudanese, Surinamese, Swazi, Swedish, Swiss, Syrian, Tajik,\n "
             + "Tanzanian, Thai, Timorese, Togolese, Tongan, Trinidadian, Tunisian, Turkish, Turkmen,\n "
             + "Tuvaluan, Ugandan, Ukrainian, Uruguayan, Uzbek, Vanuatuan, Venezuelan, Vietnamese,\n "
-            + "Welsh, Yemeni, Zambian, Zimbabwean;";
+            + "Welsh, Yemeni, Zambian, Zimbabwean, Other;";
 
     public static final String MESSAGE_CONSTRAINTS =
             "Nationality must contain only alphabetic characters and may include spaces for multi-word nationalities,"
@@ -46,7 +46,7 @@ public class Nationality {
             "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini",
             "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese",
             "Bhutanese", "Bolivian", "Bosnian", "Botswanan", "Brazilian", "British",
-            "Bruneian", "Bulgarian", "Burkinabé", "Burmese", "Burundian", "Cambodian",
+            "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian",
             "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian",
             "Chilean", "Chinese", "Colombian", "Comorian", "Congolese", "Costa Rican",
             "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican",
@@ -85,12 +85,36 @@ public class Nationality {
     public Nationality(String nationality) {
         requireNonNull(nationality);
         checkArgument(isValidNationality(nationality), MESSAGE_CONSTRAINTS);
-        value = nationality;
+        this.value = capitalize(nationality);
     }
 
+    /**
+     * Returns if Nationality is valid
+     */
     public static boolean isValidNationality(String nationality) {
-        return VALID_NATIONALITIES.contains(nationality);
+        if (nationality == null) {
+            throw new NullPointerException(MESSAGE_CONSTRAINTS); // throw NullPointerException instead
+        }
+        return VALID_NATIONALITIES.stream()
+                .anyMatch(validNationality -> validNationality.equalsIgnoreCase(nationality));
     }
+
+    /**
+     * Capitalises the first letter of the input
+     */
+    private static String capitalize(String nationality) {
+        // Convert to proper case (e.g., "american" -> "American")
+        String[] words = nationality.split(" ");
+        StringBuilder capitalizedNationality = new StringBuilder();
+        for (String word : words) {
+            if (capitalizedNationality.length() > 0) {
+                capitalizedNationality.append(" ");
+            }
+            capitalizedNationality.append(word.substring(0, 1).toUpperCase()).append(word.substring(1).toLowerCase());
+        }
+        return capitalizedNationality.toString();
+    }
+
 
     @Override
     public String toString() {

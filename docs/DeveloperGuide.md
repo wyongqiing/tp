@@ -1,15 +1,18 @@
-22---
-layout: page
-title: Developer Guide
----
+Developer Guide
+=======
+
 * Table of Contents
-{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+HRelper is built upon the AddressBook-Level3 project created by the SE-EDU initiative.
+It incorporates the following third-party libraries:
+
+* JavaFX – for building the graphical user interface (GUI)
+* Jackson – for handling JSON serialization and deserialization
+* JUnit 5 – for writing and running unit tests
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -262,7 +265,12 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
+HRelper is designed for HR teams who:
+
+* manage a significant number of employee records and contact details.
+* find traditional spreadsheets inefficient or cumbersome for day-to-day contact management.
 * has a need to manage a significant number of contacts
+* require a structured system to track details like joining dates, NRICs, and other personal data.
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -286,9 +294,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`   | user     | I can add an extra optional note to a profile                    | so that I am aware of additional information about an employee         
 | `*`     | user     | I can receive notifications when a contact’s details are updated               | so that I am aware of changes                                            |
 
-
-*{More to be added}*
-
 ### Use cases
 
 (For all use cases below, the **System** is the `HRelper` and the **Actor** is the `HR manager (HR)`, unless specified otherwise)
@@ -299,32 +304,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. HR requests to add an employee profile.
 
-2. HRelpher prompts for details of the employee.
+2. HRelper prompts for details of the employee.
 
 3. HR fills in the details.
 
-4. HRelpher requests HR to confirm the details.
+4. HRelper requests HR to confirm the details.
 
 5. HR confirms the details.
 
-6. HRelpher adds the employee to the system.
+6. HRelper adds the employee to the system.
 
     Use case ends.
 
 **Extensions**
+* 3a. HR enters invalid data for one or more attributes.
+  
+   * 3a1. HRelpher displays an error message indicating which field is invalid and the expected format.
+     
+   * 3a2. HR corrects the invalid entry.
+     Use case resumes at step 3.
 
 * 4a. HR decides to change details.
 
     * 4a1. HR cancels confirmation. Use case resumes at step 3.
 
-* 4b. HRelpher finds an existing employee profile by tags. (Department, Employment Type or Job Title)
+* 4b. HRelper finds an existing employee profile by tags. (Department, Employment Type or Job Title)
   Use case resumes at step 3.
 
 * 5a. HR loses connection.
 
-    * 5a1. HRelpher saves details.
+    * 5a1. HRelper saves details.
 
-    * 5a2. HRelpher prompts HR to continue where they left off. Use case resumes at step 3.
+    * 5a2. HRelper prompts HR to continue where they left off. Use case resumes at step 3.
  
 **Use case: Find Employees by Department**
 
@@ -363,9 +374,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3b1. HRelper suggests using more specific keywords.
     Use case resumes at step 2.
 * 4a. No employees found with the specified job title.
-  * 4a1. HRelper shows an empty list.
-
-    Use case ends.
+  * 4a1. HRelper shows an empty list. </br> Use case ends.
 
 **Use case: Find Employees by Employment Type**
 
@@ -374,7 +383,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. HR requests to find employees by employment type.
 2. HRelper prompts for the employment type keyword.
 3. HR enters the employment type keyword.
-4. HRelper displays a list of employees with the specified employment type.
+4. HRelper displays a list of employees with the specified employment type.</br>
    Use case ends.
 
 **Extensions**
@@ -382,30 +391,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3a1. HRelper shows an error message explaining valid employment type input format.
     Use case resumes at step 2.
 * 4a. No employees found with the specified employment type.
-  * 4a1. HRelper shows an empty list.
+  * 4a1. HRelper shows an empty list.</br>
     Use case ends.
 
-** Use case: View Employee Details by Name**
+**Use case: View Employee Details by Full Name or Surname**
 
 **MSS**
 
-1. HR requests to view detailed information of an employee.
-2. HRelper prompts for the employee's name.
-3. HR enters the employee's name.
-4. HRelper displays the comprehensive profile of the specified employee.
+1. HR enters the employee's full name.
+2. HRelper displays the comprehensive profile of the specified employee.</br>
    Use case ends.
 
 Extensions
-* 3a. The given name does not match any employee in the system.
-  * 3a1. HRelper shows an error message.
+* 1a. The given name does not match any employee in the system.
+  * 1a1. HRelper shows an error message.</br>
     Use case resumes at step 2.
-* 3b. Multiple employees share the same name.
-  * 3b1. HRelper displays a list of all matching employees and asks HR to select one.
-  * 3b2. HR selects the intended employee.
-  * 3b3. HRelper displays the comprehensive profile of the selected employee.
+* 1b. Multiple employees share the same name.
+  * 1b1. HRelper displays a list of all matching employees.</br>
     Use case ends.
-* 4a. The employee profile has incomplete information.
-  * 4a1. HRelper displays the available information with indicators for missing fields.
+* 2a. The employee profile has incomplete information.
+  * 2a1. HRelper displays the available information with indicators for missing fields.</br>
     Use case ends.
 
 **Use case: Add/Edit Note to Employee Profile by Index**
@@ -413,22 +418,21 @@ Extensions
 **MSS**
 
 1. HR requests to add or edit a note for an employee.
-2. HRelper prompts for the employee index and note content.
-3. HR enters the employee index and new note content.
-4. HRelper updates the employee's profile with the new note.
-5. HRelper confirms the note has been added/updated.
+2. HR enters the employee index and new note content.
+3. HRelper updates the employee's profile with the new note.
+
    Use case ends.
 
 Extensions
 * 3a. The given index is invalid.
-  * 3a1. HRelper shows an error message.
+  * 3a1. HRelper shows an error message.</br>
     Use case resumes at step 2.
 * 3b. HR enters empty note content.
   * 3b1. HRelper removes any existing note from the employee profile.
-  * 3b2. HRelper confirms the note has been removed.
+  * 3b2. HRelper confirms the note has been removed.</br>
     Use case ends.
 * 4a. HR tries to add a note that exceeds the character limit.
-  * 4a1. HRelper shows an error message indicating the character limit.
+  * 4a1. HRelper shows an error message indicating the character limit.</br>
     Use case resumes at step 3.
 
 **Use case: Delete an Employee Profile**
@@ -436,9 +440,9 @@ Extensions
 **MSS**
 
 1. HR requests to list employees.
-2. HRelpher shows a list of employees.
+2. HRelper shows a list of employees.
 3. HR requests to delete a specific employee in the list.
-4. HRelpher deletes the employee.
+4. HRelper deletes the employee.
 
    Use case ends.
 
@@ -450,38 +454,17 @@ Extensions
 
 * 3a. The given index is invalid.
 
-    * 3a1. HRelpher shows an error message.
+    * 3a1. HRelper shows an error message.
 
       Use case resumes at step 2.
 
-**Use case: View Employee Details by Name**
-
-**MSS**
-
-1. HR requests to view detailed information of an employee.
-2. HR enters the employee's name.
-3. HRelper displays the comprehensive profile of the specified employee.
-   Use case ends.
-
-**Extensions**
-
-* 3a. The given name does not match any employee in the system.
-    * 3a1. HRelper shows default "No matching profiles found" window.
-    * 3a2. User has the option to click on Home button to return to home page
-    * Use case resumes at step 2.
-
-* 3b. An employee name matches the given search keyword.
-    * 3b1. HRelper displays the comprehensive profile of the employee.
-    * 3b2. User has the option to click on Home button to return to home page
-      Use case ends.
-
-Use case: Add/Edit/Remove Note to Employee Profile by Index
+**Use case: Add/Edit/Remove Note to Employee Profile by Index**
 
 **MSS**
 
 1. HR requests to add or edit a note for an employee.
 2. HR enters the employee index and new note content.
-3. HRelper updates the employee's profile with the new note.
+3. HRelper updates the employee's profile with the new note.</br>
    Use case ends.
 
 **Extensions**
@@ -490,7 +473,7 @@ Use case: Add/Edit/Remove Note to Employee Profile by Index
     * 3a1. HRelper shows an error message.
       Use case resumes at step 2.
 * 3b. HR enters empty note content.
-    * 3b1. HRelper removes any existing note from the employee profile.
+    * 3b1. HRelper removes any existing note from the employee profile.</br>
       Use case ends.
 
 ### Non-Functional Requirements
@@ -498,15 +481,19 @@ Use case: Add/Edit/Remove Note to Employee Profile by Index
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. Managing contacts will remain as the core feature in all iterations.
+5. The application should not crash for any input given by the user.
+6. The application will remain as a CLI based application.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **HRelpher**: A Human Resource management tool for managing employee profiles efficiently.
+* **HRelper**: A Human Resource management tool for managing employee profiles efficiently.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **UI**: User Interface - the space where interactions between humans (users) and machines (software or hardware) occur
+* **Sequence Diagram**: A visual representation of the sequence of interactions between different objects, components, or actors in a system over time
 * **API**: Application Programming Interface - A set of rules, protocols, and tools that allows different software applications to communicate and interact with each other
 * **GUI**: Graphical User Interface - A type of user interface that allows users to interact with software applications or devices through graphical elements rather than using text-based commands
 * **JavaFx**: A Java library used for building modern GUIs
@@ -519,8 +506,8 @@ Use case: Add/Edit/Remove Note to Employee Profile by Index
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+<div markdown="span" class="alert alert-info">Note: These instructions only provide a starting point for testers to work on;
+testers are expected to do more exploratory testing.
 
 </div>
 
@@ -529,17 +516,17 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
-
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Open a terminal and `cd` into the folder with the jar file.
+   3. Run `java -jar hrelper.jar`.</br>
+      Expected: An empty address book will be shown.</br> 
+      The window size may not be optimum.
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   1. Re-launch the app by rerunning `java -jar hrelper.jar` in the terminal.<br>
        Expected: The most recent window size and location is retained.
-
-1. _{ more test cases …​ }_
 
 ### Deleting a person
 
@@ -556,12 +543,23 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
-
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Testing data persistence across sessions
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. Add a new person using the `add` command.
 
-1. _{ more test cases …​ }_
+    2. Close the app.
+
+    3. Re-launch the app. </br>
+       Expected: The newly added person should still be present in the list.
+
+You can try out other data changing commands such as `clear`,`delete`, `edit`.
+
+2. Dealing with missing data file
+
+    1. Exit the address book, if it is running.
+    2. delete the `hrelper.json` file inside the folder named `data`. It is located in the same folder as the jar file.
+    3. Relaunch the app. </br>
+       Expected: The app should create a new `hrelper.json` file filled with sample data.
+

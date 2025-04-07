@@ -102,6 +102,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Note note = new Note("");
         Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
 
+        if (!dateOfJoining.toLocalDate().isAfter(dob.toLocalDate())) {
+            throw new ParseException("Date of Joining must be after DOB.");
+        }
+
         Person person = new Person(name, phone, email, nric, gender, dob, dateOfJoining,
                 nationality, address, note, tag);
 

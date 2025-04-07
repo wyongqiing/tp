@@ -3,6 +3,9 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  * Represents a Person's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
@@ -10,7 +13,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphabetical characters and spaces, and it should not be blank";
+            "Names should only contain letters, hyphens (-), apostrophes ('), slashes (/), periods (.), and spaces. "
+                    + "It should not be blank.";
 
     /*
      * The first character of the name must not be a whitespace,
@@ -28,7 +32,23 @@ public class Name {
     public Name(String name) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        fullName = name;
+        fullName = capitalizeName(name);
+    }
+
+    /**
+     * Capitalises the first letter of the word, keeping the rest lowercase.
+     * @param name
+     *
+     */
+    public static String capitalizeName(String name) {
+        return Arrays.stream(name.trim().split(" "))
+                .map(part -> {
+                    if (part.length() == 0) {
+                        return part;
+                    }
+                    return part.substring(0, 1).toUpperCase() + part.substring(1).toLowerCase();
+                })
+                .collect(Collectors.joining(" "));
     }
 
     /**
