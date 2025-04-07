@@ -19,6 +19,10 @@ public class ListCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(MESSAGE_SUCCESS);
+        if (model.getFilteredPersonList().size() == 0) {
+            return new CommandResult("No persons in the database currently.");
+        } else {
+            return new CommandResult(MESSAGE_SUCCESS);
+        }
     }
 }
