@@ -23,21 +23,13 @@ public class FindByDepartmentCommandParser implements Parser<FindByDepartmentCom
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindByDepartmentCommand.MESSAGE_USAGE));
         }
 
-        // Validate that department only contains alphabetic characters, '&', or whitespace
-        if (!isValidDepartmentCharacters(trimmedArgs)) {
-            throw new ParseException(Department.MESSAGE_CONSTRAINTS);
+        // Check if the department is valid (exists in the list of valid departments)
+        if (!Department.isValidDepartment(trimmedArgs)) {
+            throw new ParseException("Department does not exist. " + Department.MESSAGE_CONSTRAINTS);
         }
 
         // Now we only have the department keyword, so we can directly pass it to the predicate
         return new FindByDepartmentCommand(new DepartmentContainsKeywordPredicate(trimmedArgs));
-    }
-
-    /**
-     * Returns true if the department consists only of alphabetic characters, '&' symbols, and whitespace.
-     */
-    private boolean isValidDepartmentCharacters(String department) {
-        return department.chars()
-                .allMatch(c -> Character.isLetter(c) || c == '&' || Character.isWhitespace(c) || c == '/');
     }
 }
 

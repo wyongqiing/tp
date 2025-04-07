@@ -13,7 +13,7 @@ import java.util.Set;
 public class Department {
     private static final String departments = "Human Resources, Finance, Accounting, Marketing, Sales, "
             + "Customer Service, Information Technology, \n"
-            + "Research and Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, "
+            + "Research & Development, Operations, Legal, Supply Chain & Logistics, Procurement & Purchasing, "
             + "Engineering, Quality Assurance, Product Management, Manufacturing, Public Relations, \n"
             + "Corporate Communications, Compliance & Risk Management, Business Development, Data Science, "
             + "Cybersecurity, Software Development, UX/UI Design, Artificial Intelligence & Machine Learning, \n"
@@ -21,22 +21,24 @@ public class Department {
             + "Diversity, Equity & Inclusion.";
 
     private static final String departmentsShortForm = "HR, CS, IT, R&D, SCM, Procurement, QA, PR, CorpComm, "
-            + "Risk & Compliance, BizDev, DS, CyberSec, SD, UX/UI, AI/ML, T&D, FM, H&S, DEI.";
+            + "BizDev, DS, CyberSec, SD, UX/UI, AI & ML, T&D, FM, H&S, DEI.";
 
-    public static final String MESSAGE_CONSTRAINTS = "Department must only contain alphabetic characters "
-            + "and the '&' symbol. It should not be blank. \n"
-            + "Flexibility in department inputs is allowed where the validation is not case sensitive "
-            + "and short forms are allowed. \n"
+    public static final String MESSAGE_CONSTRAINTS = "Department search must only contain alphabetic characters "
+            + "and the '&' symbol. It should not be blank.\n"
+            + "The search is flexible and supports:\n"
+            + "- Full department names (e.g., 'Human Resources')\n"
+            + "- Department short forms (e.g., 'HR' for Human Resources)\n"
+            + "- Partial matching with at least 3 consecutive letters (e.g., 'Fin' for Finance)\n"
             + "\n"
-            + "Here is the list of Departments: \n"
+            + "Here is the list of Departments:\n"
             + departments + "\n"
             + "\n"
-            + "Here is the list of valid short forms: \n"
+            + "Here is the list of valid short forms:\n"
             + departmentsShortForm;
 
     private static final Set<String> VALID_DEPARTMENTS = Set.of("Human Resources", "Finance", "Accounting",
             "Marketing", "Sales", "Customer Service", "Information Technology",
-            "Research and Development", "Operations", "Legal",
+            "Research & Development", "Operations", "Legal",
             "Supply Chain & Logistics", "Procurement & Purchasing", "Engineering",
             "Quality Assurance", "Product Management", "Manufacturing",
             "Public Relations", "Corporate Communications",
@@ -50,19 +52,18 @@ public class Department {
             Map.entry("Human Resources", "HR"),
             Map.entry("Customer Service", "CS"),
             Map.entry("Information Technology", "IT"),
-            Map.entry("Research and Development", "R&D"),
+            Map.entry("Research & Development", "R&D"),
             Map.entry("Supply Chain & Logistics", "SCM"),
             Map.entry("Procurement & Purchasing", "Procurement"),
             Map.entry("Quality Assurance", "QA"),
             Map.entry("Public Relations", "PR"),
             Map.entry("Corporate Communications", "CorpComm"),
-            Map.entry("Compliance & Risk Management", "Risk & Compliance"),
             Map.entry("Business Development", "BizDev"),
             Map.entry("Data Science", "DS"),
             Map.entry("Cybersecurity", "CyberSec"),
             Map.entry("Software Development", "SD"),
             Map.entry("UX/UI Design", "UX/UI"),
-            Map.entry("Artificial Intelligence & Machine Learning", "AI/ML"),
+            Map.entry("Artificial Intelligence & Machine Learning", "AI & ML"),
             Map.entry("Training & Development", "T&D"),
             Map.entry("Facilities Management", "FM"),
             Map.entry("Health & Safety", "H&S"),
@@ -102,7 +103,17 @@ public class Department {
                 .toList()
                 .contains(normalizedInput);
 
-        return isDepartment || isShortForm;
+        // Check for partial match (3 or more consecutive letters)
+        boolean isPartialMatch = false;
+        if (normalizedInput.length() >= 3) {
+            isPartialMatch = VALID_DEPARTMENTS.stream()
+                    .anyMatch(validDepartment -> {
+                        String normalizedDept = normalizeWhitespace(validDepartment.toLowerCase());
+                        return normalizedDept.contains(normalizedInput);
+                    });
+        }
+
+        return isDepartment || isShortForm || isPartialMatch;
     }
 
     /**

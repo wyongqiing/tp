@@ -28,7 +28,7 @@ public class ParserUtilTest {
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "83075829";
-    private static final String VALID_ADDRESS = "123 Main Street #0505";
+    private static final String VALID_ADDRESS = "123 Main Street #0505/233948";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_DEPARTMENT_1 = "Human Resources";
     private static final String VALID_EMPLOYMENT_TYPE_1 = "Full-Time";
@@ -36,7 +36,6 @@ public class ParserUtilTest {
     private static final String WHITESPACE = " \t\r\n";
 
     private final AddressBookParser parser = new AddressBookParser();
-
     @Test
     public void parseFindCommand_invalidCommand_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
@@ -53,6 +52,12 @@ public class ParserUtilTest {
     public void parseIndex_outOfRangeInput_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, ()
             -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
+
+        assertThrows(ParseException.class, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, ()
+            -> ParserUtil.parseIndex(Long.toString((long) Integer.MAX_VALUE + 1)));
+
+        assertThrows(ParseException.class, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, ()
+            -> ParserUtil.parseIndex(Long.toString((long) Integer.MIN_VALUE - 1)));
     }
 
     @Test

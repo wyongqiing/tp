@@ -9,7 +9,7 @@
     "dob" : "01-Oct-1991",
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
-    "address" : "123, Jurong West Ave 6, #08-111",
+    "address" : "123, Jurong West Ave 6, #08-111/101010",
     "note" : "",
     "tag" : ["Human Resources", "Full-Time", "HR Coordinator"]
   }, {
@@ -21,7 +21,7 @@
     "dob" : "10-Mar-2001",
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Singaporean",
-    "address" : "311, Clementi Ave 2, #02-25",
+    "address" : "311, Clementi Ave 2, #02-25/202020",
     "note" : "",
     "tag" : ["Marketing", "Part-Time", "Marketing Specialist"]
   }, {
@@ -33,7 +33,7 @@
     "dob" : "20-Aug-2002",
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "American",
-    "address" : "wall street",
+    "address" : "wall street/010101",
     "note" : "",
     "tag" : ["Information Technology", "Full-Time", "Software Engineer"]
   }, {
@@ -45,7 +45,7 @@
     "dob" : "19-Aug-2001",
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "American",
-    "address" : "10th street",
+    "address" : "10th street/020202",
     "note" : "",
     "tag" : ["Finance", "Internship", "Financial Analyst"]
   }, {
@@ -58,7 +58,7 @@
     "dateOfJoining" : "15-Apr-2024",
     "nationality" : "Indonesian",
     "note" : "",
-    "address" : "michegan ave",
+    "address" : "michegan ave/030303",
     "tag" : ["Information Technology", "Full-Time", "Data Analyst"]
   }, {
     "name" : "Fiona Kunz",
@@ -69,7 +69,7 @@
     "dob" : "30-Feb-2004",
     "dateOfJoining" : "01-Jan-2024",
     "nationality" : "Singaporean",
-    "address" : "little tokyo",
+    "address" : "little tokyo/272727",
     "note" : "",
     "tag" : ["Information Technology", "Part-Time", "Data Analyst"]
   }, {
@@ -81,7 +81,7 @@
     "dob" : "27-Sep-2004",
     "dateOfJoining" : "01-Jan-2024",
     "nationality" : "American",
-    "address" : "4th street",
+    "address" : "4th street/282828",
     "note" : "",
     "tag" : ["Engineering", "Part-Time", "Electrical Engineer"]
   } ]
