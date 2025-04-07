@@ -34,6 +34,12 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
 - [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
+## Current HRelper Prototype Overview
+The current version of the HRelper is a prototype designed to showcase its core functionality.   
+HR personnel using the app will be able to customize and populate it with their company's specific information, including departments, employment titles, job titles, and other relevant attributes.
+
+At present, the prototype is tailored to Singapore, meaning that phone numbers and NRICs are configured for Singapore-based operations.
+
 
 ## Quick start
 
