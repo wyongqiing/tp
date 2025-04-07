@@ -236,57 +236,73 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_compulsoryFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
-
         // missing name prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: name (n/)");
 
         // missing phone prefix
         assertParseFailure(parser, NAME_DESC_BOB + VALID_PHONE_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: phone (p/)");
 
         // missing email prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + VALID_EMAIL_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: email (e/)");
 
         // missing nric prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + VALID_NRIC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: NRIC (ic/)");
 
         // missing gender prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + VALID_GENDER_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + VALID_GENDER_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: gender (g/)");
 
         // missing dob prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + VALID_DOB_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + VALID_DOB_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: date of birth (d/)");
 
         // missing date of joining prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + VALID_DATE_BOB + NATIONALITY_DESC_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + VALID_DATE_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: date of joining (j/)");
 
         // missing nationality prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + VALID_NATIONALITY_BOB + ADDRESS_DESC_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + VALID_NATIONALITY_BOB
+                        + ADDRESS_DESC_BOB + TAG_DESC_MARKETING,
+                "Missing required field: nationality (nat/)");
 
         // missing address prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + VALID_ADDRESS_BOB,
-                expectedMessage);
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + VALID_ADDRESS_BOB + TAG_DESC_MARKETING,
+                "Missing required field: address (a/)");
+
+        // missing tag prefix
+        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB
+                        + ADDRESS_DESC_BOB,
+                "Missing required field: tag (t/: Department/Employment Type/Job Title)");
 
         // all prefixes missing
-        assertParseFailure(parser, VALID_NAME_BOB + VALID_PHONE_BOB + VALID_EMAIL_BOB + NRIC_DESC_BOB
-                        + VALID_GENDER_BOB + VALID_DOB_BOB + DATE_DESC_BOB + VALID_NATIONALITY_BOB + VALID_ADDRESS_BOB,
-                expectedMessage);
+        assertParseFailure(parser, VALID_NAME_BOB + VALID_PHONE_BOB + VALID_EMAIL_BOB + VALID_NRIC_BOB
+                        + VALID_GENDER_BOB + VALID_DOB_BOB + VALID_DATE_BOB + VALID_NATIONALITY_BOB
+                        + VALID_ADDRESS_BOB,
+                "Missing required field: name (n/) phone (p/) email (e/) NRIC (ic/) gender (g/) date of birth (d/) "
+                + "date of joining (j/) nationality (nat/) address (a/) "
+                + "tag (t/: Department/Employment Type/Job Title)");
     }
 
     @Test
@@ -343,7 +359,8 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + NRIC_DESC_BOB
-                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + INVALID_ADDRESS_DESC,
+                        + GENDER_DESC_BOB + DOB_DESC_BOB + DATE_DESC_BOB + NATIONALITY_DESC_BOB + INVALID_ADDRESS_DESC
+                        + TAG_DESC_MARKETING,
                 Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
