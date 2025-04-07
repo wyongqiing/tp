@@ -117,6 +117,25 @@ public class Department {
     }
 
     /**
+     * Returns true if a given string is a valid department input.
+     */
+    public static boolean isValidDepartmentInput(String department) {
+        String normalizedInput = normalizeWhitespace(department.toLowerCase());
+
+        boolean isDepartment = VALID_DEPARTMENTS.stream()
+                .map(validDepartment -> normalizeWhitespace(validDepartment.toLowerCase()))
+                .toList()
+                .contains(normalizedInput);
+
+        boolean isShortForm = DEPARTMENTS_SHORT_FORM.values().stream()
+                .map(shortForm -> normalizeWhitespace(shortForm.toLowerCase()))
+                .toList()
+                .contains(normalizedInput);
+
+        return isDepartment || isShortForm;
+    }
+
+    /**
      * Maps given string to a string in VALID_DEPARTMENTS
      */
     public static String mapInput(String department) {
