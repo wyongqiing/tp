@@ -31,6 +31,8 @@ public class PersonNoteCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
+    private Label nric;
+    @FXML
     private HBox cardPane;
     @FXML
     private HBox tagBox;
@@ -74,6 +76,7 @@ public class PersonNoteCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
+        nric.setText(person.getNric().value);
         note.setText(person.getNote().value);
 
         Tag tag = person.getTag();

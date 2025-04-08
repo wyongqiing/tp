@@ -23,20 +23,19 @@ That’s where HRelper comes in. Designed to simplify and streamline your workfl
     - [Editing a person](#editing-a-person--edit)
     - [Filtering by](#filtering-by-findby)
     - [Deleting a person](#deleting-a-person--delete)
-    - [Adding a person](#adding-a-note--note)
+    - [Adding a note](#adding-a-note--note)
     - [Clearing all entries](#clearing-all-entries--clear)
     - [Exiting the program](#exiting-the-program--exit)
     - [Saving the data](#saving-the-data)
     - [Editing the data file](#editing-the-data-file)
     - [Archiving data files](#archiving-data-files-coming-in-v20)
 - [FAQ](#faq)
-    - [Q1: Will my data be lost if I close the app?](#q1)
-    - [Q2: Can I search by job title or department?](#q2)
-    - [Q3: How do I transfer my data to another computer?](#q3)
+    - [Q1: Will my data be lost if I close the app?](#a-idq1aq1-what-happens-if-i-close-the-app-will-my-data-be-lost)
+    - [Q2: Can I search by job title or department?](#a-idq2aq2-can-i-search-for-employees-by-job-title-or-departmentbr)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
-- [Valid Departments, Employment Types, Job Titles](#valid-departments-employment-types-job-titles)
-- [Valid Short-Forms](#valid-short-forms)
+- [Valid Departments, Employment Types, Job Titles](#valid-departments-employment-types-job-titles-of-hrelper)
+- [Valid Short-Forms](#valid-short-forms-of-hrelper)
 
 --------------------------------------------------------------------------------------------------------------------
 ## ⚠️ Current HRelper Prototype Overview
@@ -55,9 +54,11 @@ The current version of the HRelper is a prototype designed to showcase its core 
 
 1. Copy the file to the folder you want to use as the _home folder_ for HRelper.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar [CS2103-F14-02][HRelper].jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/UI.png)
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar "[CS2103T-F14-02][HRelper]".jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. 
+![IntroPic](images/IntroPic.png) <br>
+<br>
+    This is how the app should look like after containing some data:![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -240,9 +241,10 @@ Format: `findByEmploymentType EMPLOYMENT_TYPE`
 * Only alphabetic characters and hyphens are allowed in search terms
 
 Examples:
-* `findByEmploymentType Full-Time` returns all full-time employees
 * `findByEmploymentType Part-Time` returns all part-time employees
 * `findByEmploymentType Contract` returns all contractors
+* `findByEmploymentType Full-Time` returns all full-time employees (e.g shown below)
+![findByEmploymentType](images/findByEmploymentType.png)
 
 ### Deleting a person : `delete`
 
@@ -345,13 +347,13 @@ Action | Format, Examples
 
 Here are the valid inputs for the respective fields in this particular working prototype. <br>
 *Companies should customise such fields to fit their own business needs
+
 Fields | Valid Inputs
 --------|------------------
 **Departments** |`Human Resources`, `Finance`, `Accounting`, `Marketing`, `Sales`, `Customer Service`, `Information Technology`, `Research and Development`, `Operations`, `Legal`, `Supply Chain & Logistics`, `Procurement & Purchasing`, `Engineering`, `Quality Assurance`, `Product Management`, `Manufacturing`, `Public Relations`, `Corporate Communications`, `Compliance & Risk Management`, `Business Development`, `Data Science`, `Cybersecurity`, `Software Development`, `UX/UI Design`, `Artificial Intelligence & Machine Learning`, `Training & Development`, `Facilities Management`, `Administration`, `Health & Safety`, `Diversity, Equity & Inclusion`
 **Employment Types** |`Full-Time`, `Part-Time`, `Contract`, `Temporary`, `Internship`, `Freelance`, `Apprenticeship`, `Remote`, `Hybrid`
 **Job Titles** | `Software Engineer`, `Data Analyst`, `Product Manager`, `HR Coordinator`, `Marketing Specialist`, `Sales Associate`, `Financial Analyst`, `Operations Manager`, `UX Designer`, `Project Manager`, `Business Consultant`, `Mechanical Engineer`, `Graphic Designer`, `Customer Support Representative`, `IT Technician`, `Electrical Engineer`, `Legal Advisor`, `Healthcare Administrator`, `Content Writer`, `Cybersecurity Analyst`, `Network Engineer`, `Quality Assurance Tester`, `Recruitment Specialist`, `Social Media Manager`, `Supply Chain Manager`
 **Nationalities** |`Afghan`, `Albanian`, `Algerian`, `American`, `Andorran`, `Angolan`, `Argentine`,`Armenian`, `Australian`, `Austrian`, `Azerbaijani`, `Bahamian`, `Bahraini`,`Bangladeshi`, `Barbadian`, `Belarusian`, `Belgian`, `Belizean`, `Beninese`,`Bhutanese`, `Bolivian`, `Bosnian`, `Botswanan`, `Brazilian`, `British`,`Bruneian`, `Bulgarian`, `Burkinabé`, `Burmese`, `Burundian`, `Cambodian`, `Cameroonian`, `Canadian`, `Cape Verdean`, `Central African`, `Chadian`,`Chilean`, `Chinese`, `Colombian`, `Comorian`, `Congolese`, `Costa Rican`,`Croatian`, `Cuban`, `Cypriot`, `Czech`, `Danish`, `Djiboutian`, `Dominican`,`Dutch`, `Ecuadorian`, `Egyptian`, `Emirati`, `Equatorial Guinean`,`Eritrean`, `Estonian`, `Ethiopian`, `Fijian`, `Filipino`, `Finnish`, `French`,`Gabonese`, `Gambian`, `Georgian`, `German`, `Ghanaian`, `Greek`, `Grenadian`,`Guatemalan`, `Guinean`, `Guyanese`, `Haitian`, `Honduran`, `Hungarian`,`Icelandic`, `Indian`, `Indonesian`, `Iranian`, `Iraqi`, `Irish`, `Israeli`,`Italian`, `Ivorian`, `Jamaican`, `Japanese`, `Jordanian`, `Kazakh`, `Kenyan`,`Kiribati`, `Kuwaiti`, `Kyrgyz`, `Laotian`, `Latvian`, `Lebanese`, `Liberian`,`Libyan`, `Liechtenstein`, `Lithuanian`, `Luxembourgish`, `Malagasy`, `Malawian`,`Malaysian`, `Maldivian`, `Malian`, `Maltese`, `Marshallese`, `Mauritanian`,`Mauritian`, `Mexican`, `Micronesian`, `Moldovan`, `Monacan`, `Mongolian`,`Montenegrin`, `Moroccan`, `Mozambican`, `Namibian`, `Nauruan`, `Nepalese`,`New Zealander`, `Nicaraguan`, `Nigerien`, `Nigerian`, `North Korean`,`North Macedonian`, `Norwegian`, `Omani`, `Pakistani`, `Palauan`, `Palestinian`,`Panamanian`, `Papua New Guinean`, `Paraguayan`, `Peruvian`, `Polish`, `Portuguese`,`Qatari`, `Romanian`, `Russian`, `Rwandan`, `Saint Lucian`, `Salvadoran`, `Samoan`,`Saudi Arabian`, `Scottish`, `Senegalese`, `Serbian`, `Seychellois`, `Sierra Leonean`,`Singaporean`, `Slovak`, `Slovenian`, `Solomon Islander`, `Somali`, `South African`,`South Korean`, `South Sudanese`, `Spanish`, `Sri Lankan`, `Sudanese`, `Surinamese`,`Swazi`, `Swedish`, `Swiss`, `Syrian`, `Tajik`, `Tanzanian`, `Thai`, `Timorese`,`Togolese`, `Tongan`, `Trinidadian`, `Tunisian`, `Turkish`, `Turkmen`, `Tuvaluan`,`Ugandan`, `Ukrainian`, `Uruguayan`, `Uzbek`, `Vanuatuan`, `Venezuelan`, `Vietnamese`,`Welsh`, `Yemeni`, `Zambian`, `Zimbabwean`, `Other`
-
 # Valid Short-Forms of HRelper
 
 Please refer to the table for some valid short-form `department` tag inputs. The `department` to `short-form name` mapping is as follows
@@ -379,4 +381,4 @@ Please refer to the table for some valid short-form `department` tag inputs. The
 | **Diversity, Equity & Inclusion**              | `DEI`     |
 
 Note: `Finance` `Accounting` `Marketing` `Sales` `Operations` `Legal` `Engineering`
-`Manufacturing` `Public Relations` `Administration` <br> tags do not have valid short-forms
+`Manufacturing` `Public Relations` `Administration` tags do not have valid short-forms
